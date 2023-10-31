@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Meal Kit</title>
+	<link rel="icon" type="png" href="favicon.png">
+	<link rel="stylesheet" href="/meal-kit/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<img src="/meal-kit/letters/m.jpg" data-index="0">
+			<img src="/meal-kit/letters/e.jpg" data-index="1">
+			<img src="/meal-kit/letters/a.jpg" data-index="2">
+			<img src="/meal-kit/letters/l.jpg" data-index="3">
+			<div class="space" data-index="4"></div>
+			<img src="/meal-kit/letters/k.jpg" data-index="5">
+			<img src="/meal-kit/letters/i.jpg" data-index="6">
+			<img src="/meal-kit/letters/t.jpg" data-index="7">
+			<img src="/meal-kit/letters/cursor.jpg" id="cursor"></div>
+		</div>
+
+		<div class="controls">
+			<button onclick="empty()"><svg viewBox="0 0 72 72"><polygon points="58.274 20.09 51.91 13.726 36 29.636 20.09 13.726 13.726 20.09 29.636 36 13.726 51.91 20.09 58.274 36 42.364 51.91 58.274 58.274 51.91 42.364 36 58.274 20.09"/></svg></button>
+			<button id="toggle-filter" onclick="toggleFilter()"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="36"/></svg></button>
+			<button onclick="sizeDown()"><svg viewBox="0 0 72 72"><rect x="9" y="31.5" width="54" height="9"/></svg></button>
+			<button onclick="sizeUp()"><svg viewBox="0 0 72 72"><polygon points="63 31.5 40.5 31.5 40.5 9 31.5 9 31.5 31.5 9 31.5 9 40.5 31.5 40.5 31.5 63 40.5 63 40.5 40.5 63 40.5 63 31.5"/></svg></button>
+		</div>
+	</div>
+	<script src="/meal-kit/script.js"></script>
+</body>
+</html>

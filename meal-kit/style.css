@@ -1,0 +1,112 @@
+@font-face {
+	font-family: "Music Box";
+	src: url("music-box.ttf");
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */  
+}
+:root {
+	--size: 10vw;
+}
+body {
+	background-color: rgb(0, 0, 0);
+	background-image: url('background.gif');
+	background-size: cover;
+}
+
+/* Content */
+.container {
+	width: 100vw;
+	height: 100dvh;
+	position: relative;
+	overflow-y: hidden;
+}
+.content {
+	width: 100%;
+	max-height: 100%;
+	padding: 40px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+	transition: filter .2s;
+}
+.content[data-filter="1"] {
+	filter: brightness(200%);
+}
+.content img {
+	height: var(--size);
+	mix-blend-mode: hard-light;
+	transition: filter 1s;
+}
+.content img:hover {
+	filter: brightness(200%);
+	transition: filter .2s;
+}
+.space {
+	width: calc(var(--size) / 2);
+}
+.line-break {
+	width: 100%;
+}
+
+/* Blinking cursor */
+#cursor {
+	animation: cursor .5s steps(1) infinite alternate;
+	height: var(--size);
+	filter: brightness(300%);
+}
+@keyframes cursor {
+	0% {
+		opacity: .8;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Controls */
+.controls {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	gap: 10px;
+	display: flex;
+}
+.controls button {
+	border: unset;
+	background-color: white;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	fill: black;
+	align-items: center;
+	justify-content: center;
+	transition: .2s;
+	border-radius: 50%;
+	padding: 5px;
+}
+.controls button svg {
+	width: 100%;
+	height: 100%;
+}
+.controls button[data-active="1"] {
+	background-color: black;
+	fill: white;
+	border: 2px solid white;
+}
+.controls button:hover {
+	transform: scale(1.1);
+}
+.controls button:active {
+	transform: scale(0.9);
+}
+.controls button:focus {
+	outline: none;
+}

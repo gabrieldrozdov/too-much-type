@@ -1,0 +1,109 @@
+@font-face {
+	font-family: "Music Box";
+	src: url("/music-box/music-box.ttf");
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--size: 10.25vw;
+}
+body {
+	background-color: black;
+	color: white;
+}
+
+/* Content */
+.container {
+	width: 100vw;
+	height: 100dvh;
+	position: relative;
+	overflow-y: hidden;
+}
+.text {
+	padding: .8vw 1vw 2.02vw 1vw;
+	width: 100%;
+	height: 100%;
+	font-family: "Music Box";
+	font-size: var(--size);
+	letter-spacing: -.05em;
+	line-height: 0.95em;
+	transition: font-variation-settings .2s;
+	border: unset;
+	background-color: black;
+	resize: none;
+	color: white;
+}
+.text:focus {
+	outline: unset;
+}
+.text::placeholder {
+	color: white;
+	opacity: .1;
+}
+.text[data-outline="1"] {
+	color: transparent;
+	-webkit-text-stroke: 1px white;
+}
+::selection {
+	background: gray;
+}
+::-moz-selection {
+	background: gray;
+}
+
+/* Controls */
+.controls {
+	position: fixed;
+	right: 20px;
+	left: 20px;
+	bottom: 20px;
+	gap: 10px;
+	display: flex;
+}
+.controls button {
+	border: unset;
+	background-color: black;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	fill: white;
+	align-items: center;
+	justify-content: center;
+	transition: .2s;
+	border: 1px solid white;
+}
+.controls button svg {
+	width: 100%;
+	height: 100%;
+}
+.controls button[data-active="1"] {
+	background-color: white;
+	fill: black;
+}
+.controls button:hover {
+	border: 2px solid black;
+	background-color: white;
+	fill: black;
+}
+.controls button:active {
+	opacity: .5;
+}
+.controls button:focus {
+	outline: none;
+}
+.spacer {
+	flex-grow: 1;
+}
+@media screen and (max-width: 600px) {
+	.controls {
+		gap: 5px;
+	}
+	.controls button {
+		width: 30px;
+		height: 30px;
+	}
+}

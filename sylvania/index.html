@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sylvania</title>
+	<link rel="icon" type="png" href="favicon.png">
+	<link rel="stylesheet" href="/sylvania/style.css">
+</head>
+<body>
+	<div class="container">
+		<video autoplay loop muted src="/sylvania/videos/texture.mp4" class="texture"></video>
+		
+		<div class="border"></div>
+
+		<div class="content" onclick="focus()">
+			<video autoplay loop muted src="/sylvania/videos/s.mp4" data-index="0"></video>
+			<video autoplay loop muted src="/sylvania/videos/y.mp4" data-index="1"></video>
+			<video autoplay loop muted src="/sylvania/videos/l.mp4" data-index="2"></video>
+			<video autoplay loop muted src="/sylvania/videos/v.mp4" data-index="3"></video>
+			<video autoplay loop muted src="/sylvania/videos/a.mp4" data-index="4"></video>
+			<video autoplay loop muted src="/sylvania/videos/n.mp4" data-index="5"></video>
+			<video autoplay loop muted src="/sylvania/videos/i.mp4" data-index="6"></video>
+			<video autoplay loop muted src="/sylvania/videos/a.mp4" data-index="7"></video>
+			<div id="cursor"></div>
+		</div>
+
+		<div class="controls">
+			<button onclick="empty()"><svg viewBox="0 0 72 72"><polygon points="58.274 20.09 51.91 13.726 36 29.636 20.09 13.726 13.726 20.09 29.636 36 13.726 51.91 20.09 58.274 36 42.364 51.91 58.274 58.274 51.91 42.364 36 58.274 20.09"/></svg></button>
+			<button onclick="sizeDown()"><svg viewBox="0 0 72 72"><rect x="9" y="31.5" width="54" height="9"/></svg></button>
+			<button onclick="sizeUp()"><svg viewBox="0 0 72 72"><polygon points="63 31.5 40.5 31.5 40.5 9 31.5 9 31.5 31.5 9 31.5 9 40.5 31.5 40.5 31.5 63 40.5 63 40.5 40.5 63 40.5 63 31.5"/></svg></button>
+		</div>
+	</div>
+
+	<script src="/sylvania/script.js"></script>
+</body>
+</html>
