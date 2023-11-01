@@ -1118,108 +1118,251 @@ function openLink(url) {
 	window.open(url, "_blank");
 }
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————————
 // DESKTOP
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————————
 
-function initializeDesktop() {
-	// Generate desktop links
-	let desktopTemp = '';
-	for (let i=0; i<50; i++) {
-		let font = fontNames[Math.floor(Math.random()*fontNames.length)];
-		let color = fontInfo[font]['color'];
-		let letters = fontInfo[font]['letters'];
-		let letter = letters[Math.floor(Math.random()*letters.length)];
+function generateGlyphSelector() {
+	const desktopLettersets = document.querySelector('.desktop-lettersets');
+	for (let font of Object.keys(fontInfo)) {
+		let letterset = document.createElement('div');
+		letterset.classList.add('desktop-letterset');
+		let lettersetContent = ``;
+		for (let glyph of fontInfo[font]['letters']) {
+			lettersetContent += `<div>${glyph}</div>`;
+		}
+		letterset.innerHTML = `
+			<div class="desktop-letterset-title">
+				<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
+				<span>${font}</span>
+			</div>
+			<div class="desktop-letterset-content">${lettersetContent}</div>
+		`;
+		desktopLettersets.appendChild(letterset);
+	}
+}
+generateGlyphSelector();
+
+class desktopLetter {
+	constructor(font, letter, variation) {
+		this.font = font || fontNames[Math.floor(Math.random()*fontNames.length)];
+		this.letters = fontInfo[this.font]['letters'];
+		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
+		this.variation = variation || this.randomizeVariation();
+		this.color = fontInfo[this.font]['color'];
+
+		// Create desktop element
+		this.elmnt = document.createElement('div');
+		this.elmnt.classList.add('desktop-letter');
+		this.elmnt.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
+		this.elmnt.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
+		this.elmnt.innerHTML = `
+			<div class="desktop-letter-glyph" style="font-family:'${this.font}'; ${this.convertVariationToStyle()};">${this.letter}</div>
+			<span>${this.font}</span>
+		`
+		this.glyph = this.elmnt.querySelector('.desktop-letter-glyph');
+
+		// Create settings element
+		this.settings = document.createElement('div');
+		this.settings.classList.add('desktop-settings');
+		this.settings.dataset.active = 0;
+		this.settings.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
+		this.settings.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
+
+		// Generate variable axes sliders
+		let variableSliders = '';
+		if (fontInfo[this.font]['variation'] != '') {
+			let axisNumber = 0;
+			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
+				variableSliders += `
+					<div class='desktop-settings-variation'>
+						<label>${axis}</label>
+						<input type="range" name="${axisNumber}" min="${fontInfo[this.font]['variation'][axis]['min']}" max="${fontInfo[this.font]['variation'][axis]['max']}" value="${this.variation[axisNumber]}">
+					</div>
+				`;
+				axisNumber++;
+			}
+		}
+
+		// Build element
+		this.settings.innerHTML = `
+			<div class="desktop-settings-titlebar">
+				<h2 class="desktop-settings-font">
+					<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
+					<span>${this.font}</span>
+				</h2>
+				<button class="desktop-settings-close">
+					<svg viewBox="0 0 100 100"><rect x="10" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/><rect x="40" y="40" width="20" height="20"/><rect x="60" y="30" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="80" y="10" width="10" height="10"/><rect x="10" y="10" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="30" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="80" y="80" width="10" height="10"/></svg>
+				</button>
+			</div>
+			<div class="desktop-settings-content">
+				${variableSliders}
+				<button>
+					<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
+					<span>Change Glyph</span>
+				</button>
+				<button class="desktop-settings-duplicate">
+					<svg viewBox="0 0 100 100"><path d="m10,10v60h60V10H10Zm10,50V20h40v40H20Z"/><polygon points="90 20 90 90 20 90 20 80 80 80 80 20 90 20"/></svg>
+					<span>Duplicate</span>
+				</button>
+				<button class="desktop-settings-delete">
+					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
+					<span>Delete</span>
+				</button>
+			</div>
+		`
+
+		// Add listeners to settings
+		let settingsTitle = this.settings.querySelector('.desktop-settings-font');
+		settingsTitle.addEventListener('mousedown', (e) => {dragElmnt(e, this.settings)});
+		settingsTitle.addEventListener('touchstart', (e) => {dragElmnt(e, this.settings)});
+		let settingsClose = this.settings.querySelector('.desktop-settings-close');
+		settingsClose.addEventListener('click', this.closeSettings);
+		let settingsDuplicate = this.settings.querySelector('.desktop-settings-duplicate');
+		settingsDuplicate.addEventListener('click', this.duplicateLetter);
+		let settingsDelete = this.settings.querySelector('.desktop-settings-delete');
+		settingsDelete.addEventListener('click', this.deleteLetter);
+		for (let slider of this.settings.querySelectorAll('input')) {
+			slider.addEventListener('input', () => {this.updateVariation(slider.value, slider.name)});
+		}
+
+		// Set initial position
+		if (Math.random() < .5) {
+			this.elmnt.style.left = '-100%';
+		} else {
+			this.elmnt.style.left = '100%';
+		}
+		if (Math.random() < .5) {
+			this.elmnt.style.top = '-100%';
+		} else {
+			this.elmnt.style.top = '100%';
+		}
+
+		// Add to DOM
+		const desktop = document.querySelector('.desktop');
+		desktop.appendChild(this.elmnt);
+		desktop.appendChild(this.settings);
+
+		// Transition in
+		setTimeout(() => {
+			this.elmnt.dataset.initialize = 1;
+			this.elmnt.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
+			this.elmnt.style.top = (window.innerHeight*(Math.random()*.8+.05)).toFixed(2) + "px";
+			this.elmnt.addEventListener('mousedown', (e) => {dragElmnt(e, this.elmnt)});
+			this.elmnt.addEventListener('touchstart', (e) => {dragElmnt(e, this.elmnt)});
+			this.elmnt.addEventListener('click', (e) => {this.clickDesktopElmnt(e)});
+		}, 50)
+	}
+
+	// Work with font variation settings
+	randomizeVariation = () => {
+		let variation = [];
+		if (fontInfo[this.font]['variation'] != '') {
+			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
+				let range = fontInfo[this.font]['variation'][axis]['max'] + Math.abs(fontInfo[this.font]['variation'][axis]['min']);
+				variation.push(Math.round(Math.random()*range + fontInfo[this.font]['variation'][axis]['min']));
+			}
+		}
+		return variation;
+	}
+	updateVariation = (val, axis) => {
+		this.variation[axis] = val;
+		this.glyph.style.fontVariationSettings = this.convertVariationToStyle2();
+	}
+
+	// Returns with font-variation-settings
+	convertVariationToStyle() {
 		let variation = '';
-		if (fontInfo[font]['variation'] != '') {
+		if (fontInfo[this.font]['variation'] != '') {
 			variation += "font-variation-settings:";
 			let axisNumber = 0;
-			for (let axis of Object.keys(fontInfo[font]['variation'])) {
-				let range = fontInfo[font]['variation'][axis]['max']-fontInfo[font]['variation'][axis]['min'];
-				let value = Math.round(Math.random()*range);
-				variation += " '" + fontInfo[font]['variation'][axis]['code'] + "' " + value;
+			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
+				variation += " '" + fontInfo[this.font]['variation'][axis]['code'] + "' " + this.variation[axisNumber];
 				axisNumber++;
-				if (axisNumber < Object.keys(fontInfo[font]['variation']).length) {
+				if (axisNumber < Object.keys(fontInfo[this.font]['variation']).length) {
 					variation += ', ';
 				}
 			}
 		}
-		desktopTemp += `
-			<div class="desktop-link" style="--primary:hsl(${color}deg,100%,70%); --secondary: hsl(${color}deg,100%,10%);">
-				<div class="desktop-link-icon" style="font-family:'${font}'; ${variation};">${letter}</div>
-				<span>${font}</span>
-			</div>
-		`;
+		return variation
 	}
-	const desktop = document.querySelector('.desktop');
-	desktop.innerHTML = desktopTemp;
 
-	// Randomize icon positions and add drag listeners
-	let desktopDelay = 100;
-	for (let desktopLink of document.querySelectorAll('.desktop-link')) {
-		if (Math.random() < .5) {
-			desktopLink.style.left = '-100%';
-		} else {
-			desktopLink.style.left = '100%';
+	// Returns without property name
+	convertVariationToStyle2() {
+		let variation = '';
+		if (fontInfo[this.font]['variation'] != '') {
+			let axisNumber = 0;
+			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
+				variation += " '" + fontInfo[this.font]['variation'][axis]['code'] + "' " + this.variation[axisNumber];
+				axisNumber++;
+				if (axisNumber < Object.keys(fontInfo[this.font]['variation']).length) {
+					variation += ', ';
+				}
+			}
 		}
-		if (Math.random() < .5) {
-			desktopLink.style.top = '-100%';
-		} else {
-			desktopLink.style.top = '100%';
+		return variation
+	}
+
+	// Detects click (vs. drag)
+	clickDesktopElmnt = (e) => {
+		if (!elementMoved) {
+			this.positionSettings(e);
+			this.openSettings();
 		}
+	}
+
+	// Set position for settings popup
+	positionSettings = (e) => {
+		this.settings.style.left = e.clientX + 20 + "px";
+		this.settings.style.top = e.clientY + 20 + "px";
+		this.settings.style.transform = '';
+		if (e.clientX > window.innerWidth/2) {
+			this.settings.style.transform = 'translateX(calc(-100% - 40px))';
+		}
+		if (e.clientY > window.innerHeight/2) {
+			this.settings.style.transform += ' translateY(calc(-100% - 40px))';
+		}
+	}
+
+	// Open/close settings popup
+	openSettings = () => {
+		for (let otherSettings of document.querySelectorAll('.desktop-settings')) {
+			otherSettings.dataset.active = 0;
+		}
+		this.settings.dataset.active = 1;
+	}
+	closeSettings = () => {
+		this.settings.dataset.active = 0;
+	}
+
+	// Delete class instance and remove from DOM
+	duplicateLetter = () => {
+		desktopLetters.push(new desktopLetter(this.font, this.letter, this.variation));
+	}
+
+	// Delete class instance and remove from DOM
+	deleteLetter = () => {
+		this.elmnt.remove();
+		this.settings.remove();
+		// TODO: Remove element from array
+	}
+}
+
+let desktopLetters = [];
+function initializeDesktop() {
+	// Generate desktop links
+	let loopDelay = 0;
+	for (let i=0; i<100; i++) {
 		setTimeout(() => {
-			desktopLink.dataset.initialize = 1;
-			desktopLink.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
-			desktopLink.style.top = (window.innerHeight*(Math.random()*.9+.05)).toFixed(2) + "px";
-			desktopLink.addEventListener('mousedown', () => {dragDesktopLink(desktopLink)});
-			desktopLink.addEventListener('touchstart', () => {dragDesktopLink(desktopLink)});
-			desktopLink.addEventListener('click', (e) => {clickDesktopLink(e, desktopLink)});
-		}, desktopDelay)
-		desktopDelay += 10;
+			desktopLetters.push(new desktopLetter());
+		}, loopDelay)
+		loopDelay += 10;
 	}
 }
 initializeDesktop();
 
-// Detect click or movement
-let elementMoved = false;
-function clickDesktopLink(e) {
-	if (!elementMoved) {
-		newWindow('sylvania');
-	}
-}
-
-// Drag desktop links
-function dragDesktopLink(elmnt) {
-	elementMoved = false;
-	elmnt.dataset.reposition = 1;
-	window.addEventListener('mouseup', endMove);
-	window.addEventListener('mousemove', adjustMove);
-	window.addEventListener("touchend", endMove);
-	window.addEventListener("touchmove", adjustMove);
-
-	function adjustMove(e) {
-		elementMoved = true;
-		let posX, posY;
-		if (e.touches != null) {
-			posX = e.touches[0].clientX;
-			posY = e.touches[0].clientY;
-		} else {
-			posX = e.clientX;
-			posY = e.clientY;
-			e.preventDefault();
-		}
-
-		elmnt.style.left = posX + "px";
-		elmnt.style.top = posY + "px";
-	}
-
-	function endMove() {
-		elmnt.dataset.reposition = 0;
-		window.removeEventListener('mouseup', endMove);
-		window.removeEventListener('mousemove', adjustMove);
-		window.removeEventListener("touchend", endMove);
-		window.removeEventListener("touchmove", adjustMove);
-	}
+function generateLetter(font, letter, variation) {
+	desktopLetters.push(new desktopLetter(font, letter, variation));
 }
 
 // ————————————————————————————————————————————————————————————
@@ -1277,7 +1420,7 @@ function sortDesktop() {
 	let posX = 50;
 	let posY = 50;
 	let loopDelay = 0;
-	for (let desktopLink of document.querySelectorAll('.desktop-link')) {
+	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		let pos = [posX, posY];
 		posX += 100;
 		if (posX >= window.innerWidth-50) {
@@ -1293,7 +1436,7 @@ function sortDesktop() {
 }
 function unsortDesktop() {
 	let loopDelay = 0;
-	for (let desktopLink of document.querySelectorAll('.desktop-link')) {
+	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		setTimeout(() => {
 			desktopLink.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
 			desktopLink.style.top = (window.innerHeight*(Math.random()*.9+.05)).toFixed(2) + "px";
@@ -1308,6 +1451,15 @@ function toggleFontNames() {
 	} else {
 		body.dataset.hideFontNames = 0;
 	}
+}
+function clearDesktop() {
+	for (let desktopLetter of desktopLetters) {
+		desktopLetter.deleteLetter();
+	}
+	desktopLetters = [];
+}
+function randomLetter() {
+	generateLetter();
 }
 function collectWindows() {
 	let loopDelay = 0;
@@ -1395,11 +1547,9 @@ function scatterWindows() {
 		}
 	}
 }
-function generateWindows() {
-	for (let i=0; i<Math.floor(Math.random()*9+1); i++) {
-		let windowSrc = Math.floor(Math.random()*Object.keys(windowData).length);
-		newWindow(Object.keys(windowData)[windowSrc]);
-	}
+function randomWindow() {
+	let windowSrc = Math.floor(Math.random()*Object.keys(windowData).length);
+	newWindow(Object.keys(windowData)[windowSrc]);
 }
 
 // ————————————————————————————————————————————————————————————
@@ -1445,6 +1595,59 @@ function showTime() {
 setInterval(showTime, 1000);
 showTime();
 
+// ————————————————————————————————————————————————————————————
+// HELPER FUNCTIONS
+// ————————————————————————————————————————————————————————————
+
+// Drag element
+let elementMoved = false;
+function dragElmnt(e1, elmnt) {
+	elementMoved = false;
+	elmnt.dataset.reposition = 1;
+	window.addEventListener('mouseup', endMove);
+	window.addEventListener('mousemove', adjustMove);
+	window.addEventListener("touchend", endMove);
+	window.addEventListener("touchmove", adjustMove);
+	let posX1, posY1;
+	if (e1.touches != null) {
+		posX1 = e1.touches[0].clientX;
+		posY1 = e1.touches[0].clientY;
+	} else {
+		posX1 = e1.clientX;
+		posY1 = e1.clientY;
+		e1.preventDefault();
+	}
+
+	function adjustMove(e2) {
+		elementMoved = true;
+		let posX2, posY2;
+		if (e2.touches != null) {
+			posX2 = e2.touches[0].clientX;
+			posY2 = e2.touches[0].clientY;
+		} else {
+			posX2 = e2.clientX;
+			posY2 = e2.clientY;
+			e2.preventDefault();
+		}
+
+		let deltaX = posX2-posX1;
+		let deltaY = posY2-posY1;
+
+		elmnt.style.left = parseInt(elmnt.style.left)+deltaX + "px";
+		elmnt.style.top = parseInt(elmnt.style.top)+deltaY + "px";
+
+		posX1 = posX2;
+		posY1 = posY2;
+	}
+
+	function endMove() {
+		elmnt.dataset.reposition = 0;
+		window.removeEventListener('mouseup', endMove);
+		window.removeEventListener('mousemove', adjustMove);
+		window.removeEventListener("touchend", endMove);
+		window.removeEventListener("touchmove", adjustMove);
+	}
+}
 
 // TODO
 // hide code if too small
@@ -1453,3 +1656,8 @@ showTime();
 	// help?
 // drag to resize middle of code editor
 // drag to reorder windows in dock
+
+// hide  desktop settings popup on click
+// indication for active window
+
+// fix z index on different layers
