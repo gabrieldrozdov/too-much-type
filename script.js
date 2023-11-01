@@ -55,7 +55,7 @@ let fontInfo = {
 			'Spin': {
 				'code': 'spin',
 				'min': -45,
-				'max': 360,
+				'max': 405,
 				'default': -45
 			}
 		}
@@ -1144,12 +1144,13 @@ function generateGlyphSelector() {
 generateGlyphSelector();
 
 class desktopLetter {
-	constructor(font, letter, variation) {
+	constructor(font, letter, variation, size, color) {
 		this.font = font || fontNames[Math.floor(Math.random()*fontNames.length)];
 		this.letters = fontInfo[this.font]['letters'];
 		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
 		this.variation = variation || this.randomizeVariation();
-		this.color = fontInfo[this.font]['color'];
+		this.color = color || fontInfo[this.font]['color'];
+		this.size = size || 48;
 
 		// Create desktop element
 		this.elmnt = document.createElement('div');
@@ -1161,6 +1162,7 @@ class desktopLetter {
 			<span>${this.font}</span>
 		`
 		this.glyph = this.elmnt.querySelector('.desktop-letter-glyph');
+		this.glyph.style.fontSize = this.size + "px";
 
 		// Create settings element
 		this.settings = document.createElement('div');
@@ -1177,7 +1179,7 @@ class desktopLetter {
 				variableSliders += `
 					<div class='desktop-settings-variation'>
 						<label>${axis}</label>
-						<input type="range" name="${axisNumber}" min="${fontInfo[this.font]['variation'][axis]['min']}" max="${fontInfo[this.font]['variation'][axis]['max']}" value="${this.variation[axisNumber]}">
+						<input type="range" name="${axisNumber}" min="${fontInfo[this.font]['variation'][axis]['min']}" max="${fontInfo[this.font]['variation'][axis]['max']}" value="${this.variation[axisNumber]}" class="slider-variable">
 					</div>
 				`;
 				axisNumber++;
@@ -1196,8 +1198,20 @@ class desktopLetter {
 				</button>
 			</div>
 			<div class="desktop-settings-content">
+				<button class="desktop-settings-specimen" onclick="newWindow('sylvania');">
+					<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"/></svg>
+					<span>Open Specimen</span>
+				</button>
 				${variableSliders}
-				<button>
+				<div class='desktop-settings-variation'>
+					<label>Size</label>
+					<input type="range" name="size" min="8" max="256" value="${this.size}">
+				</div>
+				<div class='desktop-settings-variation'>
+					<label>Color</label>
+					<input type="range" name="color" min="0" max="360" value="${this.color}">
+				</div>
+				<button class="desktop-settings-change">
 					<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
 					<span>Change Glyph</span>
 				</button>
@@ -1218,13 +1232,19 @@ class desktopLetter {
 		settingsTitle.addEventListener('touchstart', (e) => {dragElmnt(e, this.settings)});
 		let settingsClose = this.settings.querySelector('.desktop-settings-close');
 		settingsClose.addEventListener('click', this.closeSettings);
+		let settingsChange = this.settings.querySelector('.desktop-settings-change');
+		settingsChange.addEventListener('click', this.changeLetter);
 		let settingsDuplicate = this.settings.querySelector('.desktop-settings-duplicate');
 		settingsDuplicate.addEventListener('click', this.duplicateLetter);
 		let settingsDelete = this.settings.querySelector('.desktop-settings-delete');
 		settingsDelete.addEventListener('click', this.deleteLetter);
-		for (let slider of this.settings.querySelectorAll('input')) {
+		for (let slider of this.settings.querySelectorAll('.slider-variable')) {
 			slider.addEventListener('input', () => {this.updateVariation(slider.value, slider.name)});
 		}
+		let sizeSlider = this.settings.querySelector('input[name="size"]');
+		sizeSlider.addEventListener('input', () => {this.updateSize(sizeSlider.value)});
+		let colorSlider = this.settings.querySelector('input[name="color"]');
+		colorSlider.addEventListener('input', () => {this.updateColor(colorSlider.value)});
 
 		// Set initial position
 		if (Math.random() < .5) {
@@ -1269,6 +1289,17 @@ class desktopLetter {
 		this.variation[axis] = val;
 		this.glyph.style.fontVariationSettings = this.convertVariationToStyle2();
 	}
+	
+	// Size and color
+	updateSize = (val) => {
+		this.size = val;
+		this.glyph.style.fontSize = val + "px";
+	}
+	updateColor = (val) => {
+		this.color = val;
+		this.elmnt.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
+		this.elmnt.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
+	}
 
 	// Returns with font-variation-settings
 	convertVariationToStyle() {
@@ -1277,7 +1308,7 @@ class desktopLetter {
 			variation += "font-variation-settings:";
 			let axisNumber = 0;
 			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
-				variation += " '" + fontInfo[this.font]['variation'][axis]['code'] + "' " + this.variation[axisNumber];
+				variation += `'${fontInfo[this.font]['variation'][axis]['code']}' ${this.variation[axisNumber]}`;
 				axisNumber++;
 				if (axisNumber < Object.keys(fontInfo[this.font]['variation']).length) {
 					variation += ', ';
@@ -1293,7 +1324,7 @@ class desktopLetter {
 		if (fontInfo[this.font]['variation'] != '') {
 			let axisNumber = 0;
 			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
-				variation += " '" + fontInfo[this.font]['variation'][axis]['code'] + "' " + this.variation[axisNumber];
+				variation += `'${fontInfo[this.font]['variation'][axis]['code']}' ${this.variation[axisNumber]}`;
 				axisNumber++;
 				if (axisNumber < Object.keys(fontInfo[this.font]['variation']).length) {
 					variation += ', ';
@@ -1326,18 +1357,32 @@ class desktopLetter {
 
 	// Open/close settings popup
 	openSettings = () => {
+		if (parseInt(this.settings.dataset.active) == 1) {
+			this.closeSettings();
+			return
+		}
 		for (let otherSettings of document.querySelectorAll('.desktop-settings')) {
 			otherSettings.dataset.active = 0;
 		}
+		for (let otherLetter of document.querySelectorAll('.desktop-letter')) {
+			otherLetter.dataset.active = 0;
+		}
 		this.settings.dataset.active = 1;
+		this.elmnt.dataset.active = 1;
 	}
 	closeSettings = () => {
 		this.settings.dataset.active = 0;
+		this.elmnt.dataset.active = 0;
+	}
+
+	// Swap out glyph with another one
+	changeLetter = () => {
+
 	}
 
 	// Delete class instance and remove from DOM
 	duplicateLetter = () => {
-		desktopLetters.push(new desktopLetter(this.font, this.letter, this.variation));
+		desktopLetters.push(new desktopLetter(this.font, this.letter, this.variation, this.size, this.color));
 	}
 
 	// Delete class instance and remove from DOM
@@ -1661,3 +1706,6 @@ function dragElmnt(e1, elmnt) {
 // indication for active window
 
 // fix z index on different layers
+
+// make it so desktop settings is a single element, not multiple
+// update color of settings to match color changes
