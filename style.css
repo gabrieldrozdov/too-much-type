@@ -3,6 +3,10 @@
 	src: url("assets/fonts/GDPaint.woff2");
 }
 @font-face {
+	font-family: "AUTHENTIC Remixed";
+	src: url("assets/fonts/AUTHENTICRemixedVF.woff2");
+}
+@font-face {
 	font-family: "Bashful";
 	src: url("assets/fonts/GDBashfulVF.woff2");
 }
@@ -33,6 +37,10 @@
 @font-face {
 	font-family: "Music Box";
 	src: url("assets/fonts/GDMusicBoxVF.woff2");
+}
+@font-face {
+	font-family: "Work Sans Galapagos";
+	src: url("assets/fonts/WorkSansGalapagosVF.woff2");
 }
 @font-face {
 	font-family: "Fira Code";
@@ -358,6 +366,45 @@ body[data-color-mode="1"] * {
 	}
 	100% {
 		font-variation-settings: 'VARI' 0, 'DIST' 0;
+	}
+}
+.menu-typeface[data-font='authenticremixed'] {
+	font-family: 'AUTHENTIC Remixed';
+	font-variation-settings: 'xaxi' 0, 'yaxi' 0;
+	animation: menu-authenticremixed 2s infinite ease-in-out alternate;
+}
+@keyframes menu-authenticremixed {
+	0% {
+		font-variation-settings: 'xaxi' 0, 'yaxi' 0;
+	}
+	20% {
+		font-variation-settings: 'xaxi' 100, 'yaxi' 10;
+	}
+	40% {
+		font-variation-settings: 'xaxi' -100, 'yaxi' 100;
+	}
+	60% {
+		font-variation-settings: 'xaxi' -100, 'yaxi' -100;
+	}
+	80% {
+		font-variation-settings: 'xaxi' 100, 'yaxi' -100;
+	}
+	100% {
+		font-variation-settings: 'xaxi' 0, 'yaxi' 0;
+	}
+}
+.menu-typeface[data-font='worksansgalapagos'] {
+	font-family: 'Work Sans Galapagos';
+	font-variation-settings: 'wght' 500, 'shll' 100;
+	animation: menu-worksansgalapagos 2s infinite ease-in-out alternate;
+	font-feature-settings: "ss01" 1, "ss06" 1;
+}
+@keyframes menu-worksansgalapagos {
+	0% {
+		font-variation-settings: 'wght' 500, 'shll' 100;
+	}
+	100% {
+		font-variation-settings: 'wght' 500, 'shll' 0;
 	}
 }
 
@@ -1652,5 +1699,17 @@ body[data-flat="1"] .desktop-settings-content button {
 	border: unset;
 }
 body[data-flat="1"] .desktop-settings-content button:hover {
+	border: unset;
+}
+
+/* Menu */
+body[data-flat="1"] .menu-title {
+	padding: 6px 10px;
+	border: unset;
+}
+body[data-flat="1"] .menu-grid button {
+	border: unset;
+}
+body[data-flat="1"] .menu-grid button:hover {
 	border: unset;
 }

@@ -18,6 +18,24 @@ function calculateBorders() {
 // ———————————————————————————————————————————————
 
 let fontInfo = {
+	'AUTHENTIC Remixed': {
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'variation': {
+			'X axis': {
+				'code': 'xaxi',
+				'min': -100,
+				'max': 100,
+				'default': 0
+			},
+			'Y axis': {
+				'code': 'yaxi',
+				'min': -100,
+				'max': 100,
+				'default': 0
+			}
+		}
+	},
 	'Bashful': {
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
@@ -160,7 +178,25 @@ let fontInfo = {
 				'default': 0
 			}
 		}
-	}
+	},
+	'Work Sans Galapagos': {
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'variation': {
+			'Weight': {
+				'code': 'wght',
+				'min': 100,
+				'max': 900,
+				'default': 500
+			},
+			'Shell': {
+				'code': 'shll',
+				'min': 0,
+				'max': 100,
+				'default': 100
+			}
+		}
+	},
 }
 let fontNames = Object.keys(fontInfo);
 let colorSplit = 360/(fontNames.length+1);
@@ -1702,10 +1738,14 @@ function dragElmnt(e1, elmnt) {
 // drag to resize middle of code editor
 // drag to reorder windows in dock
 
-// hide  desktop settings popup on click
+// hide desktop settings popup on click
 // indication for active window
 
 // fix z index on different layers
 
 // make it so desktop settings is a single element, not multiple
 // update color of settings to match color changes
+// need to associate label with form fields
+
+// add specific font settings per item (cough cough work sans galapagos)
+// diacritics for paint font
