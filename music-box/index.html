@@ -3,9 +3,119 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Music Box</title>
+	<title>Too Much Type | Music Box</title>
 	<link rel="icon" type="png" href="favicon.png">
-	<link rel="stylesheet" href="/music-box/style.css">
+	<style>
+		@font-face {
+			font-family: "Music Box";
+			src: url("/music-box/music-box.ttf");
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		:root {
+			--size: 10.25vw;
+		}
+		body {
+			background-color: black;
+			color: white;
+		}
+
+		/* Content */
+		.container {
+			width: 100vw;
+			height: 100dvh;
+			position: relative;
+			overflow-y: hidden;
+		}
+		.text {
+			padding: .8vw 1vw 2.02vw 1vw;
+			width: 100%;
+			height: 100%;
+			font-family: "Music Box";
+			font-size: var(--size);
+			letter-spacing: -.05em;
+			line-height: 0.95em;
+			transition: font-variation-settings .2s;
+			border: unset;
+			background-color: black;
+			resize: none;
+			color: white;
+		}
+		.text:focus {
+			outline: unset;
+		}
+		.text::placeholder {
+			color: transparent;
+			-webkit-text-stroke: 1px white;
+		}
+		.text[data-outline="1"] {
+			color: transparent;
+			-webkit-text-stroke: 1px white;
+		}
+		::selection {
+			background: gray;
+		}
+		::-moz-selection {
+			background: gray;
+		}
+
+		/* Controls */
+		.controls {
+			position: fixed;
+			right: 20px;
+			left: 20px;
+			bottom: 20px;
+			gap: 10px;
+			display: flex;
+		}
+		.controls button {
+			border: unset;
+			background-color: black;
+			cursor: pointer;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			fill: white;
+			align-items: center;
+			justify-content: center;
+			transition: .2s;
+			border: 1px solid white;
+		}
+		.controls button svg {
+			width: 100%;
+			height: 100%;
+		}
+		.controls button[data-active="1"] {
+			background-color: white;
+			fill: black;
+		}
+		.controls button:hover {
+			border: 2px solid black;
+			background-color: white;
+			fill: black;
+		}
+		.controls button:active {
+			opacity: .5;
+		}
+		.controls button:focus {
+			outline: none;
+		}
+		.spacer {
+			flex-grow: 1;
+		}
+		@media screen and (max-width: 600px) {
+			.controls {
+				gap: 5px;
+			}
+			.controls button {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -28,6 +138,97 @@
 			<button onclick="sizeUp()"><svg viewBox="0 0 72 72"><polygon points="63 31.5 40.5 31.5 40.5 9 31.5 9 31.5 31.5 9 31.5 9 40.5 31.5 40.5 31.5 63 40.5 63 40.5 40.5 63 40.5 63 31.5"/></svg></button>
 		</div>
 	</div>
-	<script src="/music-box/script.js"></script>
+
+	<script>
+		// Main loop
+		let beat = 0;
+		let text = document.querySelector('.text');
+		let kick = new Audio('/music-box/sounds/kick.mp3');
+		let snare = new Audio('/music-box/sounds/snare.mp3');
+		let speed = 800;
+		let amp = 50
+		function playBeat() {
+			if (beat == 0) {
+				beat = 1;
+				kick.pause();
+				kick.currentTime = 0;
+				kick.play();
+				text.style.transition = 'unset';
+				text.style.fontVariationSettings = `"freq" -100, "ampl" ${amp}`;
+				setTimeout(() => {
+					text.style.transition = `font-variation-settings cubic-bezier(0.25, 1, 0.5, 1) ${(speed-200)/1000}s`;
+					text.style.fontVariationSettings = `"freq" 0, "ampl" ${amp}`;
+				}, 50);
+			} else {
+				beat = 0;
+				snare.pause();
+				snare.currentTime = 0;
+				snare.play();
+				text.style.transition = 'unset';
+				text.style.fontVariationSettings = `"freq" 100, "ampl" ${amp}`;
+				setTimeout(() => {
+					text.style.transition = `font-variation-settings cubic-bezier(0.25, 1, 0.5, 1) ${(speed-200)/1000}s`;
+					text.style.fontVariationSettings = `"freq" 0, "ampl" ${amp}`;
+				}, 50);
+			}
+			setTimeout(playBeat, speed);
+		}
+		playBeat();
+
+		// Resize text
+		let size = 2;
+		let sizes = [2.105, 5.15, 10.25, 14.6, 20.3];
+		let root = document.querySelector(':root');
+		function sizeUp() {
+			if (size < sizes.length-1) {
+				size += 1;
+				root.style.setProperty('--size', sizes[size] + "vw");
+			}
+		}
+		function sizeDown() {
+			if (size > 0) {
+				size -= 1;
+				root.style.setProperty('--size', sizes[size] + "vw");
+			}
+		}
+
+		// Outline
+		let outline = false;
+		let outlineBtn = document.querySelector('#toggle-outline');
+		function toggleOutline() {
+			outline = !outline;
+			if (outline) {
+				text.dataset.outline = 1;
+				outlineBtn.dataset.active = 1;
+			} else {
+				text.dataset.outline = 0;
+				outlineBtn.dataset.active = 0;
+			}
+		}
+
+		// Speed
+		let speeds = [400, 800, 1600];
+		let speedSetting = 0;
+		function setSpeed(e, setting) {
+			for (let btn of document.querySelectorAll('.btn-speed')) {
+				btn.dataset.active = 0;
+			}
+			e.dataset.active = 1;
+			speedSetting = setting;
+			speed = speeds[speedSetting];
+		}
+
+		// Amplitude
+		function ampUp() {
+			if (amp < 100) {
+				amp += 25;
+			}
+		}
+		function ampDown() {
+			if (amp > 0) {
+				amp -= 25;
+			}
+		}
+	</script>
 </body>
 </html>

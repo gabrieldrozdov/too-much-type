@@ -18,25 +18,8 @@ function calculateBorders() {
 // ———————————————————————————————————————————————
 
 let fontInfo = {
-	'AUTHENTIC Remixed': {
-		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
-		'variation': {
-			'X axis': {
-				'code': 'xaxi',
-				'min': -100,
-				'max': 100,
-				'default': 0
-			},
-			'Y axis': {
-				'code': 'yaxi',
-				'min': -100,
-				'max': 100,
-				'default': 0
-			}
-		}
-	},
 	'Bashful': {
+		'download': 'GDBashfulVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'variation': {
@@ -49,6 +32,7 @@ let fontInfo = {
 		}
 	},
 	'Caffeine': {
+		'download': 'GDCaffeineVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?•*#//\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': {
@@ -67,6 +51,7 @@ let fontInfo = {
 		}
 	},
 	'Dreidel': {
+		'download': 'GDDreidelVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;-`,
 		'variation': {
@@ -79,6 +64,7 @@ let fontInfo = {
 		}
 	},
 	'Limkin': {
+		'download': 'GDLimkinVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789`,
 		'variation': {
@@ -97,6 +83,7 @@ let fontInfo = {
 		}
 	},
 	'Mini Mochi': {
+		'download': 'GDMiniMochiVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;!?-–—_“”‘’"'`,
 		'variation': {
@@ -121,6 +108,7 @@ let fontInfo = {
 		}
 	},
 	'Music Box': {
+		'download': 'GDMusicBoxVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'variation': {
@@ -139,11 +127,13 @@ let fontInfo = {
 		}
 	},
 	'Paint': {
+		'download': 'GDPaint.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?*#//\-–—_(){}[]“”‘’"'@&|$+−×÷=><~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': ''
 	},
 	'PowerPack': {
+		'download': 'GDPowerPackVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#//\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
 		'variation': {
@@ -162,6 +152,7 @@ let fontInfo = {
 		}
 	},
 	'That Then This': {
+		'download': 'GDThatThenThisVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;!?#//-[]“”‘’"'`,
 		'variation': {
@@ -179,7 +170,27 @@ let fontInfo = {
 			}
 		}
 	},
+	'Authentic Remixed': {
+		'download': 'AUTHENTICRemixedVF.woff2',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'variation': {
+			'X axis': {
+				'code': 'xaxi',
+				'min': -100,
+				'max': 100,
+				'default': 0
+			},
+			'Y axis': {
+				'code': 'yaxi',
+				'min': -100,
+				'max': 100,
+				'default': 0
+			}
+		}
+	},
 	'Work Sans Galapagos': {
+		'download': 'WorkSansGalapagosVF.woff2',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
 		'variation': {
@@ -198,6 +209,8 @@ let fontInfo = {
 		}
 	},
 }
+
+// Generate color palette
 let fontNames = Object.keys(fontInfo);
 let colorSplit = 360/(fontNames.length+1);
 let fontColor = 0;
@@ -207,6 +220,11 @@ for (let fontName of fontNames) {
 	fontInfo[fontName]['color'] = fontColor;
 	fontColor += colorSplit;
 }
+for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
+	let fontName = menuTypeface.dataset.font;
+	menuTypeface.style.setProperty('--primary', `hsl(${fontInfo[fontName]['color']}deg, 100%, 70%)`);
+	menuTypeface.style.setProperty('--tertiary', `hsl(${fontInfo[fontName]['color']}deg, 100%, 10%)`);
+}
 
 // ———————————————————————————————————————————————
 // WINDOWS
@@ -215,35 +233,29 @@ for (let fontName of fontNames) {
 // Stores all active windows
 let windows = new Map();
 let windowData = {
-	'sylvania': {
+	'Music Box': {
 		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
-		'title': 'Sylvania',
-		'primary': 'hsl(40deg, 100%, 70%)',
-		'secondary': 'hsl(40deg, 100%, 10%)',
-		'file': 'sylvania/'
-	},
-	'music-box': {
-		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
-		'title': 'Sylvania',
-		'primary': 'hsl(300deg, 100%, 70%)',
-		'secondary': 'hsl(300deg, 100%, 10%)',
+		'title': 'Music Box',
 		'file': 'music-box/'
 	},
-	'meal-kit': {
+	'Sylvania': {
 		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
 		'title': 'Sylvania',
-		'primary': 'hsl(100deg, 100%, 70%)',
-		'secondary': 'hsl(100deg, 100%, 10%)',
+		'file': 'sylvania/'
+	},
+	'Meal Kit': {
+		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
+		'title': 'Meal Kit',
 		'file': 'meal-kit/'
 	}
 }
 
 let activeWindow = 'a';
-let idCounter = 0;
+let windowIdCounter = 0;
 let zCounter = 9;
 class pseudoWindow {
 	constructor(src) {
-		this.id = idCounter;
+		this.id = windowIdCounter;
 		this.src = src;
 		this.posX = 0;
 		this.posY = 0;
@@ -278,8 +290,16 @@ class pseudoWindow {
 		titleName.classList.add('window-title-name');
 
 		// Style with color, icon, and info
-		this.elmnt.style.setProperty('--primary', windowData[this.src]['primary']);
-		this.elmnt.style.setProperty('--secondary', windowData[this.src]['secondary']);
+		let color = Math.floor(Math.random()*360);
+		if (Object.keys(fontInfo).includes(src)) {
+			color = fontInfo[src]['color'];
+		}
+		let primary = `hsl(${color}deg, 100%, 70%)`;
+		let secondary = `hsl(${color}deg, 100%, 10%)`;
+
+		this.elmnt.style.setProperty('--primary', primary);
+		this.elmnt.style.setProperty('--secondary', secondary);
+
 		title.innerHTML += windowData[this.src]['icon'];
 		titleName.innerText = windowData[this.src]['title'];
 
@@ -488,7 +508,7 @@ class pseudoWindow {
 		let controlsReset = controlsMenus.querySelector('.controls-reset');
 		controlsReset.addEventListener('click', this.resetCode);
 		let controlsGitHub = controlsMenus.querySelector('.controls-github');
-		controlsGitHub.addEventListener('click', () => {openLink('https://github.com/gabrieldrozdov/too-much-type/'+windowData[this.src]['file'])});
+		controlsGitHub.addEventListener('click', () => {openLink('https://github.com/gabrieldrozdov/too-much-type/tree/main/'+windowData[this.src]['file'])});
 		let controlsLink = controlsMenus.querySelector('.controls-link');
 		controlsLink.addEventListener('click', this.openLink);
 
@@ -583,8 +603,8 @@ class pseudoWindow {
 		this.dockItem = dockItem;
 		dockItem.classList.add('dock-item');
 		dockItem.dataset.window = this.id;
-		dockItem.style.setProperty('--primary', windowData[this.src]['primary']);
-		dockItem.style.setProperty('--secondary', windowData[this.src]['secondary']);
+		dockItem.style.setProperty('--primary', primary);
+		dockItem.style.setProperty('--secondary', secondary);
 		dockItem.innerHTML = `
 			${windowData[this.src]['icon']}
 			<p class="dock-item-text">${windowData[this.src]['title']}</p>
@@ -601,8 +621,8 @@ class pseudoWindow {
 		}, 100)
 		container.appendChild(this.elmnt);
 		this.resetPosition();
-
-		idCounter++;
+		
+		windowIdCounter++;
 	}
 
 	// Controls menus
@@ -667,9 +687,10 @@ class pseudoWindow {
 	toggleCode = () => {
 		this.showCode = !this.showCode;
 		this.elmnt.dataset.code = this.showCode;
+		this.cm.refresh();
 		setTimeout(() => {
 			this.cm.refresh();
-		}, 50)
+		}, 100)
 	}
 	toggleWrap = () => {
 		this.lineWrapping = !this.lineWrapping;
@@ -1132,7 +1153,7 @@ class pseudoWindow {
 }
 
 function newWindow(src) {
-	windows.set(idCounter, new pseudoWindow(src));
+	windows.set(windowIdCounter, new pseudoWindow(src));
 }
 
 // Activate and deactivate previews to avoid mouse capture
@@ -1158,29 +1179,12 @@ function openLink(url) {
 // DESKTOP
 // ———————————————————————————————————————————————
 
-function generateGlyphSelector() {
-	const desktopLettersets = document.querySelector('.desktop-lettersets');
-	for (let font of Object.keys(fontInfo)) {
-		let letterset = document.createElement('div');
-		letterset.classList.add('desktop-letterset');
-		let lettersetContent = ``;
-		for (let glyph of fontInfo[font]['letters']) {
-			lettersetContent += `<div>${glyph}</div>`;
-		}
-		letterset.innerHTML = `
-			<div class="desktop-letterset-title">
-				<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
-				<span>${font}</span>
-			</div>
-			<div class="desktop-letterset-content">${lettersetContent}</div>
-		`;
-		desktopLettersets.appendChild(letterset);
-	}
-}
-generateGlyphSelector();
-
+let letterIdCounter = 0;
 class desktopLetter {
 	constructor(font, letter, variation, size, color) {
+		this.id = letterIdCounter;
+		letterIdCounter++;
+
 		this.font = font || fontNames[Math.floor(Math.random()*fontNames.length)];
 		this.letters = fontInfo[this.font]['letters'];
 		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
@@ -1200,88 +1204,6 @@ class desktopLetter {
 		this.glyph = this.elmnt.querySelector('.desktop-letter-glyph');
 		this.glyph.style.fontSize = this.size + "px";
 
-		// Create settings element
-		this.settings = document.createElement('div');
-		this.settings.classList.add('desktop-settings');
-		this.settings.dataset.active = 0;
-		this.settings.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
-		this.settings.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
-
-		// Generate variable axes sliders
-		let variableSliders = '';
-		if (fontInfo[this.font]['variation'] != '') {
-			let axisNumber = 0;
-			for (let axis of Object.keys(fontInfo[this.font]['variation'])) {
-				variableSliders += `
-					<div class='desktop-settings-variation'>
-						<label>${axis}</label>
-						<input type="range" name="${axisNumber}" min="${fontInfo[this.font]['variation'][axis]['min']}" max="${fontInfo[this.font]['variation'][axis]['max']}" value="${this.variation[axisNumber]}" class="slider-variable">
-					</div>
-				`;
-				axisNumber++;
-			}
-		}
-
-		// Build element
-		this.settings.innerHTML = `
-			<div class="desktop-settings-titlebar">
-				<h2 class="desktop-settings-font">
-					<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
-					<span>${this.font}</span>
-				</h2>
-				<button class="desktop-settings-close">
-					<svg viewBox="0 0 100 100"><rect x="10" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/><rect x="40" y="40" width="20" height="20"/><rect x="60" y="30" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="80" y="10" width="10" height="10"/><rect x="10" y="10" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="30" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="80" y="80" width="10" height="10"/></svg>
-				</button>
-			</div>
-			<div class="desktop-settings-content">
-				<button class="desktop-settings-specimen" onclick="newWindow('sylvania');">
-					<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"/></svg>
-					<span>Open Specimen</span>
-				</button>
-				${variableSliders}
-				<div class='desktop-settings-variation'>
-					<label>Size</label>
-					<input type="range" name="size" min="8" max="256" value="${this.size}">
-				</div>
-				<div class='desktop-settings-variation'>
-					<label>Color</label>
-					<input type="range" name="color" min="0" max="360" value="${this.color}">
-				</div>
-				<button class="desktop-settings-change">
-					<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
-					<span>Change Glyph</span>
-				</button>
-				<button class="desktop-settings-duplicate">
-					<svg viewBox="0 0 100 100"><path d="m10,10v60h60V10H10Zm10,50V20h40v40H20Z"/><polygon points="90 20 90 90 20 90 20 80 80 80 80 20 90 20"/></svg>
-					<span>Duplicate</span>
-				</button>
-				<button class="desktop-settings-delete">
-					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
-					<span>Delete</span>
-				</button>
-			</div>
-		`
-
-		// Add listeners to settings
-		let settingsTitle = this.settings.querySelector('.desktop-settings-font');
-		settingsTitle.addEventListener('mousedown', (e) => {dragElmnt(e, this.settings)});
-		settingsTitle.addEventListener('touchstart', (e) => {dragElmnt(e, this.settings)});
-		let settingsClose = this.settings.querySelector('.desktop-settings-close');
-		settingsClose.addEventListener('click', this.closeSettings);
-		let settingsChange = this.settings.querySelector('.desktop-settings-change');
-		settingsChange.addEventListener('click', this.changeLetter);
-		let settingsDuplicate = this.settings.querySelector('.desktop-settings-duplicate');
-		settingsDuplicate.addEventListener('click', this.duplicateLetter);
-		let settingsDelete = this.settings.querySelector('.desktop-settings-delete');
-		settingsDelete.addEventListener('click', this.deleteLetter);
-		for (let slider of this.settings.querySelectorAll('.slider-variable')) {
-			slider.addEventListener('input', () => {this.updateVariation(slider.value, slider.name)});
-		}
-		let sizeSlider = this.settings.querySelector('input[name="size"]');
-		sizeSlider.addEventListener('input', () => {this.updateSize(sizeSlider.value)});
-		let colorSlider = this.settings.querySelector('input[name="color"]');
-		colorSlider.addEventListener('input', () => {this.updateColor(colorSlider.value)});
-
 		// Set initial position
 		if (Math.random() < .5) {
 			this.elmnt.style.left = '-100%';
@@ -1297,7 +1219,6 @@ class desktopLetter {
 		// Add to DOM
 		const desktop = document.querySelector('.desktop');
 		desktop.appendChild(this.elmnt);
-		desktop.appendChild(this.settings);
 
 		// Transition in
 		setTimeout(() => {
@@ -1373,42 +1294,9 @@ class desktopLetter {
 	// Detects click (vs. drag)
 	clickDesktopElmnt = (e) => {
 		if (!elementMoved) {
-			this.positionSettings(e);
-			this.openSettings();
+			positionLetterSettings(e);
+			openLetterSettings(this.id);
 		}
-	}
-
-	// Set position for settings popup
-	positionSettings = (e) => {
-		this.settings.style.left = e.clientX + 20 + "px";
-		this.settings.style.top = e.clientY + 20 + "px";
-		this.settings.style.transform = '';
-		if (e.clientX > window.innerWidth/2) {
-			this.settings.style.transform = 'translateX(calc(-100% - 40px))';
-		}
-		if (e.clientY > window.innerHeight/2) {
-			this.settings.style.transform += ' translateY(calc(-100% - 40px))';
-		}
-	}
-
-	// Open/close settings popup
-	openSettings = () => {
-		if (parseInt(this.settings.dataset.active) == 1) {
-			this.closeSettings();
-			return
-		}
-		for (let otherSettings of document.querySelectorAll('.desktop-settings')) {
-			otherSettings.dataset.active = 0;
-		}
-		for (let otherLetter of document.querySelectorAll('.desktop-letter')) {
-			otherLetter.dataset.active = 0;
-		}
-		this.settings.dataset.active = 1;
-		this.elmnt.dataset.active = 1;
-	}
-	closeSettings = () => {
-		this.settings.dataset.active = 0;
-		this.elmnt.dataset.active = 0;
 	}
 
 	// Swap out glyph with another one
@@ -1418,24 +1306,22 @@ class desktopLetter {
 
 	// Delete class instance and remove from DOM
 	duplicateLetter = () => {
-		desktopLetters.push(new desktopLetter(this.font, this.letter, this.variation, this.size, this.color));
+		desktopLetters[id] = new desktopLetter(this.font, this.letter, this.variation, this.size, this.color);
 	}
 
 	// Delete class instance and remove from DOM
 	deleteLetter = () => {
 		this.elmnt.remove();
-		this.settings.remove();
-		// TODO: Remove element from array
 	}
 }
 
-let desktopLetters = [];
+let desktopLetters = {};
 function initializeDesktop() {
 	// Generate desktop links
 	let loopDelay = 0;
 	for (let i=0; i<100; i++) {
 		setTimeout(() => {
-			desktopLetters.push(new desktopLetter());
+			desktopLetters[letterIdCounter] = new desktopLetter();
 		}, loopDelay)
 		loopDelay += 10;
 	}
@@ -1443,8 +1329,234 @@ function initializeDesktop() {
 initializeDesktop();
 
 function generateLetter(font, letter, variation) {
-	desktopLetters.push(new desktopLetter(font, letter, variation));
+	desktopLetters[letterIdCounter] = new desktopLetter(font, letter, variation);
 }
+
+function generateLettersFromPreview(font) {
+	let loopDelay = 50;
+	for (let letter of document.querySelector(`.menu-typeface[data-font="${font}"] .menu-typeface-preview`).innerText) {
+		if (letter.charCodeAt(0) == 32 || letter.charCodeAt(0) == 160) {
+			continue
+		}
+		setTimeout(() => {
+			desktopLetters[letterIdCounter] = new desktopLetter(font, letter);
+		}, loopDelay)
+		loopDelay += 10;
+	}
+}
+
+// Set position for settings popup
+function positionLetterSettings(e) {
+	const desktopSettings = document.querySelector('.desktop-settings');
+	desktopSettings.style.left = e.clientX + 20 + "px";
+	desktopSettings.style.top = e.clientY + 20 + "px";
+	desktopSettings.style.transform = '';
+	if (e.clientX > window.innerWidth/2) {
+		desktopSettings.style.transform = 'translateX(calc(-100% - 40px))';
+	}
+	if (e.clientY > window.innerHeight/2) {
+		desktopSettings.style.transform += ' translateY(calc(-100% - 40px))';
+	}
+}
+
+// Set content for settings popup
+function generateLetterSettings(id) {
+	closeLetterset();
+	
+	const desktopSettings = document.querySelector('.desktop-settings');
+	const desktopSettingsName = desktopSettings.querySelector('.desktop-settings-font-name');
+	const desktopSettingsDownload = desktopSettings.querySelector('.desktop-settings-download');
+	const desktopSettingsVariable = desktopSettings.querySelector('.desktop-settings-variable');
+	const desktopSettingsSize = desktopSettings.querySelector('.desktop-settings-size');
+	const desktopSettingsColor = desktopSettings.querySelector('.desktop-settings-color');
+
+	const glyphInfo = desktopLetters[id];
+
+	// Set font name
+	desktopSettingsName.innerText = glyphInfo.font;
+
+	// Set download link
+	desktopSettingsDownload.href = "/assets/fonts/"+fontInfo[glyphInfo.font]['download'];
+
+	// Set size
+	desktopSettingsSize.value = glyphInfo.size;
+	
+	// Set color
+	desktopSettings.style.setProperty('--primary', `hsl(${glyphInfo.color}deg,100%,70%)`);
+	desktopSettings.style.setProperty('--secondary', `hsl(${glyphInfo.color}deg,100%,10%)`);
+	desktopSettingsColor.value = glyphInfo.color;
+
+	// Generate variable axes sliders
+	let variableSliders = '';
+	if (fontInfo[glyphInfo.font]['variation'] != '') {
+		desktopSettingsVariable.dataset.active = 1;
+		let axisNumber = 0;
+		for (let axis of Object.keys(fontInfo[glyphInfo.font]['variation'])) {
+			variableSliders += `
+				<div class='desktop-settings-variation'>
+					<label>${axis}</label>
+					<input type="range" name="${axisNumber}" min="${fontInfo[glyphInfo.font]['variation'][axis]['min']}" max="${fontInfo[glyphInfo.font]['variation'][axis]['max']}" value="${glyphInfo.variation[axisNumber]}" class="slider-variable">
+				</div>
+			`;
+			axisNumber++;
+		}
+	} else {
+		desktopSettingsVariable.dataset.active = 0;
+	}
+	desktopSettingsVariable.innerHTML = variableSliders;
+
+	// Remove previous listeners
+	const newDesktopSettings = desktopSettings.cloneNode(true);
+	desktopSettings.parentNode.replaceChild(newDesktopSettings, desktopSettings);
+
+	// Add listeners to settings
+	const settingsTitle = newDesktopSettings.querySelector('.desktop-settings-font');
+	settingsTitle.addEventListener('mousedown', (e) => {dragElmnt(e, newDesktopSettings)});
+	settingsTitle.addEventListener('touchstart', (e) => {dragElmnt(e, newDesktopSettings)});
+
+	// Set specimen target (if applicable)
+	const settingsSpecimen = newDesktopSettings.querySelector('.desktop-settings-specimen');
+	if (Object.keys(windowData).includes(glyphInfo.font)) {
+		settingsSpecimen.dataset.active = '1';
+		settingsSpecimen.addEventListener('click', () => {
+			newWindow(glyphInfo.font);
+			closeLetterSettings();
+		})
+	} else {
+		settingsSpecimen.dataset.active = '0';
+	}
+
+	const settingsClose = newDesktopSettings.querySelector('.desktop-settings-close');
+	settingsClose.addEventListener('click', closeLetterSettings);
+
+	const settingsChange = newDesktopSettings.querySelector('.desktop-settings-change');
+	settingsChange.addEventListener('click', (e) => {generateLetterset(id); positionLetterset(e);});
+
+	const settingsDuplicate = newDesktopSettings.querySelector('.desktop-settings-duplicate');
+	settingsDuplicate.addEventListener('click', glyphInfo.duplicateLetter);
+
+	const settingsDelete = newDesktopSettings.querySelector('.desktop-settings-delete');
+	settingsDelete.addEventListener('click', () => {glyphInfo.deleteLetter(); closeLetterSettings(); closeLetterset();});
+
+	const sizeSlider = newDesktopSettings.querySelector('input[name="size"]');
+	sizeSlider.addEventListener('input', () => {glyphInfo.updateSize(sizeSlider.value)});
+	
+	const colorSlider = newDesktopSettings.querySelector('input[name="color"]');
+	colorSlider.addEventListener('input', () => {glyphInfo.updateColor(colorSlider.value)});
+	for (let slider of newDesktopSettings.querySelectorAll('.slider-variable')) {
+		slider.addEventListener('input', () => {glyphInfo.updateVariation(slider.value, slider.name)});
+	}
+}
+
+// Open/close glyph settings popup
+function openLetterSettings(id) {
+	const desktopSettings = document.querySelector('.desktop-settings');
+	const glyphInfo = desktopLetters[id];
+
+	// Deactivate letters
+	for (let glyphs of document.querySelectorAll('.desktop-letter[data-active="1"]')) {
+		glyphs.dataset.active = 0;
+	}
+
+	// Check if settings already opened
+	if (parseInt(desktopSettings.dataset.id) == glyphInfo.id && parseInt(desktopSettings.dataset.active) == 1) {
+		closeLetterSettings();
+	} else {
+		desktopSettings.dataset.active = 1;
+		desktopSettings.dataset.id = id;
+		generateLetterSettings(id);
+		glyphInfo.elmnt.dataset.active = 1;
+	}
+}
+function closeLetterSettings() {
+	const desktopSettings = document.querySelector('.desktop-settings');
+	desktopSettings.dataset.active = 0;
+	for (let activeGlyph of document.querySelectorAll('.desktop-letter[data-active="1"]')) {
+		activeGlyph.dataset.active = 0;
+	}
+	closeLetterset();
+}
+
+// Close desktop settings if clicked anywhere else
+window.addEventListener('mousedown', function checkClick(e) {
+	const desktopSettings = document.querySelector('.desktop-settings');
+	const letterset = document.querySelector('.desktop-letterset');
+	const activeGlyph = document.querySelector('.desktop-letter[data-active="1"]')
+	if (activeGlyph != undefined) {
+		if (!desktopSettings.contains(e.target) && !activeGlyph.contains(e.target) && !letterset.contains(e.target)) {
+			closeLetterSettings();
+			closeLetterset();
+		}
+	}
+}, false);
+
+// Lettersets for desktop icons
+function generateLetterset(id) {
+	let letterset = document.querySelector('.desktop-letterset');
+	let lettersetName = letterset.querySelector('.desktop-letterset-name');
+	let lettersetGlyphs = letterset.querySelector('.desktop-letterset-content');
+
+	const glyphInfo = desktopLetters[id];
+	const font = glyphInfo['font'];
+
+	lettersetName.innerText = font;
+
+	// Generate glyphs
+	let lettersetContent = ``;
+	for (let glyph of fontInfo[font]['letters']) {
+		lettersetContent += `<div>${glyph}</div>`;
+	}
+	lettersetGlyphs.innerHTML = lettersetContent;
+
+	// Set styles
+	letterset.style.setProperty('--primary', `hsl(${fontInfo[font]['color']}deg, 100%, 70%)`);
+	letterset.style.setProperty('--secondary', `hsl(${fontInfo[font]['color']}deg, 100%, 10%)`);
+	lettersetGlyphs.style.fontFamily = '"' + font + '"';
+	
+	// Remove previous listeners
+	letterset.parentNode.replaceChild(letterset.cloneNode(true), letterset);
+
+	// Doesn’t select properly without the delay
+	letterset = document.querySelector('.desktop-letterset');
+	
+	// Add listeners
+	let lettersetTitle = letterset.querySelector('.desktop-letterset-titlebar');
+	lettersetTitle.addEventListener('mousedown', (e) => {dragElmnt(e, letterset)});
+	lettersetTitle.addEventListener('touchstart', (e) => {dragElmnt(e, letterset)});
+
+	for (let glyph of letterset.querySelectorAll('.desktop-letterset-content div')) {
+		glyph.addEventListener('click', () => {
+			let letter = glyphInfo['elmnt'].querySelector('.desktop-letter-glyph');
+			glyphInfo['letter'] = glyph.innerText;
+			letter.innerText = glyph.innerText;
+		})
+	}
+
+	let lettersetClose = letterset.querySelector('.desktop-letterset-close');
+	lettersetClose.addEventListener('click', closeLetterset);
+
+	letterset.dataset.active = 1;
+}
+
+// Set position for glyph letterset popup
+function positionLetterset(e) {
+	const letterset = document.querySelector('.desktop-letterset');
+	letterset.style.left = e.clientX + 20 + "px";
+	letterset.style.top = e.clientY + 20 + "px";
+	letterset.style.transform = '';
+	if (e.clientX > window.innerWidth/2) {
+		letterset.style.transform = 'translateX(calc(-100% - 40px))';
+	}
+	if (e.clientY > window.innerHeight/2) {
+		letterset.style.transform += ' translateY(calc(-100% - 40px))';
+	}
+}
+
+function closeLetterset() {
+	const letterset = document.querySelector('.desktop-letterset');
+	letterset.dataset.active = 0;
+}
+
 
 // ————————————————————————————————————————————————————————————
 // MENU
@@ -1461,6 +1573,40 @@ function toggleMenu() {
 		menu.dataset.active = 0;
 		menuBtn.dataset.active = 0;
 	}
+}
+function closeMenu() {
+	const menu = document.querySelector('.menu');
+	const menuBtn = document.querySelector('#toggle-menu');
+	menu.dataset.active = 0;
+	menuBtn.dataset.active = 0;
+}
+function openMenu() {
+	const menu = document.querySelector('.menu');
+	const menuBtn = document.querySelector('#toggle-menu');
+	menu.dataset.active = 1;
+	menuBtn.dataset.active = 1;
+}
+
+// Editable text
+const menuTypefacePreviews = document.querySelectorAll('.menu-typeface-preview');
+for (let preview of menuTypefacePreviews) {
+	preview.addEventListener('keypress', (e) => {
+		// Prevent line breaks
+		if (e.which === 13) {
+			e.preventDefault();
+		}
+
+		// Only allow typing of available glyphs
+		let fontName = preview.parentElement.dataset.font;
+		if (!fontInfo[fontName]['glyphs'].includes(e.key) && !fontInfo[fontName]['glyphs'].includes(e.key.toLowerCase()) && !fontInfo[fontName]['glyphs'].includes(e.key.toUpperCase()) && e.key != ' ') {
+			e.preventDefault();
+		}
+	});
+
+	// Prevent pasting rich text
+	preview.addEventListener('paste', function (e) {
+		e.preventDefault();
+	})
 }
 
 // ————————————————————————————————————————————————————————————
@@ -1479,6 +1625,27 @@ function toggleSettings() {
 		settingsBtn.dataset.active = 0;
 	}
 }
+function closeSettings() {
+	const settings = document.querySelector('.settings');
+	const settingsBtn = document.querySelector('#toggle-settings');
+	settings.dataset.active = 0;
+	settingsBtn.dataset.active = 0;
+}
+function openSettings() {
+	const settings = document.querySelector('.settings');
+	const settingsBtn = document.querySelector('#toggle-settings');
+	settings.dataset.active = 1;
+	settingsBtn.dataset.active = 1;
+}
+
+// Close settings if clicked anywhere else
+window.addEventListener('mousedown', (e) => {
+	const settings = document.querySelector('.settings');
+	const settingsToggle = document.querySelector('#toggle-settings');
+	if (!settings.contains(e.target) && !settingsToggle.contains(e.target)) {
+		closeSettings();
+	}
+}, false);
 
 // Settings functions
 function toggle3D() {
@@ -1534,10 +1701,11 @@ function toggleFontNames() {
 	}
 }
 function clearDesktop() {
-	for (let desktopLetter of desktopLetters) {
+	for (let id of Object.keys(desktopLetters)) {
+		const desktopLetter = desktopLetters[id];
 		desktopLetter.deleteLetter();
 	}
-	desktopLetters = [];
+	desktopLetters = {};
 }
 function randomLetter() {
 	generateLetter();
@@ -1700,6 +1868,13 @@ function dragElmnt(e1, elmnt) {
 	}
 
 	function adjustMove(e2) {
+		if (elmnt.style.left.length == 0) {
+			elmnt.style.left = '0px';
+		}
+		if (elmnt.style.top.length == 0) {
+			elmnt.style.top = '0px';
+		}
+		
 		elementMoved = true;
 		let posX2, posY2;
 		if (e2.touches != null) {
@@ -1731,21 +1906,20 @@ function dragElmnt(e1, elmnt) {
 }
 
 // TODO
+
+// WINDOWS
+
 // hide code if too small
-// loading screen for fetch
-// finish all the controls menus buttons
-	// help?
+// download zip
 // drag to resize middle of code editor
 // drag to reorder windows in dock
-
-// hide desktop settings popup on click
 // indication for active window
 
-// fix z index on different layers
+// OTHER
 
-// make it so desktop settings is a single element, not multiple
-// update color of settings to match color changes
-// need to associate label with form fields
-
-// add specific font settings per item (cough cough work sans galapagos)
 // diacritics for paint font
+
+// DESKTOP
+
+// Change glyph
+// Print screen

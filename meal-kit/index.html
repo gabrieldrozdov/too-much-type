@@ -3,9 +3,116 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Meal Kit</title>
+	<title>Too Much Type | Meal Kit</title>
 	<link rel="icon" type="png" href="favicon.png">
-	<link rel="stylesheet" href="/meal-kit/style.css">
+	
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		:root {
+			--size: 10vw;
+		}
+		body {
+			background-color: rgb(0, 0, 0);
+			background-image: url('background.gif');
+			background-size: cover;
+		}
+
+		/* Content */
+		.container {
+			width: 100vw;
+			height: 100dvh;
+			position: relative;
+			overflow-y: hidden;
+		}
+		.content {
+			width: 100%;
+			max-height: 100%;
+			padding: 40px;
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			overflow-y: scroll;
+			transition: filter .2s;
+		}
+		.content[data-filter="1"] {
+			filter: brightness(200%);
+		}
+		.content img {
+			height: var(--size);
+			mix-blend-mode: hard-light;
+			transition: filter 1s;
+		}
+		.content img:hover {
+			filter: brightness(200%);
+			transition: filter .2s;
+		}
+		.space {
+			width: calc(var(--size) / 2);
+		}
+		.line-break {
+			width: 100%;
+		}
+
+		/* Blinking cursor */
+		#cursor {
+			animation: cursor .5s steps(1) infinite alternate;
+			height: var(--size);
+			filter: brightness(300%);
+		}
+		@keyframes cursor {
+			0% {
+				opacity: .8;
+			}
+			50% {
+				opacity: 0;
+			}
+		}
+
+		/* Controls */
+		.controls {
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			gap: 10px;
+			display: flex;
+		}
+		.controls button {
+			border: unset;
+			background-color: white;
+			cursor: pointer;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			fill: black;
+			align-items: center;
+			justify-content: center;
+			transition: .2s;
+			border-radius: 50%;
+			padding: 5px;
+		}
+		.controls button svg {
+			width: 100%;
+			height: 100%;
+		}
+		.controls button[data-active="1"] {
+			background-color: black;
+			fill: white;
+			border: 2px solid white;
+		}
+		.controls button:hover {
+			transform: scale(1.1);
+		}
+		.controls button:active {
+			transform: scale(0.9);
+		}
+		.controls button:focus {
+			outline: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -28,6 +135,89 @@
 			<button onclick="sizeUp()"><svg viewBox="0 0 72 72"><polygon points="63 31.5 40.5 31.5 40.5 9 31.5 9 31.5 31.5 9 31.5 9 40.5 31.5 40.5 31.5 63 40.5 63 40.5 40.5 63 40.5 63 31.5"/></svg></button>
 		</div>
 	</div>
-	<script src="/meal-kit/script.js"></script>
+
+	<script>
+		// Type letters
+		let alphabet = `abcdefghijklmnopqrstuvwxyz0123456789`.split('');
+		let content = document.querySelector('.content');
+		let cursor = document.querySelector('#cursor');
+		let index = 8;
+		document.addEventListener('keydown', (e) => {
+			if (alphabet.includes(e.key.toLowerCase())) {
+				let img = document.createElement('img');
+				img.dataset.index = index;
+				index++;
+				img.src = `/meal-kit/letters/${e.key.toLowerCase()}.jpg`;
+				content.insertBefore(img, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == " ") {
+				e.preventDefault();
+				let space = document.createElement('div');
+				space.dataset.index = index;
+				space.classList.add('space');
+				index++;
+				content.insertBefore(space, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "Enter") {
+				e.preventDefault();
+				let lineBreak = document.createElement('div');
+				lineBreak.dataset.index = index;
+				lineBreak.classList.add('line-break');
+				index++;
+				content.insertBefore(lineBreak, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "Backspace" && index > 0) {
+				index--;
+				let target = content.querySelector(`[data-index="${index}"`);
+				content.removeChild(target);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "-" || e.key == "_") {
+				sizeDown();
+			} else if (e.key == "+" || e.key == "=") {
+				sizeUp();
+			} else if (e.key == "Escape") {
+				empty();
+			}
+		});
+
+		// Resize text
+		let size = 2;
+		let sizes = [2, 5, 10, 20];
+		let root = document.querySelector(':root');
+		function sizeUp() {
+			if (size < sizes.length-1) {
+				size += 1;
+				root.style.setProperty('--size', sizes[size] + "vw");
+			}
+		}
+		function sizeDown() {
+			if (size > 0) {
+				size -= 1;
+				root.style.setProperty('--size', sizes[size] + "vw");
+			}
+		}
+
+		// Filter
+		let filter = false;
+		let filterBtn = document.querySelector('#toggle-filter');
+		function toggleFilter() {
+			filter = !filter;
+			if (filter) {
+				content.dataset.filter = 1;
+				filterBtn.dataset.active = 1;
+			} else {
+				content.dataset.filter = 0;
+				filterBtn.dataset.active = 0;
+			}
+		}
+
+		// Clear text
+		function empty() {
+			index = 0;
+			for (let letter of content.querySelectorAll('[data-index]')) {
+				letter.remove();
+			}
+		}
+	</script>
 </body>
 </html>

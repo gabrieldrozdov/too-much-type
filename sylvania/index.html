@@ -3,16 +3,146 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sylvania</title>
+	<title>Too Much Type | Sylvania</title>
 	<link rel="icon" type="png" href="favicon.png">
-	<link rel="stylesheet" href="/sylvania/style.css">
+	
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			background-color: rgb(10,10,10);
+		}
+		:root {
+			--size: 10%;
+		}
+
+		/* Container */
+		.container {
+			width: 100vw;
+			height: 100dvh;
+		}
+		.texture {
+			opacity: .02;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100dvh;
+			object-fit: cover;
+			z-index: 9;
+			mix-blend-mode: lighten;
+			pointer-events: none;
+		}
+		.border {
+			border: 5px solid white;
+			position: fixed;
+			top: 10px;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+			pointer-events: none;
+			filter: blur(2px);
+			border-radius: 5px;
+			animation: border 1s infinite alternate ease-in-out;
+		}
+		@keyframes border {
+			0% {
+				filter: blur(2px);
+			}
+			100% {
+				filter: blur(4px);
+			}
+		}
+
+		/* Content */
+		.content {
+			width: 100%;
+			height: 100%;
+			padding: 40px;
+			overflow-y: scroll;
+			display: flex;
+			align-items: start;
+			justify-content: start;
+			align-content: start;
+			justify-items: start;
+			flex-wrap: wrap;
+		}
+		.content * {
+			width: var(--size);
+			mix-blend-mode: lighten;
+			aspect-ratio: 3/4;
+			object-fit: cover;
+		}
+		.line-break {
+			flex-basis: 100%;
+			height: 0;
+		}
+
+		/* Blinking cursor */
+		#cursor {
+			animation: cursor .5s steps(1) infinite alternate;
+			background-color: white;
+			width: calc(var(--size) / 20);
+			aspect-ratio: 3/80;
+			filter: blur(1px);
+			border-radius: 20%;
+		}
+		@keyframes cursor {
+			0% {
+				opacity: .8;
+			}
+			50% {
+				opacity: 0;
+			}
+		}
+
+		/* Controls */
+		.controls {
+			position: fixed;
+			right: 40px;
+			bottom: 40px;
+			gap: 20px;
+			display: flex;
+		}
+		.controls button {
+			font-size: 40px;
+			border: unset;
+			background-color: unset;
+			color: white;
+			cursor: pointer;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			fill: white;
+			align-items: center;
+			justify-content: center;
+			filter: blur(2px);
+			opacity: .5;
+			transition: .2s;
+		}
+		.controls button svg {
+			width: 100%;
+			height: 100%;
+		}
+		.controls button:hover {
+			filter: blur(0px);
+			opacity: 1;
+		}
+		.controls button:active {
+			filter: blur(2px);
+		}
+		.controls button:focus {
+			outline: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
 		<video autoplay loop muted src="/sylvania/videos/texture.mp4" class="texture"></video>
 		
-		<div class="border"></div>
-
 		<div class="content" onclick="focus()">
 			<video autoplay loop muted src="/sylvania/videos/s.mp4" data-index="0"></video>
 			<video autoplay loop muted src="/sylvania/videos/y.mp4" data-index="1"></video>
@@ -32,6 +162,83 @@
 		</div>
 	</div>
 
-	<script src="/sylvania/script.js"></script>
+	<script>
+		// Type videos
+		let alphabet = `abcdefghijklmnopqrstuvwxyz0123456789`.split('');
+		let content = document.querySelector('.content');
+		let cursor = document.querySelector('#cursor');
+		let index = 8;
+		document.addEventListener('keydown', (e) => {
+			if (alphabet.includes(e.key.toLowerCase())) {
+				let video = document.createElement('video');
+				video.autoplay = true;
+				video.loop = true;
+				video.muted = true;
+				video.dataset.index = index;
+				index++;
+				video.src = `/sylvania/videos/${e.key.toLowerCase()}.mp4`;
+				content.insertBefore(video, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == " ") {
+				e.preventDefault();
+				let space = document.createElement('div');
+				space.dataset.index = index;
+				index++;
+				content.insertBefore(space, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "Enter") {
+				e.preventDefault();
+				let lineBreak = document.createElement('div');
+				lineBreak.dataset.index = index;
+				lineBreak.classList.add('line-break');
+				index++;
+				content.insertBefore(lineBreak, cursor);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "Backspace" && index > 0) {
+				index--;
+				let target = content.querySelector(`[data-index="${index}"`);
+				content.removeChild(target);
+				content.scrollTop = content.scrollHeight;
+			} else if (e.key == "-" || e.key == "_") {
+				sizeDown();
+			} else if (e.key == "+" || e.key == "=") {
+				sizeUp();
+			} else if (e.key == "Escape") {
+				empty();
+			}
+		});
+
+		// Make sure videos autoplay
+		for (video of document.getElementsByTagName("video")) {
+			video.setAttribute("playsinline", "");
+			video.setAttribute("muted", "");
+			video.play();
+		}
+
+		// Font size
+		let size = 2;
+		let sizes = [2, 5, 10, 20];
+		let root = document.querySelector(':root');
+		function sizeUp() {
+			if (size < sizes.length-1) {
+				size += 1;
+				root.style.setProperty('--size', sizes[size] + "%");
+			}
+		}
+		function sizeDown() {
+			if (size > 0) {
+				size -= 1;
+				root.style.setProperty('--size', sizes[size] + "%");
+			}
+		}
+
+		// Clear text
+		function empty() {
+			index = 0;
+			for (let letter of content.querySelectorAll('[data-index]')) {
+				letter.remove();
+			}
+		}
+	</script>
 </body>
 </html>
