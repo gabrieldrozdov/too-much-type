@@ -1387,7 +1387,10 @@ function initializeDesktop() {
 		sizes.push(25, 50, 100);
 	}
 
-	for (let i=0; i<100; i++) {
+	// The number of letters to be generated
+	let count = Math.floor(window.innerWidth/20);
+
+	for (let i=0; i<count; i++) {
 		setTimeout(() => {
 			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, sizes[Math.floor(Math.random()*sizes.length)]);
 		}, loopDelay)

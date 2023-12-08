@@ -1332,7 +1332,6 @@ body[data-hide-font-names="1"] .desktop-letter span {
 }
 .window-controls-spacer {
 	flex: 1 1 0;
-	min-width: 20px;
 	background-image: linear-gradient(45deg, var(--primary) 25%, transparent 25%), linear-gradient(-45deg, var(--primary) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--primary) 75%), linear-gradient(-45deg, transparent 75%, var(--primary) 75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 3px, 3px -3px, -3px 0px;
@@ -1349,9 +1348,10 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	fill: var(--secondary);
 	color: var(--secondary);
 	gap: 8px;
+	/* min-width: 0; */
 	flex: 0 0 auto;
 	cursor: pointer;
-	transition: min-width .2s;
+	/* transition: min-width .2s; */
 	opacity: .75;
 	border: 2px outset var(--primary);
 }
@@ -1988,5 +1988,8 @@ body[data-flat="1"] .menu-experimental button {
 		justify-content: center;
 		width: 11in !important;
 		height: 8.5in !important;
+	}
+	.logo {
+		display: none;
 	}
 }
