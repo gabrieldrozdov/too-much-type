@@ -1299,14 +1299,9 @@ class desktopLetter {
 		}
 	}
 
-	// Swap out glyph with another one
-	changeLetter = () => {
-
-	}
-
 	// Delete class instance and remove from DOM
 	duplicateLetter = () => {
-		desktopLetters[id] = new desktopLetter(this.font, this.letter, this.variation, this.size, this.color);
+		desktopLetters[letterIdCounter] = new desktopLetter(this.font, this.letter, this.variation, this.size, this.color);
 	}
 
 	// Delete class instance and remove from DOM
@@ -1908,7 +1903,6 @@ function dragElmnt(e1, elmnt) {
 // TODO
 
 // WINDOWS
-
 // hide code if too small
 // download zip
 // drag to resize middle of code editor
@@ -1916,10 +1910,10 @@ function dragElmnt(e1, elmnt) {
 // indication for active window
 
 // OTHER
-
 // diacritics for paint font
 
 // DESKTOP
-
-// Change glyph
 // Print screen
+
+// LETTERS
+// change letter object to proper map
