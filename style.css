@@ -88,6 +88,41 @@ body[data-color-mode="1"] * {
 /* DESKTOP */
 /* ————————————————————————————————————— */
 
+/* Logo */
+.logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	image-rendering: pixelated;
+	z-index: 999999999;
+	pointer-events: none;
+	filter: drop-shadow(0 0 20px #222);
+}
+.logo h1 {
+	display: none;
+}
+.logo img {
+	height: 60vmin;
+	animation: logo-in .3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, logo-out .5s 1s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+@keyframes logo-in {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes logo-out {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
 /* Menu */
 .menu {
 	position: absolute;
@@ -1889,7 +1924,6 @@ body[data-flat="1"] .desktop-settings-content div:hover {
 	border: unset;
 }
 
-
 /* Menu */
 body[data-flat="1"] .menu-title {
 	padding: 10px 18px;
@@ -1904,4 +1938,55 @@ body[data-flat="1"] .menu-section button:hover, body[data-flat="1"] .menu-sectio
 body[data-flat="1"] .menu-experimental button {
 	border: unset;
 	padding: 10px 18px;
+}
+
+/* ———————————————————————————————————————————————— */
+/* PRINTING */
+/* ———————————————————————————————————————————————— */
+@page {
+	size: 11in 8.5in;
+	margin: .25in;
+}
+@media print {
+	body[data-color-mode="1"] * {
+		--primary: black !important;
+		--secondary: white !important;
+		--tertiary: white !important;
+	}
+	.desktop-settings {
+		display: none !important;
+	}
+	.desktop-letterset {
+		display: none !important;
+	}
+	.desktop-letter span {
+		display: none !important;
+	}
+	.desktop {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 11in !important;
+		height: 8.5in !important;
+	}
+	.dock {
+		display: none !important;
+	}
+	.window {
+		display: none !important;
+	}
+	.menu {
+		display: none !important;
+	}
+	.settings {
+		display: none !important;
+	}
+	.container {
+		overflow: visible;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 11in !important;
+		height: 8.5in !important;
+	}
 }

@@ -234,17 +234,17 @@ for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
 let windows = new Map();
 let windowData = {
 	'Music Box': {
-		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
+		'icon': `<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>`,
 		'title': 'Music Box',
 		'file': 'music-box/'
 	},
 	'Sylvania': {
-		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
+		'icon': `<svg viewBox="0 0 100 100"><path d="m60,40v-10h-10v-10h-10v20H10v50h80v-50h-30Zm20,40H20v-30h60v30Z"/><rect x="60" y="20" width="20" height="10"/><rect x="20" y="10" width="20" height="10"/></svg>`,
 		'title': 'Sylvania',
 		'file': 'sylvania/'
 	},
 	'Meal Kit': {
-		'icon': `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>`,
+		'icon': `<svg viewBox="0 0 100 100"><path d="m25,60h-10V10h10v50Zm40,0V10h-10v50h-10V10h-10v50h-10v10h20v20h10v-20h20v-10h-10Zm20-50h-10v50h10V10Z"/></svg>`,
 		'title': 'Meal Kit',
 		'file': 'meal-kit/'
 	}
@@ -1190,7 +1190,7 @@ class desktopLetter {
 		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
 		this.variation = variation || this.randomizeVariation();
 		this.color = color || fontInfo[this.font]['color'];
-		this.size = size || 48;
+		this.size = size || 50;
 
 		// Create desktop element
 		this.elmnt = document.createElement('div');
@@ -1245,6 +1245,10 @@ class desktopLetter {
 	updateVariation = (val, axis) => {
 		this.variation[axis] = val;
 		this.glyph.style.fontVariationSettings = this.convertVariationToStyle2();
+
+		// Also update letterset selector
+		const letterset = document.querySelector('.desktop-letterset');
+		letterset.style.fontVariationSettings = this.convertVariationToStyle2();
 	}
 	
 	// Size and color
@@ -1256,6 +1260,14 @@ class desktopLetter {
 		this.color = val;
 		this.elmnt.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
 		this.elmnt.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
+
+		// Also change colors of desktop settings and letterset
+		const desktopSettings = document.querySelector('.desktop-settings');
+		const letterset = document.querySelector('.desktop-letterset');
+		desktopSettings.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
+		desktopSettings.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
+		letterset.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
+		letterset.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
 	}
 
 	// Returns with font-variation-settings
@@ -1310,18 +1322,79 @@ class desktopLetter {
 	}
 }
 
+// On page load
 let desktopLetters = {};
 function initializeDesktop() {
 	// Generate desktop links
 	let loopDelay = 0;
+
+	// How many fonts to use at first
+	let diceRoll = Math.random();
+	let fonts = [];
+	let fontNames = Object.keys(fontInfo);
+	if (diceRoll < .2) {
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+	} else if (diceRoll < .4) {
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+	} else if (diceRoll < .6) {
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+	} else if (diceRoll < .8) {
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+	} else {
+		for (let fontName of fontNames) {
+			fonts.push(fontName);
+		}
+	}
+
+	// What letters to use
+	diceRoll = Math.random();
+	let glyphs = [];
+	let glyphNames = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split('');
+	if (diceRoll < .2) {
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+	} else if (diceRoll < .4) {
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+	} else if (diceRoll < .6) {
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+	} else if (diceRoll < .8) {
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+	} else {
+		for (let glyphName of glyphNames) {
+			glyphs.push(glyphName);
+		}
+	}
+
+	// What font size to use
+	diceRoll = Math.random();
+	let sizes = [];
+	if (diceRoll < .3) {
+		sizes.push(50);
+	} else if (diceRoll < .6) {
+		sizes.push(50, 100);
+	} else {
+		sizes.push(25, 50, 100);
+	}
+
 	for (let i=0; i<100; i++) {
 		setTimeout(() => {
-			desktopLetters[letterIdCounter] = new desktopLetter();
+			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, sizes[Math.floor(Math.random()*sizes.length)]);
 		}, loopDelay)
 		loopDelay += 10;
 	}
 }
-initializeDesktop();
+setTimeout(initializeDesktop, 500);
 
 function generateLetter(font, letter, variation) {
 	desktopLetters[letterIdCounter] = new desktopLetter(font, letter, variation);
@@ -1504,8 +1577,8 @@ function generateLetterset(id) {
 	lettersetGlyphs.innerHTML = lettersetContent;
 
 	// Set styles
-	letterset.style.setProperty('--primary', `hsl(${fontInfo[font]['color']}deg, 100%, 70%)`);
-	letterset.style.setProperty('--secondary', `hsl(${fontInfo[font]['color']}deg, 100%, 10%)`);
+	letterset.style.setProperty('--primary', `hsl(${glyphInfo.color}deg, 100%, 70%)`);
+	letterset.style.setProperty('--secondary', `hsl(${glyphInfo.color}deg, 100%, 10%)`);
 	lettersetGlyphs.style.fontFamily = '"' + font + '"';
 	
 	// Remove previous listeners
@@ -1704,6 +1777,9 @@ function clearDesktop() {
 }
 function randomLetter() {
 	generateLetter();
+}
+function printDesktop() {
+	window.print();
 }
 function collectWindows() {
 	let loopDelay = 0;
@@ -1911,9 +1987,6 @@ function dragElmnt(e1, elmnt) {
 
 // OTHER
 // diacritics for paint font
-
-// DESKTOP
-// Print screen
 
 // LETTERS
 // change letter object to proper map
