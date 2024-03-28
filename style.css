@@ -1312,6 +1312,8 @@ body[data-hide-font-names="1"] .desktop-letter span {
 .desktop-settings-content button span, .desktop-settings-content a span {
 	text-align: center;
 	font-family: "Limkin Pixel", sans-serif;
+	font-variation-settings: "wght" 500;
+	font-weight: 500;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -1990,6 +1992,8 @@ body[data-color-mode="1"] .typey {
 	line-height: 1.2em;
 	cursor: pointer;
 	font-family: "Limkin Pixel", sans-serif;
+	font-variation-settings: "wght" 500;
+	font-weight: 500;
 	color: hsl(var(--typey),100%,5%);
 	text-align: left;
 	border: 1px solid var(--secondary);
