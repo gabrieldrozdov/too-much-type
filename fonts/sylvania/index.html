@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Too Much Type | Sylvania</title>
+
+	<!-- Meta information -->
+	<meta name="author" content="Gabriel Drozdov">
+	<meta name="keywords" content="Type Foundry, Type Design, Typography, Creative Coding, Graphic Design, Education, Variable Fonts">
+	<meta name="description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:url" content="https://toomuchtype.com/">
+	<meta name="og:title" property="og:title" content="Too Much Type">
+	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:image" content="/assets/meta/opengraph.jpg">
+	<link rel="icon" type="png" href="/assets/meta/favicon.png">
+
+	<!-- CSS -->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		@font-face {
+			font-family: "Limkin Pixel";
+			src: url("/fonts/limkin-pixel/variable/TMT-LimkinPixelVF.ttf");
+			font-weight: 100 900;
+		}
+		svg, img, video, button {
+			display: block;
+		}
+		body {
+			transition: background-color .5s;
+			background-color: black;
+		}
+		.container {
+			height: 100dvh;
+			overflow-y: scroll;
+		}
+
+		/* Text area */
+		.content {
+			--size: 8vw;
+			--leading: 1vw;
+			--tracking: .4vw;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			align-content: center;
+			justify-content: center;
+			column-gap: var(--tracking);
+			row-gap: var(--leading);
+			min-height: 100dvh;
+			padding: 100px 1vw 160px 1vw;
+			position: relative;
+			cursor: text;
+			mix-blend-mode: lighten;
+		}
+		.content div {
+			height: var(--size);
+		}
+		.content video {
+			height: 100%;
+		}
+		.content img:hover {
+			filter: brightness(200%);
+		}
+		.space {
+			width: calc(var(--size) / 1.5);
+		}
+
+		/* Controls */
+		.controls {
+			position: fixed;
+			bottom: 0;
+			left: 50%;
+			height: 60px;
+			display: flex;
+			max-width: 100vw;
+			transform: translateX(-50%);
+			align-items: center;
+			gap: 10px;
+			padding: 10px 20px;
+			overflow-x: scroll;
+			transition: background-color .2s;
+			background-color: white;
+		}
+		.controls * {
+			flex-shrink: 0;
+		}
+		.controls button {
+			border: unset;
+			background-color: unset;
+			cursor: pointer;
+			outline: unset;
+		}
+		.controls button svg {
+			height: 40px;
+			width: 40px;
+			fill: #191919;
+		}
+		.controls button svg:hover {
+			opacity: .8;
+		}
+		.controls button svg:active {
+			opacity: .5;
+		}
+		.controls-divider {
+			width: 1px;
+			height: 100%;
+			background-color: #191919;
+			margin: 0 10px;
+		}
+		
+		/* Nav and info */
+		.nav {
+			position: fixed;
+			top: 10px;
+			right: 10px;
+			gap: 5px;
+			display: flex;
+			flex-direction: column;
+		}
+		.nav-link {
+			display: block;
+			width: 40px;
+			height: 40px;
+			fill: white;
+			background-color: #191919;
+			border: unset;
+			outline: unset;
+			cursor: pointer;
+			border: 1px solid white;
+			padding: 4px;
+		}
+		.nav-link:hover {
+			fill: #191919;
+			background-color: white;
+		}
+		.nav-link:active {
+			opacity: .5;
+		}
+		.info {
+			position: fixed;
+			top: calc(50% - 20px);
+			left: calc(50% - 20px);
+			transform: translate(-50%, -50%);
+			width: calc(100% - 40px);
+			max-width: 640px;
+			max-height: calc(100% - 40px);
+			margin: 20px;
+			background-color: white;
+			color: #191919;
+			font-family: "Limkin Pixel", sans-serif;
+			font-variation-settings: "wght" 400;
+			letter-spacing: .02em;
+			font-weight: 400;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding: 20px 20px 60px 20px;
+			overflow-y: scroll;
+			font-size: 16px;
+			text-wrap: pretty;
+			line-height: 1.3em;
+		}
+		.info a {
+			color: #191919;
+		}
+		.info a:hover {
+			text-decoration: none;
+		}
+		.info a:active {
+			opacity: .5;
+		}
+		.info[data-active="0"] {
+			display: none;
+		}
+		.info-close {
+			position: sticky;
+			top: 0;
+			width: 24px;
+			height: 24px;
+			padding: 2px;
+			margin-left: auto;
+			background-color: #191919;
+			fill: white;
+			border: 1px solid #191919;
+			cursor: pointer;
+		}
+		.info-close svg {
+			width: 100%;
+			height: 100%;
+		}
+		.info-close:hover {
+			background-color: white;
+			fill: #191919;
+		}
+		.info-close:active {
+			opacity: .5;
+		}
+
+		/* Logo */
+		.logo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 80px;
+			image-rendering: pixelated;
+		}
+		.logo img {
+			width: 100%;
+		}
+		.logo-static {
+			filter: brightness(500%);
+		}
+		.logo-animation {
+			display: none;
+		}
+		.logo:hover .logo-static {
+			display: none;
+		}
+		.logo:hover .logo-animation {
+			display: block;
+		}
+		.logo:active {
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+	<!-- HTML -->
+	<div class="container">
+		<!-- Text area (populated by JavaScript) -->
+		<main class="content" onclick="this.focus();"></main>
+
+		<!-- Controls -->
+		<div class="controls">
+			<button onclick="align('start')">
+				<svg viewBox="0 0 100 100"><path d="M90,35H10v-10h80v10ZM90,45H10v10h80v-10ZM50,65H10v10h40v-10Z"/></svg>
+			</button>
+			<button onclick="align('center')">
+				<svg viewBox="0 0 100 100"><path d="M30,25h40v10H30v-10ZM10,55h80v-10H10v10ZM30,75h40v-10H30v10Z"/></svg>
+			</button>
+			<button onclick="align('end')">
+				<svg viewBox="0 0 100 100"><path d="M10,25h80v10H10v-10ZM10,55h80v-10H10v10ZM50,75h40v-10h-40v10Z"/></svg>
+			</button>
+			<div class="controls-divider"></div>
+			<button onclick="changeLeading(-1)">
+				<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM60,45v10h30v-10h-30Z"/></svg>
+			</button>
+			<button onclick="changeLeading(1)">
+				<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+			</button>
+
+			<div class="controls-divider"></div>
+
+			<button onclick="changeTracking(-.2)">
+				<svg viewBox="0 0 100 100"><path d="M75,55v10h-10v-10h-10v-10h10v-10h10v10h20v10h-20ZM15,25v10h10v-10h-10ZM85,75v-10h-10v10h10ZM15,75h10v-10h-10v10ZM35,35h-10v10H5v10h20v10h10v-10h10v-10h-10v-10ZM85,25h-10v10h10v-10Z"/></svg>
+			</button>
+			<button onclick="changeTracking(.2)">
+				<svg viewBox="0 0 100 100"><path d="M95,45v10h-10v10h-10v-10h-20v-10h20v-10h10v10h10ZM65,25v10h10v-10h-10ZM65,75h10v-10h-10v10ZM35,25h-10v10h10v-10ZM25,35h-10v10H5v10h10v10h10v-10h20v-10h-20v-10ZM35,75v-10h-10v10h10Z"/></svg>
+			</button>
+
+			<div class="controls-divider"></div>
+
+			<button onclick="changeFontSize(-1)">
+				<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM60,45v10h30v-10h-30Z"/></svg>
+			</button>
+			<button onclick="changeFontSize(1)">
+				<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+			</button>
+
+			<div class="controls-divider"></div>
+
+			<button onclick="clearAll()">
+				<svg viewBox="0 0 100 100"><path d="M55,55h-10v-10h10v10ZM55,65h10v-10h-10v10ZM65,75h10v-10h-10v10ZM55,45h10v-10h-10v10ZM65,35h10v-10h-10v10ZM45,55h-10v10h10v-10ZM35,65h-10v10h10v-10ZM45,35h-10v10h10v-10ZM35,25h-10v10h10v-10Z"/></svg>
+			</button>
+		</div>
+
+		<nav class="nav">
+			<button onclick="toggleInfo()" class="nav-link">
+				<svg viewBox="0 0 100 100"><path d="M45,80h10v10h-10v-10ZM45,70h10v-10h-10v10ZM55,60h10v-10h-10v10ZM65,20v30h10v-30h-10ZM35,10v10h30v-10h-30ZM25,40h10v-20h-10v20Z"/></svg>
+			</button>
+		</nav>
+
+		<!-- Info panel -->
+		<section class="info" data-active="0">
+			<button onclick="closeInfo();" class="info-close">
+				<svg viewBox="0 0 100 100"><rect x="10" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/><rect x="40" y="40" width="20" height="20"/><rect x="60" y="30" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="80" y="10" width="10" height="10"/><rect x="10" y="10" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="30" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="80" y="80" width="10" height="10"/></svg>
+			</button>
+			<p>
+				I had a CRT screen sitting on my desk for a long time collecting dust. I could connect my laptop to it using an HDMI-to-RCA adaptor, but the connection was unstable. That instability is the basis of this font, Sylvania, which is named after the CRT’s manufacturer.
+			</p>
+			<p>
+				For Sylvania, I recreated the in-unit pixel font (i.e. the one used on settings screens). Then, I displayed the letters on the CRT screen and distorted the connection by jiggling the cables around. I recorded this footage with an external camera, and created individual videos for each letter. This site lets you type out those individual videos.
+			</p>
+			<p>
+				<strong>Credit: <a href='https://gabrieldrozdov.com/' target="_blank">Gabriel Drozdov</a></strong><br>
+				<strong>License: <a href='https://openfontlicense.org/' target="_blank">Open Font License</a></strong>
+			</p>
+			<p>
+				<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/sylvania/index.html" target="_blank">Download the code for this specimen on GitHub</a><br>
+				<a href="https://toomuchtype.com/" target="_blank">Find more fonts at Too Much Type</a>
+			</p>
+		</section>
+
+		<!-- Logo -->
+		<a class="logo" href="https://toomuchtype.com/" target="_blank">
+			<img src="/assets/ui/logo.png" class="logo-static">
+			<img src="/assets/ui/logo-animation.gif" class="logo-animation">
+		</a>
+	</div>
+
+	<!-- JavaScript -->
+	<script>
+		// Target elements
+		const body = document.querySelector('body');
+		const container = document.querySelector('.container');
+		const content = document.querySelector('.content');
+		const controls = document.querySelector('.controls');
+
+		// Controls
+		let leading = .5;
+		let tracking = .5;
+		let fontSize = 8;
+		function align(direction) {
+			content.style.justifyContent = direction;
+		}
+		function changeLeading(change) {
+			leading += change;
+			if (leading <= 0) {
+				leading = 0;
+			} else if (leading >= 5) {
+				leading = 5;
+			}
+			content.style.setProperty('--leading', leading + "vw");
+		}
+		function changeTracking(change) {
+			tracking += change;
+			if (tracking <= 0) {
+				tracking = 0;
+			} else if (tracking >= 2) {
+				tracking = 2;
+			}
+			content.style.setProperty('--tracking', tracking + "vw");
+		}
+		function changeFontSize(change) {
+			fontSize += change;
+			if (fontSize <= 2) {
+				fontSize = 2;
+			} else if (fontSize >= 20) {
+				fontSize = 20;
+			}
+			content.style.setProperty('--size', fontSize + 'vw');
+		}
+		function clearAll() {
+			for (let letter of content.querySelectorAll('div')) {
+				letter.remove();
+			}
+		}
+
+		// Toggle brightness filter
+		let filter = false;
+		function toggleFilter() {
+			filter = !filter;
+			if (filter) {
+				content.dataset.filter = 1;
+			} else {
+				content.dataset.filter = 0;
+			}
+		}
+
+		// Open and close info panel
+		function toggleInfo() {
+			const info = document.querySelector('.info');
+			if (parseInt(info.dataset.active) == 0) {
+				info.dataset.active = 1
+			} else {
+				info.dataset.active = 0;
+			}
+		}
+		function closeInfo() {
+			const info = document.querySelector('.info');
+			info.dataset.active = 0;
+		}
+
+		// Detect user input
+		let initialized = false;
+		document.addEventListener('keydown', (e) => {
+			// Remove placeholder text at the start
+			if (initialized == false) {
+				clearAll();
+				initialized = true;
+			}
+
+			// Prevent accidental button retriggers
+			if (e.key == " " || e.key == "Enter") {
+				e.preventDefault();
+			}
+
+			const input = e.key.toLowerCase();
+			handleInput(input);
+		});
+
+		// Main function for handling user input
+		function handleInput(input) {
+			console.log(input);
+
+			if (validInputs.includes(input)) {
+				// Add new letter as SVG to DOM
+				let newLetter = document.createElement('div');
+				newLetter.innerHTML = `<video loop muted autoplay><source src="specimen-assets/${input}.mp4"></video>`;
+				content.appendChild(newLetter);
+				
+			} else if (input == " ") {
+				// Add space element
+				let space = document.createElement('div');
+				space.classList.add('space');
+				content.appendChild(space);
+
+			} else if (input == "backspace" && content.childNodes.length > 0) {
+				// Remove most recently typed letter
+				content.childNodes[content.childNodes.length-1].remove();
+
+			}
+
+			// Scroll to most recently typed letter
+			container.scrollTop = container.scrollHeight;
+		}
+
+		// Valid letter inputs
+		let letters = `abcdefghijklmnopqrstuvwxyz0123456789`.split('');
+		const validInputs = letters;
+
+		// Intro text when page loads
+		let introTextOptions = [
+			"sylvania",
+			"back in time",
+			"crt screens",
+			"video games",
+			"toomuchtype",
+			"abcdefghijklmnopqrstuvwxyz",
+			"0123456789",
+		]
+		let introText = introTextOptions[Math.floor(Math.random()*introTextOptions.length)];
+		let introDelay = 0;
+		for (let letter of introText) {
+			setTimeout(() => {
+				handleInput(letter);
+			}, introDelay)
+			introDelay += 50;
+		}
+	</script>
+</body>
+</html>

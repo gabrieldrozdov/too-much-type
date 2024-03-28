@@ -1,14 +1,14 @@
 let screenLeft = 0;
 let screenTop = 0;
 let screenRight = window.innerWidth;
-let screenBottom = window.innerHeight - 24;
+let screenBottom = window.innerHeight - 40;
 let screenHeight = screenBottom-screenTop;
 let screenWidth = screenRight-screenLeft;
 
 window.addEventListener('resize', calculateBorders);
 function calculateBorders() {
 	screenRight = window.innerWidth;
-	screenBottom = window.innerHeight - 24;
+	screenBottom = window.innerHeight - 40;
 	screenHeight = screenBottom-screenTop;
 	screenWidth = screenRight-screenLeft;	
 }
@@ -19,7 +19,7 @@ function calculateBorders() {
 
 let fontInfo = {
 	'Bashful': {
-		'download': 'GDBashfulVF.woff2',
+		'download': '/fonts/bashful/TMT-Bashful.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'variation': {
@@ -32,7 +32,7 @@ let fontInfo = {
 		}
 	},
 	'Caffeine': {
-		'download': 'GDCaffeineVF.woff2',
+		'download': '/fonts/caffeine/TMT-Caffeine.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?•*#//\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': {
@@ -51,12 +51,12 @@ let fontInfo = {
 		}
 	},
 	'Dreidel': {
-		'download': 'GDDreidelVF.woff2',
+		'download': '/fonts/dreidel/TMT-Dreidel.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;-`,
 		'variation': {
 			'Spin': {
-				'code': 'spin',
+				'code': 'SPIN',
 				'min': -45,
 				'max': 405,
 				'default': -45
@@ -64,7 +64,7 @@ let fontInfo = {
 		}
 	},
 	'Limkin': {
-		'download': 'GDLimkinVF.woff2',
+		'download': '/fonts/limkin/TMT-Limkin.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789`,
 		'variation': {
@@ -82,8 +82,21 @@ let fontInfo = {
 			}
 		}
 	},
+	'Limkin Pixel': {
+		'download': '/fonts/limkin-pixel/TMT-LimkinPixel.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789`,
+		'variation': {
+			'Weight': {
+				'code': 'wght',
+				'min': 100,
+				'max': 900,
+				'default': 500
+			}
+		}
+	},
 	'Mini Mochi': {
-		'download': 'GDMiniMochiVF.woff2',
+		'download': '/fonts/mini-mochi/TMT-MiniMochi.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;!?-–—_“”‘’"'`,
 		'variation': {
@@ -108,18 +121,18 @@ let fontInfo = {
 		}
 	},
 	'Music Box': {
-		'download': 'GDMusicBoxVF.woff2',
+		'download': '/fonts/music-box/TMT-MusicBox.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'variation': {
 			'Frequency': {
-				'code': 'freq',
+				'code': 'FREQ',
 				'min': -100,
 				'max': 100,
 				'default': 0
 			},
 			'Amplitude': {
-				'code': 'ampl',
+				'code': 'AMPL',
 				'min': 0,
 				'max': 100,
 				'default': 50
@@ -127,24 +140,24 @@ let fontInfo = {
 		}
 	},
 	'Paint': {
-		'download': 'GDPaint.woff2',
+		'download': '/fonts/paint/TMT-Paint.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?*#//\-–—_(){}[]“”‘’"'@&|$+−×÷=><~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': ''
 	},
 	'PowerPack': {
-		'download': 'GDPowerPackVF.woff2',
+		'download': '/fonts/power-pack/TMT-PowerPack.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#//\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
 		'variation': {
 			'Charge': {
-				'code': 'chrg',
+				'code': 'CHRG',
 				'min': 0,
 				'max': 100,
 				'default': 0
 			},
 			'Power': {
-				'code': 'powr',
+				'code': 'POWR',
 				'min': 0,
 				'max': 100,
 				'default': 0
@@ -152,18 +165,18 @@ let fontInfo = {
 		}
 	},
 	'That Then This': {
-		'download': 'GDThatThenThisVF.woff2',
+		'download': '/fonts/that-then-this/TMT-ThatThenThis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;!?#//-[]“”‘’"'`,
 		'variation': {
 			'Variation': {
-				'code': 'VARI',
+				'code': 'THAT',
 				'min': 0,
 				'max': 100,
 				'default': 0
 			},
 			'Distribution': {
-				'code': 'DIST',
+				'code': 'THIS',
 				'min': 0,
 				'max': 100,
 				'default': 0
@@ -171,26 +184,52 @@ let fontInfo = {
 		}
 	},
 	'Authentic Remixed': {
-		'download': 'AUTHENTICRemixedVF.woff2',
+		'download': '/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
 		'variation': {
 			'X axis': {
-				'code': 'xaxi',
+				'code': 'XAXI',
 				'min': -100,
 				'max': 100,
 				'default': 0
 			},
 			'Y axis': {
-				'code': 'yaxi',
+				'code': 'YAXI',
 				'min': -100,
 				'max': 100,
 				'default': 0
 			}
 		}
 	},
+	// 'Avara Burst': {
+	// 	'download': '/fonts/avara-burst/TMT-AvaraBurst.zip',
+	// 	'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+	// 	'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+	// 	'variation': {
+	// 		'Burst': {
+	// 			'code': 'BRST',
+	// 			'min': 0,
+	// 			'max': 100,
+	// 			'default': 0
+	// 		}
+	// 	}
+	// },
+	// 'FT88 RISD': {
+	// 	'download': '/fonts/ft88-risd/TMT-FT88RISD.zip',
+	// 	'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+	// 	'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+	// 	'variation': {
+	// 		'Dispersion': {
+	// 			'code': 'DISP',
+	// 			'min': 0,
+	// 			'max': 100,
+	// 			'default': 0
+	// 		}
+	// 	}
+	// },
 	'Work Sans Galapagos': {
-		'download': 'WorkSansGalapagosVF.woff2',
+		'download': '/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
 		'variation': {
@@ -201,7 +240,7 @@ let fontInfo = {
 				'default': 500
 			},
 			'Shell': {
-				'code': 'shll',
+				'code': 'SHLL',
 				'min': 0,
 				'max': 100,
 				'default': 100
@@ -236,17 +275,22 @@ let windowData = {
 	'Music Box': {
 		'icon': `<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>`,
 		'title': 'Music Box',
-		'file': 'music-box/'
+		'file': '/fonts/music-box/'
+	},
+	'Fun Font': {
+		'icon': `<svg viewBox="0 0 100 100"><path d="M30,90H10v-20h20v20ZM50,50h-20v20h20v-20ZM70,30h-20v20h20v-20ZM90,50h-20v20h20v-20ZM30,30H10v20h20v-20ZM50,10h-20v20h20V10ZM70,70h-20v20h20v-20ZM90,10h-20v20h20V10Z"/></svg>`,
+		'title': 'Fun Font',
+		'file': '/fonts/fun-font/'
 	},
 	'Sylvania': {
 		'icon': `<svg viewBox="0 0 100 100"><path d="m60,40v-10h-10v-10h-10v20H10v50h80v-50h-30Zm20,40H20v-30h60v30Z"/><rect x="60" y="20" width="20" height="10"/><rect x="20" y="10" width="20" height="10"/></svg>`,
 		'title': 'Sylvania',
-		'file': 'sylvania/'
+		'file': '/fonts/sylvania/'
 	},
 	'Meal Kit': {
 		'icon': `<svg viewBox="0 0 100 100"><path d="m25,60h-10V10h10v50Zm40,0V10h-10v50h-10V10h-10v50h-10v10h20v20h10v-20h20v-10h-10Zm20-50h-10v50h10V10Z"/></svg>`,
 		'title': 'Meal Kit',
-		'file': 'meal-kit/'
+		'file': '/fonts/meal-kit/'
 	}
 }
 
@@ -265,8 +309,7 @@ class pseudoWindow {
 		this.minimized = false;
 		this.number = 0;
 		this.dockItem;
-		this.lineWrapping = false;
-		this.showCode = false;
+		this.zoomLevel = 1;
 
 		// Create window element
 		this.elmnt = document.createElement('div');
@@ -274,7 +317,6 @@ class pseudoWindow {
 		this.elmnt.addEventListener('mousedown', this.bringToTop);
 		this.elmnt.addEventListener('touchstart', this.bringToTop);
 		this.elmnt.id = this.id;
-		this.elmnt.dataset.code = this.showCode;
 
 		// Generate window titlebar
 		let titlebar = document.createElement('div');
@@ -381,10 +423,6 @@ class pseudoWindow {
 				<svg viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>
 				<span>File</span>
 			</button>
-			<button class="controls-edit">
-				<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
-				<span>Edit</span>
-			</button>
 			<button class="controls-view">
 				<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>
 				<span>View</span>
@@ -397,11 +435,9 @@ class pseudoWindow {
 		`;
 
 		let controlsFile = controls.querySelector('.controls-file');
-		let controlsEdit = controls.querySelector('.controls-edit');
 		let controlsView = controls.querySelector('.controls-view');
 		let controlsWindow = controls.querySelector('.controls-window');
 		controlsFile.addEventListener('click', () => {this.openMenu('file')});
-		controlsEdit.addEventListener('click', () => {this.openMenu('edit')});
 		controlsView.addEventListener('click', () => {this.openMenu('view')});
 		controlsWindow.addEventListener('click', () => {this.openMenu('window')});
 
@@ -412,63 +448,28 @@ class pseudoWindow {
 		controlsMenus.dataset.menu = '';
 		controlsMenus.innerHTML = `
 			<div class="window-controls-menu" data-menu="file">
-				<button class="controls-download">
-					<svg viewBox="0 0 100 100"><polygon points="35 60 45 60 45 70 55 70 55 60 65 60 65 50 75 50 75 40 55 40 55 10 45 10 45 40 25 40 25 50 35 50 35 60"/><polygon points="80 70 80 80 20 80 20 70 10 70 10 90 90 90 90 70 80 70"/></svg>
-					<span>Download ZIP</span>
-				</button>
-				<button class="controls-reset">
-					<svg viewBox="0 0 100 100"><rect x="40" y="80" width="20" height="10"/><rect x="30" y="70" width="10" height="10"/><rect x="20" y="60" width="10" height="10"/><polygon points="20 20 10 20 10 50 40 50 40 40 30 40 30 30 20 30 20 20"/><rect x="30" y="20" width="10" height="10"/><rect x="40" y="10" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/><rect x="70" y="30" width="10" height="10"/><rect x="80" y="40" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="60" y="70" width="10" height="10"/></svg>
-					<span>Reset Changes</span>
-				</button>
-				<button class="controls-github">
-					<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-					<span>Open on GitHub</span>
-				</button>
-				<button class="controls-link">
-					<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-					<span>Open in a New Tab</span>
-				</button>
-			</div>
-
-			<div class="window-controls-menu" data-menu="edit">
-				<button class="controls-indent-right" data-codeonly="1">
-					<svg viewBox="0 0 100 100"><polygon points="30 10 30 20 60 20 60 80 30 80 30 90 70 90 70 10 30 10"/></svg>
-					<span>Increase Indent</span>
-				</button>
-				<button class="controls-indent-left" data-codeonly="1">
-					<svg viewBox="0 0 100 100"><polygon points="70 10 70 20 40 20 40 80 70 80 70 90 30 90 30 10 70 10"/></svg>
-					<span>Decrease Indent</span>
-				</button>
-				<button class="controls-comment" data-codeonly="1">
-					<svg viewBox="0 0 100 100"><polygon points="20 20 10 20 10 90 20 90 20 80 30 80 30 70 20 70 20 20"/><rect x="20" y="10" width="60" height="10"/><rect x="80" y="20" width="10" height="30"/><rect x="30" y="60" width="10" height="10"/><polygon points="50 50 40 50 40 60 50 60 60 60 80 60 80 50 60 50 50 50"/></svg>
-					<span>Comment Selection</span>
-				</button>
-				<button class="controls-uncomment" data-codeonly="1">
-					<svg viewBox="0 0 100 100"><polygon points="20 20 10 20 10 90 20 90 20 80 30 80 30 70 20 70 20 20"/><rect x="20" y="10" width="60" height="10"/><rect x="80" y="20" width="10" height="30"/><rect x="30" y="60" width="10" height="10"/><polygon points="50 50 40 50 40 60 50 60 60 60 80 60 80 50 60 50 50 50"/></svg>
-					<span>Uncomment Selection</span>
-				</button>
-				<button class="controls-format" data-codeonly="1">
+				<a class="controls-github" href="https://github.com/gabrieldrozdov/too-much-type/tree/main${windowData[this.src]['file']}/index.html" target="_blank">
 					<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-					<span>Autoformat Selection</span>
-				</button>
+					<span>Download Code</span>
+				</a>
+				<a class="controls-link" href="${windowData[this.src]['file']}">
+					<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+					<span>Open in New Tab</span>
+				</a>
 			</div>
 
 			<div class="window-controls-menu" data-menu="view">
-				<button class="controls-code">
-					<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-					<span>Hide/Show Code Editor</span>
+				<button class="controls-actual-size">
+					<svg viewBox="0 0 100 100"><rect x="40" y="80" width="20" height="10"/><rect x="30" y="70" width="10" height="10"/><rect x="20" y="60" width="10" height="10"/><polygon points="20 20 10 20 10 50 40 50 40 40 30 40 30 30 20 30 20 20"/><rect x="30" y="20" width="10" height="10"/><rect x="40" y="10" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/><rect x="70" y="30" width="10" height="10"/><rect x="80" y="40" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="60" y="70" width="10" height="10"/></svg>
+					<span>Actual Size</span>
 				</button>
-				<button class="controls-font-up" data-codeonly="1">
+				<button class="controls-zoom-in">
 					<svg viewBox="0 0 100 100"><polygon points="90 45 55 45 55 10 45 10 45 45 10 45 10 55 45 55 45 90 55 90 55 55 90 55 90 45"/></svg>
-					<span>Increase Font Size</span>
+					<span>Zoom In</span>
 				</button>
-				<button class="controls-font-down" data-codeonly="1">
+				<button class="controls-zoom-out">
 					<svg viewBox="0 0 100 100"><rect x="10" y="45" width="80" height="10"/></svg>
-					<span>Decrease Font Size</span>
-				</button>
-				<button class="controls-wrap" data-codeonly="1">
-					<svg viewBox="0 0 100 100"><polygon points="10 10 10 20 80 20 80 60 40 60 40 40 30 40 30 50 20 50 20 60 10 60 10 70 20 70 20 80 30 80 30 90 40 90 40 70 90 70 90 10 10 10"/></svg>
-					<span>Toggle Text Wrapping</span>
+					<span>Zoom Out</span>
 				</button>
 			</div>
 
@@ -504,35 +505,13 @@ class pseudoWindow {
 		controlsMenus.addEventListener('click', this.closeControls);
 		this.menus = controlsMenus;
 
-		// File controls
-		let controlsReset = controlsMenus.querySelector('.controls-reset');
-		controlsReset.addEventListener('click', this.resetCode);
-		let controlsGitHub = controlsMenus.querySelector('.controls-github');
-		controlsGitHub.addEventListener('click', () => {openLink('https://github.com/gabrieldrozdov/too-much-type/tree/main/'+windowData[this.src]['file'])});
-		let controlsLink = controlsMenus.querySelector('.controls-link');
-		controlsLink.addEventListener('click', this.openLink);
-
-		// Edit controls
-		let controlsIndentRight = controlsMenus.querySelector('.controls-indent-right');
-		controlsIndentRight.addEventListener('click', () => {this.cmCommand('indentMore')});
-		let controlsIndentLeft = controlsMenus.querySelector('.controls-indent-left');
-		controlsIndentLeft.addEventListener('click', () => {this.cmCommand('indentLess')});
-		let controlsComment = controlsMenus.querySelector('.controls-comment');
-		controlsComment.addEventListener('click', () => {this.commentSelection(true)});
-		let controlsUncomment = controlsMenus.querySelector('.controls-uncomment');
-		controlsUncomment.addEventListener('click', () => {this.commentSelection(false)});
-		let controlsFormat = controlsMenus.querySelector('.controls-format');
-		controlsFormat.addEventListener('click', this.autoFormatSelection);
-
 		// View controls
-		let controlsCode = controlsMenus.querySelector('.controls-code');
-		controlsCode.addEventListener('click', this.toggleCode);
-		let controlsFontUp = controlsMenus.querySelector('.controls-font-up');
-		controlsFontUp.addEventListener('click', () => {this.changeFontSize(2)});
-		let controlsFontDown = controlsMenus.querySelector('.controls-font-down');
-		controlsFontDown.addEventListener('click', () => {this.changeFontSize(-2)});
-		let controlsWrap = controlsMenus.querySelector('.controls-wrap');
-		controlsWrap.addEventListener('click', this.toggleWrap);
+		let controlsActualSize = controlsMenus.querySelector('.controls-actual-size');
+		controlsActualSize.addEventListener('click', () => {this.resetZoom()});
+		let controlsZoomIn = controlsMenus.querySelector('.controls-zoom-in');
+		controlsZoomIn.addEventListener('click', () => {this.zoomIn()});
+		let controlsZoomOut = controlsMenus.querySelector('.controls-zoom-out');
+		controlsZoomOut.addEventListener('click', () => {this.zoomOut()});
 
 		// Window controls
 		let controlsSnapLeft = controlsMenus.querySelector('.controls-snap-left');
@@ -552,43 +531,10 @@ class pseudoWindow {
 		let content = document.createElement('div');
 		content.classList.add('window-content');
 		content.innerHTML = `
-			<div class="editor-code"></div>
-			<div class="editor-resize"></div>
-			<iframe class="editor-preview"></iframe>
-		`
+			<iframe class="editor-preview" src="${windowData[this.src]['file']}"></iframe>
+		`;
 
-		this.editor = content.querySelector('.editor-code');
-		this.editor.style.fontSize = '12px';
 		this.preview = content.querySelector('.editor-preview');
-
-		// Create CodeMirror instance
-		let editor = content.querySelector('.editor-code');
-		this.cm = CodeMirror(editor, {
-			mode: "htmlmixed",
-			value: '<h1>Hello World!</h1>',
-			autoCloseTags: true,
-			autoCloseBrackets: true,
-			matchBrackets: true,
-			smartIndent: true,
-			lineNumbers: true,
-			tabSize: 2,
-			showHint: true,
-			extraKeys: {"Ctrl-Space": "autocomplete"},
-			lineWrapping: false,
-			theme: "toomuchtype",
-		});
-		CodeMirror.commands["selectAll"](this.cm);
-
-		this.cm.on("change", this.updatePreview);
-
-		// Get source file
-		this.data;
-		fetch(windowData[this.src]['file'])
-			.then((response) => response.text())
-			.then((data) => {
-				this.data = data;
-				this.cm.setValue(this.data);
-			})
 
 		this.elmnt.appendChild(content);
 
@@ -665,51 +611,6 @@ class pseudoWindow {
 		}
 	}
 
-	// CodeMirror methods
-	getSelectedRange = () => {
-		return { from: this.cm.getCursor(true), to: this.cm.getCursor(false) };
-	}
-	autoFormatSelection = () => {
-		var range = this.getSelectedRange();
-		this.cm.autoFormatRange(range.from, range.to);
-	}
-	cmCommand = (command) => {
-		this.cm.execCommand(command);
-	}
-	commentSelection = (isComment) => {
-		var range = this.getSelectedRange();
-		this.cm.commentRange(isComment, range.from, range.to);
-	}
-	updatePreview = () => {
-		this.preview.srcdoc = this.cm.getValue();
-		this.preview.contentDocument.addEventListener('click', this.bringToTop);
-	}
-	toggleCode = () => {
-		this.showCode = !this.showCode;
-		this.elmnt.dataset.code = this.showCode;
-		this.cm.refresh();
-		setTimeout(() => {
-			this.cm.refresh();
-		}, 100)
-	}
-	toggleWrap = () => {
-		this.lineWrapping = !this.lineWrapping;
-		this.cm.setOption('lineWrapping', this.lineWrapping);
-	}
-	resetCode = () => {
-		this.cm.setValue(this.data);
-	}
-	changeFontSize = (increment) => {
-		if (parseInt(this.editor.style.fontSize)+increment <= 8 || parseInt(this.editor.style.fontSize)+increment >= 18) {
-			return
-		}
-		this.editor.style.fontSize = parseInt(this.editor.style.fontSize)+increment + "px";
-		this.cm.refresh();
-	}
-	openLink = () => {
-		window.open(windowData[this.src]['file'], '_blank');
-	}
-
 	// Set actual position to stored position
 	refreshPosition() {
 		this.elmnt.style.left = this.posX + "px";
@@ -740,6 +641,32 @@ class pseudoWindow {
 	}
 	deactivatePreview = () => {
 		this.preview.dataset.active = 0;
+	}
+
+	// Zoom
+	zoomOut() {
+		this.zoomLevel += .1;
+		this.preview.style.width = `${this.zoomLevel*100}%`;
+		this.preview.style.height = `${this.zoomLevel*100}%`;
+		this.preview.style.transform = `scale(${1/this.zoomLevel})`;
+		if (this.zoomLevel >= 2) {
+			this.zoomLevel = 2;
+		}
+	}
+	zoomIn = () => {
+		this.zoomLevel -= .1;
+		this.preview.style.width = `${this.zoomLevel*100}%`;
+		this.preview.style.height = `${this.zoomLevel*100}%`;
+		this.preview.style.transform = `scale(${1/this.zoomLevel})`;
+		if (this.zoomLevel <= .5) {
+			this.zoomLevel = .5;
+		}
+	}
+	resetZoom = () => {
+		this.zoomLevel =1;
+		this.preview.style.width = `${this.zoomLevel*100}%`;
+		this.preview.style.height = `${this.zoomLevel*100}%`;
+		this.preview.style.transform = `scale(${1/this.zoomLevel})`;
 	}
 
 	// Window positioning and state
@@ -777,17 +704,9 @@ class pseudoWindow {
 		this.dockItem.dataset.selected = 1;
 		
 		this.bringToTop();
-
-		// A ridiculous hack to get CodeMirror to render properly
-		if (this.showCode) {
-			setTimeout(() => {this.cm.refresh()}, 200)
-			setTimeout(() => {this.cm.refresh()}, 300)
-			setTimeout(() => {this.cm.refresh()}, 400)
-		}
 	}
 	bringToTop = () => {
 		if (activeWindow != this.id) {
-			this.cm.refresh();
 			for (let dockItem of document.querySelectorAll('.dock-item')) {
 				dockItem.dataset.selected = 0;
 			}
@@ -1247,8 +1166,8 @@ class desktopLetter {
 		this.glyph.style.fontVariationSettings = this.convertVariationToStyle2();
 
 		// Also update letterset selector
-		const letterset = document.querySelector('.desktop-letterset');
-		letterset.style.fontVariationSettings = this.convertVariationToStyle2();
+		const lettersetContent = document.querySelector('.desktop-letterset-content');
+		lettersetContent.style.fontVariationSettings = this.convertVariationToStyle2();
 	}
 	
 	// Size and color
@@ -1376,23 +1295,23 @@ function initializeDesktop() {
 		}
 	}
 
-	// What font size to use
-	diceRoll = Math.random();
-	let sizes = [];
-	if (diceRoll < .3) {
-		sizes.push(50);
-	} else if (diceRoll < .6) {
-		sizes.push(50, 100);
-	} else {
-		sizes.push(25, 50, 100);
-	}
+	// What font size to use (OLD CODE)
+	// diceRoll = Math.random();
+	// let sizes = [];
+	// if (diceRoll < .3) {
+	// 	sizes.push(50);
+	// } else if (diceRoll < .6) {
+	// 	sizes.push(50, 100);
+	// } else {
+	// 	sizes.push(25, 50, 100);
+	// }
 
 	// The number of letters to be generated
 	let count = Math.floor(window.innerWidth/20);
 
 	for (let i=0; i<count; i++) {
 		setTimeout(() => {
-			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, sizes[Math.floor(Math.random()*sizes.length)]);
+			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, 50);
 		}, loopDelay)
 		loopDelay += 10;
 	}
@@ -1447,7 +1366,7 @@ function generateLetterSettings(id) {
 	desktopSettingsName.innerText = glyphInfo.font;
 
 	// Set download link
-	desktopSettingsDownload.href = "/assets/fonts/"+fontInfo[glyphInfo.font]['download'];
+	desktopSettingsDownload.href = fontInfo[glyphInfo.font]['download'];
 
 	// Set size
 	desktopSettingsSize.value = glyphInfo.size;
@@ -1629,9 +1548,9 @@ function closeLetterset() {
 }
 
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 // MENU
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 
 // Open/close menu
 function toggleMenu() {
@@ -1658,6 +1577,15 @@ function openMenu() {
 	menuBtn.dataset.active = 1;
 }
 
+// Close menu if clicked anywhere else
+window.addEventListener('mousedown', (e) => {
+	const menu = document.querySelector('.menu');
+	const menuToggle = document.querySelector('#toggle-menu');
+	if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+		closeMenu();
+	}
+}, false);
+
 // Editable text
 const menuTypefacePreviews = document.querySelectorAll('.menu-typeface-preview');
 for (let preview of menuTypefacePreviews) {
@@ -1680,9 +1608,9 @@ for (let preview of menuTypefacePreviews) {
 	})
 }
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 // SETTINGS
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 
 // Open/close settings
 function toggleSettings() {
@@ -1719,14 +1647,6 @@ window.addEventListener('mousedown', (e) => {
 }, false);
 
 // Settings functions
-function toggle3D() {
-	let body = document.querySelector('body');
-	if (parseInt(body.dataset.flat) == 0) {
-		body.dataset.flat = 1;
-	} else {
-		body.dataset.flat = 0;
-	}
-}
 function changeColorMode() {
 	let body = document.querySelector('body');
 	if (parseInt(body.dataset.colorMode) == 0) {
@@ -1875,9 +1795,47 @@ function randomWindow() {
 	newWindow(Object.keys(windowData)[windowSrc]);
 }
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
+// INFO
+// ———————————————————————————————————————————
+
+// Open/close info
+function toggleInfo() {
+	const info = document.querySelector('.info');
+	const infoBtn = document.querySelector('#toggle-info');
+	if (parseInt(info.dataset.active) == 0) {
+		info.dataset.active = 1;
+		infoBtn.dataset.active = 1;
+	} else {
+		info.dataset.active = 0;
+		infoBtn.dataset.active = 0;
+	}
+}
+function closeInfo() {
+	const info = document.querySelector('.info');
+	const infoBtn = document.querySelector('#toggle-info');
+	info.dataset.active = 0;
+	infoBtn.dataset.active = 0;
+}
+function openInfo() {
+	const info = document.querySelector('.info');
+	const infoBtn = document.querySelector('#toggle-info');
+	info.dataset.active = 1;
+	infoBtn.dataset.active = 1;
+}
+
+// Close info if clicked anywhere else
+window.addEventListener('mousedown', (e) => {
+	const info = document.querySelector('.info');
+	const infoToggle = document.querySelector('#toggle-info');
+	if (!info.contains(e.target) && !infoToggle.contains(e.target)) {
+		closeInfo();
+	}
+}, false);
+
+// ———————————————————————————————————————————
 // CLOCK
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 
 let time = new Date();
 function showTime() {
@@ -1893,7 +1851,7 @@ function showTime() {
 		if (hour > 12) hour -= 12;
 		am_pm = "PM";
 	} else if (hour == 0) {
-		hr = 12;
+		hour = 12;
 		am_pm = "AM";
 	}
 
@@ -1901,26 +1859,17 @@ function showTime() {
 	min = min < 10 ? "0" + min : min;
 	sec = sec < 10 ? "0" + sec : sec;
 
-	let currentTime =
-		time.toDateString() +
-		" " +
-		hour +
-		":" +
-		min +
-		":" +
-		sec +
-		" " +
-		am_pm;
+	let currentTime = `<span><span class="dock-clock-date">${time.toDateString()}</span> <span class="dock-clock-number">${hour}</span>:<span class="dock-clock-number">${min}</span>:<span class="dock-clock-number">${sec}</span> ${am_pm}</span>`;
 
 	// Displaying the time
-	document.getElementById("clock").innerText = currentTime;
+	document.getElementById("clock").innerHTML = currentTime;
 }
 setInterval(showTime, 1000);
 showTime();
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 // HELPER FUNCTIONS
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————————————
 
 // Drag element
 let elementMoved = false;
@@ -1979,17 +1928,36 @@ function dragElmnt(e1, elmnt) {
 	}
 }
 
-// TODO
+// ———————————————————————————————————————————
+// TYPEY!
+// ———————————————————————————————————————————
+function showTypey() {
+	initalizeTypey();
+	const typey = document.querySelector('.typey');
+	typey.dataset.active = 1;
+	const toggle = document.querySelector('#toggle-typey');
+	toggle.dataset.active = 1;
+}
+function hideTypey() {
+	const typey = document.querySelector('.typey');
+	typey.dataset.active = 0;
+	const toggle = document.querySelector('#toggle-typey');
+	toggle.dataset.active = 0;
+}
+function toggleTypey() {
+	const typey = document.querySelector('.typey');
+	if (parseInt(typey.dataset.active) == 1) {
+		hideTypey();
+	} else {
+		showTypey();
+	}
+}
+setTimeout(showTypey, 1500);
 
-// WINDOWS
-// hide code if too small
-// download zip
-// drag to resize middle of code editor
-// drag to reorder windows in dock
-// indication for active window
-
-// OTHER
-// diacritics for paint font
-
-// LETTERS
-// change letter object to proper map
+// Random color
+function initalizeTypey() {
+	let color = Math.round(Math.random()*360);
+	const typey = document.querySelector('.typey');
+	typey.style.setProperty('--typey', color+"deg");
+}
+initalizeTypey();

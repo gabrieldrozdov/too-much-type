@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Gabriel Drozdov | Web Type | Specimen</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="assets/script.js"></script>
+</head>
+
+<body>
+
+	<div class="content">
+
+		<header id="header" class="header-container">
+			<span class="header-line">
+				<span style="animation: header 10s ease-in-out infinite;background-color:#fd8d8d;">M</span><span style="animation: header 10s ease-in-out .1s infinite;background-color:#aed982;">i</span><span style="animation: header 10s ease-in-out .2s infinite;background-color:#82b9d9;">n</span><span style="animation: header 10s ease-in-out .3s infinite;background-color:#c8aaf3;">i</span>
+			</span>
+			<span class="header-line">
+				<span style="animation: header 10s ease-in-out .4s infinite;background-color:#aed982;">M</span><span style="animation: header 10s ease-in-out .5s infinite;background-color:#c8aaf3;">o</span><span style="animation: header 10s ease-in-out .6s infinite;background-color:#fd8d8d;;">c</span><span style="animation: header 10s ease-in-out .7s infinite;background-color:#ffe375;">h</span><span style="animation: header 10s ease-in-out .8s infinite;background-color:#82b9d9;">i</span>
+			</span>
+		</header>
+
+		<section id="overview" class="block-container">
+			<div class="block">
+				<p><strong>MINI MOCHI</strong> is a playful, delectable, variable display font with a little bit of *stretch* and a little bit of *flavor*. Each letter is like a mochi-shaped cube engraved with pudgy counterforms that squish and mutate in response to two variable axes ("stretch" and "flavor"). While originally inspired by the anonymous tofu-shaped glyphs that appear when a font is missing a character, Mini Mochi evolved into something of its own. (On a side note, the flavorful glyphs also look kind of like rotten teeth. Don‘t eat too much sugar or you might end up like these letters!)</p>
+			</div>
+			<div class="block">
+				<div class="overview-axes">
+					<p class="overview-topaxis"><strong>STRETCH</strong></p>
+					<p class="overview-sideaxis"><strong>FLAVOR</strong></p>
+					<div class="overview-container">
+						<div class="overview-line">
+							<span style="font-variation-settings:'STCH'0,'FLAV'0;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'0;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'0;color:#82b9d9;">A</span>
+						</div>
+						<div class="overview-line">
+							<span style="font-variation-settings:'STCH'0,'FLAV'50;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'50;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'50;color:#aed982;">A</span>
+						</div>
+						<div class="overview-line">
+							<span style="font-variation-settings:'STCH'0,'FLAV'100;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'100;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'100;color:#fd8d8d;">A</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="alphabet" class="alphabet-container">
+			<div class="alphabet">
+				<span class="alphabet-letters alphabet-desktop">
+					<span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span>
+					<span>h</span><span>i</span><span>j</span><span>k</span><span>l</span><span>m</span><span>n</span>
+					<span>o</span><span>p</span><span>q</span><span>r</span><span>s</span><span>t</span><span>u</span>
+					<span>v</span><span>w</span><span>x</span><span>y</span><span>z</span>
+				</span>
+				<span class="alphabet-letters alphabet-mobile">
+					<span>a</span><span>b</span><span>c</span><span>d</span><br>
+					<span>e</span><span>f</span><span>g</span><span>h</span><br>
+					<span>i</span><span>j</span><span>k</span><span>l</span><br>
+					<span>m</span><span>n</span><span>o</span><span>p</span><br>
+					<span>q</span><span>r</span><span>s</span><span>t</span><br>
+					<span>u</span><span>v</span><span>w</span><span>x</span><br>
+					<span>y</span><span>z</span>
+				</span>
+			</div>
+			<div class="slider-container">
+				<span style="font-variation-settings:'STCH'0,'FLAV'0;">o</span><input id="alphabet-slider" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0;">o</span>
+			</div>
+		</section>
+
+		<section id="letter" class="letter-container">
+			<div class="letter">
+				<span class="letter-glyph">A</span>
+			</div>
+			<div class="slider-container">
+				A<input id="letter-slider" class="slider" type="range" min="65" max="90" value="50">Z
+			</div>
+		</section>
+
+		<section id="sentences" class="block-container">
+			<div class="block words-container">
+				<p id="words">Mochi is a Japanese rice cake made of mochigome, a short-grain japonica glutinous rice, and sometimes other ingredients such as water, sugar, and cornstarch.</p>
+			</div>
+		</section>
+
+		<section id="tester" class="tester-container">
+			<div class="tester" contenteditable>
+				Test me out if u wanna!
+			</div>
+			<div class="slider-container">
+				<span style="font-variation-settings:'STCH'0,'FLAV'0;">o</span><input id="tester-slider1" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0;">o</span>
+			</div>
+			<div class="slider-container" style="padding-top:20px;">
+				<span style="font-variation-settings:'STCH'50,'FLAV'0;">A</span><input id="tester-slider2" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'50,'FLAV'100;">A</span>
+			</div>
+		</section>
+
+		<section id="download" class="block-container">
+			<a class="block download" href="css/fonts/MiniMochi.ttf"><strong>DOWNLOAD</strong></a>
+		</section>
+
+		<footer id="footer">
+			<p>
+				<strong>MINI MOCHI</strong> and this web specimen were created by <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a> in 2022 for RISD‘s Web Type course taught by Marie Otsuka.<br><br>
+				<strong>APFEL GROTESK</strong> by <a href="http://collletttivo.it/" target="_blank">Collletttivo</a> is also featured on this page.<br><br>
+				<a href="../../">Click here to return to the Web Type homepage.</a>
+			</p>
+		</footer>
+
+	</div>
+
+</body>
+
+</html>

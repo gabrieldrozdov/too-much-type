@@ -1,1 +1,1 @@
-<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
+<svg viewBox="0 0 100 100"><path d="M45,90h-20v-10h20v10ZM55,20h-10v60h10V20ZM45,10h-20v10h20v-10ZM75,10h-20v10h20v-10ZM75,80h-20v10h20v-10Z"/></svg>

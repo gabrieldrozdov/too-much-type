@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Galápagos Islands</title>
+	<link rel="icon" type="image/png" href="assets/favicon.png">
+
+	<style>
+		/* BASE STYLES */
+		:root {
+			--white: #fafafa;
+			--black: #141414;
+			--green-light: #64d983;
+			--green-dark: #1a5739;
+			--sky-light: #4cc9ff;
+			--sky-dark: #1b3744;
+			--orange-light: #ff9824;
+			--orange-dark: #632516;
+			--blue-light: #4d61ff;
+			--blue-dark: #1e1f54;
+			--pink-light: #ff8aa7;
+			--pink-dark: #3a1b31;
+			--red-light: #ff5545;
+			--red-dark: #5c0205;
+		}
+		@font-face {
+			font-family: "Work Sans Galapagos";
+			src: url("assets/fonts/WorkSansGalapagosVF.ttf") format("truetype");
+			font-style: normal;
+			font-weight: 100 900;
+			font-variation-settings: "shll" 0;
+		}
+		@font-face {
+			font-family: "Work Sans Galapagos";
+			src: url("assets/fonts/WorkSansGalapagosItalicVF.ttf") format("truetype");
+			font-style: italic;
+			font-weight: 300 900;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: "Work Sans Galapagos", sans-serif;
+			font-feature-settings: "ss01" 1, "ss06" 1;
+			scroll-behavior: smooth;
+		}
+		body {
+			background-color: var(--white);
+			color: var(--black);
+			font-weight: 350;
+			font-size: 20px;
+		}
+
+		/* HEADER */
+		.unesco {
+			height: 60px;
+			z-index: 999;
+			border-bottom: 1px solid var(--black);
+			display: flex;
+			justify-content: center;
+		}
+		.unesco div {
+			max-width: 1200px;
+			width: 100%;
+			padding: 10px 30px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.unesco div a {
+			height: 40px;
+			transition: opacity .2s;
+			display: flex;
+			align-items: center;
+		}
+		.unesco div a:hover {
+			opacity: .8;
+		}
+		.unesco div a:active {
+			opacity: .5;
+		}
+		.unesco div img {
+			height: 25px;
+		}
+		.unesco div p {
+			font-weight: 400;
+			letter-spacing: .1em;
+			font-size: 14px;
+		}
+		.unesco div p strong {
+			font-weight: 600;
+		}
+		.header-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		header {
+			max-width: 1200px;
+			width: 100%;
+		}
+		nav {
+			padding: 30px;
+			font-size: 24px;
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			line-height: 1em;
+		}
+		.nav-links {
+			list-style: none;
+			display: flex;
+			gap: 20px;
+			letter-spacing: -.05em;
+		}
+		.nav-links li a {
+			text-decoration: none;
+			color: var(--black);
+			opacity: .8;
+			font-variation-settings: "shll" 0;
+			transition: opacity .2s, color .2s, font-variation-settings .2s;
+			font-weight: 300;
+		}
+		.nav-links li a:hover {
+			opacity: 1;
+			font-variation-settings: "shll" 100;
+		}
+		.nav-links li a:active {
+			opacity: .5;
+		}
+		#nav1:hover {
+			color: var(--green-light);
+		}
+		#nav2:hover {
+			color: var(--sky-light);
+		}
+		#nav3:hover {
+			color: var(--orange-light);
+		}
+		#nav4:hover {
+			color: var(--pink-light);
+		}
+		#nav5:hover {
+			color: var(--red-light);
+		}
+		#nav6:hover {
+			color: var(--blue-light);
+		}
+		#logo {
+			font-size: 42px;
+			letter-spacing: -.08em;
+			color: var(--black);
+			text-decoration: none;
+			font-weight: 500;
+			transition: opacity .2s;
+			font-variation-settings: "shll" 100;
+		}
+		#logo1 {
+			transition: font-variation-settings .2s;
+		} 
+		#logo2 {
+			transition: font-variation-settings .4s;
+		} 
+		#logo3 {
+			transition: font-variation-settings .6s;
+		} 
+		#logo4 {
+			transition: font-variation-settings .8s;
+		} 
+		#logo5 {
+			transition: font-variation-settings 1s;
+		} 
+		#logo6 {
+			transition: font-variation-settings 1.2s;
+		} 
+		#logo7 {
+			transition: font-variation-settings 1.4s;
+		} 
+		#logo8 {
+			transition: font-variation-settings 1.6s;
+		} 
+		#logo:hover > *{
+			font-variation-settings: "shll" 0;
+		}
+		#logo:hover {
+			color: var(--black);
+		}
+		#logo:active {
+			opacity: .5;
+		}
+
+		.container {
+			background: var(--white);
+		}
+		.slogan {
+			font-weight: 500;
+			letter-spacing: -.05em;
+			font-size: 96px;
+			line-height: 1em;
+			padding: 30px;
+			margin-top: 80px;
+		}
+		.slogan-line {
+			display: inline-block;
+			overflow: hidden;
+			position: relative;
+			height: 1.5em;
+			margin-bottom: -.6em;
+		}
+		#slogan1 > span {
+			position: relative;
+			top: 2em;
+			animation: sloganLineIn 1s forwards;
+		}
+		#slogan2 > span {
+			position: relative;
+			top: 2em;
+			animation: sloganLineIn 1s .4s forwards;
+		}
+		#slogan3 > span {
+			position: relative;
+			top: 2em;
+			animation: sloganLineIn 1s .8s forwards;
+		}
+		@keyframes sloganLineIn {
+			from {
+				top: 2em;
+			}
+			to {
+				top: 0;
+			}
+		}
+		.slogan-highlight {
+			animation: sloganHighlight 1s 1.8s forwards;
+		}
+		@keyframes sloganHighlight {
+			from {
+				font-variation-settings: "shll" 0;
+			}
+			to {
+				font-variation-settings: "shll" 100;
+				color: var(--green-light);
+			}
+		}
+
+		/* CONTENT */
+		.grid-container {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.grid {
+			display: grid;
+			max-width: 1200px;
+			width: 100%;
+			grid-template-columns: 1fr 1fr;
+			box-shadow: -10px 0 40px rgba(0,0,0,.1), 10px 0 40px rgba(0,0,0,.1);
+		}
+		.grid div {
+			aspect-ratio: 1;
+			position: relative;
+		}
+		.cell-txt {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 30px;
+			overflow: hidden;
+		}
+		.cell-txt h2 {
+			font-size: 40px;
+			max-width: 80%;
+			font-weight: 350;
+			letter-spacing: -.05em;
+		}
+		.cell-txt p {
+			max-width: 80%;
+		}
+		.cta {
+			display: inline-block;
+			background: var(--white);
+			font-weight: 400;
+			letter-spacing: -.03em;
+			padding: 10px;
+			margin-top: 20px;
+			color: var(--black);
+			text-decoration: none;
+			transition: background .2s, color .2s, opacity .2s;
+		}
+		.cta:hover {
+			color: var(--white);
+			background: var(--black);
+		}
+		.cta:active {
+			opacity: .5;
+		}
+		.img-right {
+			position: absolute;
+			right: 0;
+			height: 100%;
+			z-index: 99;
+			pointer-events: none;
+		}
+		.img-left {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			z-index: 99;
+			pointer-events: none;
+		}
+		.img-mobile {
+			display: none;
+		}
+
+		/* FOOTER */
+		.footer-container {
+			background: var(--black);
+			display: flex;
+			justify-content: center;
+			color: var(--white);
+		}
+		footer {
+			width: 100%;
+			max-width: 1200px;
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr;
+			padding: 60px 30px;
+		}
+		footer ul {
+			list-style: none;
+		}
+		footer a {
+			color: var(--white);
+			text-decoration: none;
+			transition: opacity .2s;
+		}
+		footer a:hover {
+			opacity: .8;
+		}
+		footer a:active {
+			opacity: .5;
+		}
+
+		/* MOBILE STYLES */
+		@media only screen and (max-width: 1100px) {
+			body {
+				font-size: 16px;
+			}
+			.slogan {
+				font-size: 48px;
+			}
+			.cell-txt h2 {
+				font-size: 24px;
+			}
+			#logo {
+				font-size: 30px;
+			}
+			nav {
+				font-size: 18px;
+			}
+		}
+		@media only screen and (max-width: 800px) {
+			#logo {
+				font-size: 30px;
+			}
+			nav {
+				font-size: 18px;
+				gap: 20px;
+				flex-direction: column;
+			}
+			.nav-links {
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+			.grid {
+				grid-template-columns: 1fr;
+			}
+			.grid div {
+				aspect-ratio: unset;
+			}
+			body {
+				font-size: 24px;
+			}
+			.cell-txt h2 {
+				font-size: 48px;
+				margin-bottom: 20px;
+			}
+			.grid-flip {
+				order: -1;
+			}
+			footer {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+			.img-desktop {
+				display: none;
+			}
+			.img-mobile {
+				display: block;
+				position: static;
+				width: 100%;
+			}
+			.slogan {
+				margin-top: 20px;
+			}
+		}
+		@media only screen and (max-width: 600px) {
+			.slogan {
+				font-size: 42px;
+			}
+			.grid {
+				grid-template-columns: 1fr;
+			}
+			body {
+				font-size: 18px;
+			}
+			.cell-txt h2 {
+				font-size: 24px;
+			}
+			.unesco div {
+				gap: 10px;
+			}
+			.unesco div img {
+				height: 20px;
+			}
+			.unesco div p {
+				font-size: 10px;
+			}
+		}
+
+		/* VIEWPORT ANIMATIONS */
+		[data-inviewport="txt-in-left"] { 
+			transition: transform 1s;
+			transform: translateX(-50%);
+		}
+		[data-inviewport="txt-in-left"].is-inViewport {
+			transform: translateX(0%);
+		}
+		[data-inviewport="txt-in-right"] { 
+			transition: transform 1s;
+			transform: translateX(-50%);
+		}
+		[data-inviewport="txt-in-right"].is-inViewport {
+			transform: translateX(0%);
+		}
+
+	</style>
+</head>
+<body id="top">
+	<div class="unesco">
+		<div>
+			<a href="https://www.unesco.org/en" target="_blank"><img src="assets/imgs/unesco.svg"></a>
+			<p>WORLD HERITAGE SITE: <strong>ECUADOR</strong></p>
+		</div>
+	</div>
+	<div class="header-container">
+		<header>
+			<nav>
+				<a id="logo" href="https://whc.unesco.org/en/list/1/" target="_blank">
+					G<span id="logo1">a</span>l<span id="logo2">á</span><span id="logo3">p</span><span id="logo4">a</span><span id="logo5">g</span><span id="logo6">o</span>s Isl<span id="logo7">a</span>n<span id="logo8">d</span>s
+				</a>
+				<ul class="nav-links">
+					<li><a href="#maps" id="nav1">Maps</a></li>
+					<li><a href="#documents" id="nav2">Documents</a></li>
+					<li><a href="#gallery" id="nav3">Gallery</a></li>
+					<li><a href="#description" id="nav4">Description</a></li>
+					<li><a href="#threats" id="nav5">Threats</a></li>
+					<li><a href="#visit" id="nav6">Visit</a></li>
+				</ul>
+			</nav>
+			<h1 class="slogan">
+				<span id="slogan1" class="slogan-line"><span>A living museum</span></span><br>
+				<span id="slogan2" class="slogan-line"><span>and showcase</span></span><br
+				><span id="slogan3" class="slogan-line"><span>of <span class="slogan-highlight">evolution</span></span></span></h1>
+		</header>
+	</div>
+	<section id="maps" class="grid-container" style="background: var(--green-dark);">
+		<div class="grid">
+			<div><img src="assets/imgs/tortoise.jpg" class="img-left img-desktop"><img src="assets/imgs/tortoise.jpg" class="img-left img-mobile"></div>
+			<div class="cell-txt" style="background: var(--green-light);">
+				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
+					Three ocean currents make the Galápagos one of the richest marine ecosystems in the world.
+				</h2>
+				<p style="color:var(--green-dark);" data-inviewport="txt-in-right">
+					The Galapagos Islands area situated in the Pacific Ocean some 1,000 km from the Ecuadorian coast. Ongoing seismic and volcanic activity reflects the processes that formed the islands.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Navigate the Maps</a>
+				</p>
+			</div>
+		</div>
+	</section>
+	<section id="documents" class="grid-container" style="background: var(--sky-dark);">
+		<div class="grid">
+			<div class="cell-txt" style="background:var(--sky-light);">
+				<h2 style="color:var(--white);"  data-inviewport="txt-in-left">
+					Ongoing seismic and volcanic activity reflects the processes that formed the islands.
+				</h2>
+				<p style="color:var(--sky-dark);"  data-inviewport="txt-in-left">
+					The Galapagos Islands area situated in the Pacific Ocean some 1,000 km from the Ecuadorian coast. Its geographical location at the confluence of three ocean currents makes it one of the richest marine ecosystems in the world. Ongoing seismic and volcanic activity reflects the processes that formed the islands.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Look Through the Documents</a>
+				</p>
+			</div>
+			<div class="grid-flip"><img src="assets/imgs/booby.png" class="img-right img-desktop"><img src="assets/imgs/booby-mobile.jpg" class="img-right img-mobile"></div>
+		</div>
+	</section>
+	<section id="gallery" class="grid-container" style="background: var(--orange-dark);">
+		<div class="grid">
+			<div><img src="assets/imgs/iguana.png" class="img-left img-desktop"><img src="assets/imgs/iguana-mobile.jpg" class="img-left img-mobile"></div>
+			<div class="cell-txt" style="background: var(--orange-light);">
+				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
+					More unique life than you can imagine.
+				</h2>
+				<p style="color:var(--orange-dark);" data-inviewport="txt-in-right">
+					The islands have relatively high species diversity for such young oceanic islands and contain emblematic creatures such as giant tortoises and land iguanas.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">View the Gallery</a>
+				</p>
+			</div>
+		</div>
+	</section>
+	<section id="description" class="grid-container" style="background: var(--pink-dark);">
+		<div class="grid">
+			<div class="cell-txt" style="background:var(--pink-light);">
+				<h2 style="color:var(--white);" data-inviewport="txt-in-left">
+					The inspiration for Charles Darwin’s theory of evolution.
+				</h2>
+				<p style="color:var(--pink-dark);" data-inviewport="txt-in-left">
+					The Islands’ location, together with the extreme isolation of the islands, led to the development of unusual plant and animal life – such as marine iguanas, flightless cormorants, giant tortoises, huge cacti, endemic trees and the many different subspecies of mockingbirds and finches – all of which inspired Charles Darwin’s theory of evolution by natural selection following his visit in 1835.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Read More about the Islands</a>
+				</p>
+			</div>
+			<div class="grid-flip"><img src="assets/imgs/flamingo.png" class="img-right img-desktop"><img src="assets/imgs/flamingo-mobile.jpg" class="img-right img-mobile"></div>
+		</div>
+	</section>
+	<section id="threats" class="grid-container" style="background: var(--red-dark);">
+		<div class="grid">
+			<div><img src="assets/imgs/frigate.png" class="img-left img-desktop"><img src="assets/imgs/frigate-mobile.jpg" class="img-left img-mobile"></div>
+			<div class="cell-txt" style="background: var(--red-light);">
+				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
+					We fight to keep the Islands alive.
+				</h2>
+				<p style="color:var(--red-dark);" data-inviewport="txt-in-right">
+					 The main threats to the Galapagos are the introduction of invasive species, increased tourism, demographic growth, illegal fishing and governance issues. We monitor and minimize these threats daily.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Learn How You Can Help</a>
+				</p>
+			</div>
+		</div>
+	</section>
+	<section id="visit" class="grid-container" style="background: var(--blue-dark);">
+		<div class="grid">
+			<div class="cell-txt" style="background:var(--blue-light);">
+				<h2 style="color:var(--white);" data-inviewport="txt-in-left">
+					Experience a world unlike any you’ve seen before.
+				</h2>
+				<p style="color:var(--blue-dark);" data-inviewport="txt-in-left">
+					No other site in the world can offer the experience of diving with such a diversity of marine life forms that are so familiar with human beings, that they accompany divers frequently.
+					<br>
+					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Make a Trip</a>
+				</p>
+			</div>
+			<div class="grid-flip"><img src="assets/imgs/sealion.png" class="img-right img-desktop"><img src="assets/imgs/sealion-mobile.jpg" class="img-right img-mobile"></div>
+		</div>
+	</section>
+	<div class="footer-container">
+		<footer>
+			<div>
+				<a id="logo" href="#top" style="color:var(--white);line-height:.8em;">
+					G<span id="logo1">a</span>l<span id="logo2">á</span><span id="logo3">p</span><span id="logo4">a</span><span id="logo5">g</span><span id="logo6">o</span>s<br>Isl<span id="logo7">a</span>n<span id="logo8">d</span>s
+				</a>
+			</div>
+			<ul>
+				<li><a href="#maps">Maps</a></li>
+				<li><a href="#documents">Documents</a></li>
+				<li><a href="#gallery">Gallery</a></li>
+				<li><a href="#description">Description</a></li>
+				<li><a href="#threats">Threats</a></li>
+				<li><a href="#visit">Visit</a></li>
+			</ul>
+			<div style="opacity: .5">
+				Design + Code: Gabriel&nbsp;Drozdov
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		const elements = document.querySelectorAll('[data-inviewport]');
+		const callback = str => { console.log(str); };
+		const observer = new IntersectionObserver(handleIntersection);
+
+		elements.forEach(obs => {
+			observer.observe(obs);
+		});
+
+		function handleIntersection(entries, observer){
+			entries.forEach(entry => {
+				if (entry.intersectionRatio > 0) {
+					callback('observer-' + entry.target.getAttribute('data-observable')); 
+					entry.target.classList.toggle("is-inViewport", entry.isIntersecting);
+					observer.unobserve(entry.target);
+				}
+			});
+		}		
+	</script>
+</body>
+</html>
