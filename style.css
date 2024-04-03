@@ -75,6 +75,12 @@
 	font-style: normal;
 }
 @font-face {
+	font-family: "Avara Burst";
+	src: url("/fonts/avara-burst/variable/TMT-AvaraBurstVF.ttf") format("truetype"),
+		 url("/fonts/avara-burst/variable/TMT-AvaraBurstVF.woff") format("woff"),
+		 url("/fonts/avara-burst/variable/TMT-AvaraBurstVF.woff2") format('woff2');
+}
+@font-face {
 	font-family: "Work Sans Galapagos";
 	src: url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.ttf") format("truetype"),
 		 url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.woff") format("woff"),
@@ -609,6 +615,26 @@ body[data-color-mode="1"] * {
 	}
 	100% {
 		font-variation-settings: 'XAXI' 0, 'YAXI' 0;
+	}
+}
+.menu-typeface[data-font='Avara Burst'] .menu-typeface-preview {
+	font-family: 'Avara Burst';
+	font-variation-settings: 'BRST' 0;
+	animation: menu-avaraburst 1s infinite ease-in-out alternate;
+	padding-top: .65em;
+}
+@keyframes menu-avaraburst {
+	0% {
+		font-variation-settings: 'BRST' 0;
+	}
+	17% {
+		font-variation-settings: 'BRST' 1;
+	}
+	34% {
+		font-variation-settings: 'BRST' 0;
+	}
+	100% {
+		font-variation-settings: 'BRST' 3;
 	}
 }
 .menu-typeface[data-font='Work Sans Galapagos'] .menu-typeface-preview {

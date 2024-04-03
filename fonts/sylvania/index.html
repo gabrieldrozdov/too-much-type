@@ -31,8 +31,10 @@
 			display: block;
 		}
 		body {
-			transition: background-color .5s;
 			background-color: black;
+			background-image: url('/assets/ui/checkerboard-round.svg');
+			background-size: 8px 8px;
+			background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
 		}
 		.container {
 			height: 100dvh;
@@ -52,9 +54,8 @@
 			column-gap: var(--tracking);
 			row-gap: var(--leading);
 			min-height: 100dvh;
-			padding: 100px 1vw 160px 1vw;
+			padding: 100px 1vw 220px 1vw;
 			position: relative;
-			cursor: text;
 			mix-blend-mode: lighten;
 		}
 		.content div {
@@ -69,47 +70,84 @@
 		.space {
 			width: calc(var(--size) / 1.5);
 		}
+		.line-break {
+			width: 100%;
+			height: 0 !important;
+		}
 
 		/* Controls */
 		.controls {
 			position: fixed;
 			bottom: 0;
 			left: 50%;
+			height: 120px;
+			display: flex;
+			flex-direction: column;
+			transform: translateX(-50%);
+			align-items: center;
+		}
+		.controls > * {
+			flex-shrink: 0;
+		}
+		.controls-input {
+			resize: none;
+			display: flex;
+			width: 100%;
+			max-width: 100vw;
+			align-items: center;
 			height: 60px;
+			gap: 10px;
+			padding: 22px 20px 18px 20px;
+			background-color: white;
+			border: 1px solid white;
+			border-bottom: unset;
+			background-color: black;
+			color: white;
+			text-align: center;
+			font-family: "Limkin Pixel", sans-serif;
+			line-height: 1em;
+			font-size: 18px;
+		}
+		.controls-input::placeholder {
+			color: white;
+			opacity: .5;
+		}
+		.controls-input:focus {
+			outline: unset;
+		}
+		.controls-buttons {
 			display: flex;
 			max-width: 100vw;
-			transform: translateX(-50%);
 			align-items: center;
 			gap: 10px;
 			padding: 10px 20px;
 			overflow-x: scroll;
-			transition: background-color .2s;
 			background-color: white;
 		}
-		.controls * {
+		.controls-buttons * {
 			flex-shrink: 0;
 		}
-		.controls button {
+		.controls-buttons button {
 			border: unset;
 			background-color: unset;
 			cursor: pointer;
 			outline: unset;
 		}
-		.controls button svg {
+		.controls-buttons button svg {
 			height: 40px;
 			width: 40px;
-			fill: #191919;
+			fill: black;
 		}
-		.controls button svg:hover {
+		.controls-buttons button svg:hover {
 			opacity: .8;
 		}
-		.controls button svg:active {
+		.controls-buttons button svg:active {
 			opacity: .5;
 		}
-		.controls-divider {
+		.controls-buttons-divider {
 			width: 1px;
 			height: 100%;
-			background-color: #191919;
+			background-color: black;
 			margin: 0 10px;
 		}
 		
@@ -127,7 +165,7 @@
 			width: 40px;
 			height: 40px;
 			fill: white;
-			background-color: #191919;
+			background-color: black;
 			border: unset;
 			outline: unset;
 			cursor: pointer;
@@ -135,7 +173,7 @@
 			padding: 4px;
 		}
 		.nav-link:hover {
-			fill: #191919;
+			fill: black;
 			background-color: white;
 		}
 		.nav-link:active {
@@ -151,7 +189,7 @@
 			max-height: calc(100% - 40px);
 			margin: 20px;
 			background-color: white;
-			color: #191919;
+			color: black;
 			font-family: "Limkin Pixel", sans-serif;
 			font-variation-settings: "wght" 400;
 			letter-spacing: .02em;
@@ -164,9 +202,10 @@
 			font-size: 16px;
 			text-wrap: pretty;
 			line-height: 1.3em;
+			box-shadow: 0 0 10px rgba(0,0,0,.5);
 		}
 		.info a {
-			color: #191919;
+			color: black;
 		}
 		.info a:hover {
 			text-decoration: none;
@@ -184,9 +223,9 @@
 			height: 24px;
 			padding: 2px;
 			margin-left: auto;
-			background-color: #191919;
+			background-color: black;
 			fill: white;
-			border: 1px solid #191919;
+			border: 1px solid black;
 			cursor: pointer;
 		}
 		.info-close svg {
@@ -195,7 +234,7 @@
 		}
 		.info-close:hover {
 			background-color: white;
-			fill: #191919;
+			fill: black;
 		}
 		.info-close:active {
 			opacity: .5;
@@ -233,50 +272,63 @@
 	<!-- HTML -->
 	<div class="container">
 		<!-- Text area (populated by JavaScript) -->
-		<main class="content" onclick="this.focus();"></main>
+		<main class="content"></main>
 
 		<!-- Controls -->
 		<div class="controls">
-			<button onclick="align('start')">
-				<svg viewBox="0 0 100 100"><path d="M90,35H10v-10h80v10ZM90,45H10v10h80v-10ZM50,65H10v10h40v-10Z"/></svg>
-			</button>
-			<button onclick="align('center')">
-				<svg viewBox="0 0 100 100"><path d="M30,25h40v10H30v-10ZM10,55h80v-10H10v10ZM30,75h40v-10H30v10Z"/></svg>
-			</button>
-			<button onclick="align('end')">
-				<svg viewBox="0 0 100 100"><path d="M10,25h80v10H10v-10ZM10,55h80v-10H10v10ZM50,75h40v-10h-40v10Z"/></svg>
-			</button>
-			<div class="controls-divider"></div>
-			<button onclick="changeLeading(-1)">
-				<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM60,45v10h30v-10h-30Z"/></svg>
-			</button>
-			<button onclick="changeLeading(1)">
-				<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
-			</button>
+			<textarea class="controls-input" type="text" name="input" placeholder="Type here!"></textarea>
 
-			<div class="controls-divider"></div>
-
-			<button onclick="changeTracking(-.2)">
-				<svg viewBox="0 0 100 100"><path d="M75,55v10h-10v-10h-10v-10h10v-10h10v10h20v10h-20ZM15,25v10h10v-10h-10ZM85,75v-10h-10v10h10ZM15,75h10v-10h-10v10ZM35,35h-10v10H5v10h20v10h10v-10h10v-10h-10v-10ZM85,25h-10v10h10v-10Z"/></svg>
-			</button>
-			<button onclick="changeTracking(.2)">
-				<svg viewBox="0 0 100 100"><path d="M95,45v10h-10v10h-10v-10h-20v-10h20v-10h10v10h10ZM65,25v10h10v-10h-10ZM65,75h10v-10h-10v10ZM35,25h-10v10h10v-10ZM25,35h-10v10H5v10h10v10h10v-10h20v-10h-20v-10ZM35,75v-10h-10v10h10Z"/></svg>
-			</button>
-
-			<div class="controls-divider"></div>
-
-			<button onclick="changeFontSize(-1)">
-				<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM60,45v10h30v-10h-30Z"/></svg>
-			</button>
-			<button onclick="changeFontSize(1)">
-				<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
-			</button>
-
-			<div class="controls-divider"></div>
-
-			<button onclick="clearAll()">
-				<svg viewBox="0 0 100 100"><path d="M55,55h-10v-10h10v10ZM55,65h10v-10h-10v10ZM65,75h10v-10h-10v10ZM55,45h10v-10h-10v10ZM65,35h10v-10h-10v10ZM45,55h-10v10h10v-10ZM35,65h-10v10h10v-10ZM45,35h-10v10h10v-10ZM35,25h-10v10h10v-10Z"/></svg>
-			</button>
+			<div class="controls-buttons">
+				<button onclick="align('start')" title="Align left">
+					<svg viewBox="0 0 100 100"><path d="M90,35H10v-10h80v10ZM90,45H10v10h80v-10ZM50,65H10v10h40v-10Z"/></svg>
+				</button>
+				<button onclick="align('center')" title="Align center">
+					<svg viewBox="0 0 100 100"><path d="M30,25h40v10H30v-10ZM10,55h80v-10H10v10ZM30,75h40v-10H30v10Z"/></svg>
+				</button>
+				<button onclick="align('end')" title="Align right">
+					<svg viewBox="0 0 100 100"><path d="M10,25h80v10H10v-10ZM10,55h80v-10H10v10ZM50,75h40v-10h-40v10Z"/></svg>
+				</button>
+				<div class="controls-buttons-divider"></div>
+				<button onclick="changeLeading(-1)" title="Decrease line height">
+					<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM60,45v10h30v-10h-30Z"/></svg>
+				</button>
+				<button onclick="changeLeading(1)" title="Increase line height">
+					<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+				</button>
+	
+				<div class="controls-buttons-divider"></div>
+	
+				<button onclick="changeTracking(-.2)" title="Decrease letter spacing">
+					<svg viewBox="0 0 100 100"><path d="M75,55v10h-10v-10h-10v-10h10v-10h10v10h20v10h-20ZM15,25v10h10v-10h-10ZM85,75v-10h-10v10h10ZM15,75h10v-10h-10v10ZM35,35h-10v10H5v10h20v10h10v-10h10v-10h-10v-10ZM85,25h-10v10h10v-10Z"/></svg>
+				</button>
+				<button onclick="changeTracking(.2)" title="Increase letter spacing">
+					<svg viewBox="0 0 100 100"><path d="M95,45v10h-10v10h-10v-10h-20v-10h20v-10h10v10h10ZM65,25v10h10v-10h-10ZM65,75h10v-10h-10v10ZM35,25h-10v10h10v-10ZM25,35h-10v10H5v10h10v10h10v-10h20v-10h-20v-10ZM35,75v-10h-10v10h10Z"/></svg>
+				</button>
+	
+				<div class="controls-buttons-divider"></div>
+	
+				<button onclick="changeFontSize(-1)" title="Decrease font size">
+					<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM60,45v10h30v-10h-30Z"/></svg>
+				</button>
+				<button onclick="changeFontSize(1)" title="Increase font size">
+					<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+				</button>
+	
+				<div class="controls-buttons-divider"></div>
+	
+				<button onclick="pauseVideos()" title="Pause videos">
+					<svg viewBox="0 0 100 100"><path d="M45,75h-10V25h10v50ZM65,25h-10v50h10V25Z"/></svg>
+				</button>
+				<button onclick="playVideos()" title="Play videos">
+					<svg viewBox="0 0 100 100"><path d="M65,45v10h-10v10h-10v10h-10V25h10v10h10v10h10Z"/></svg>
+				</button>
+	
+				<div class="controls-buttons-divider"></div>
+	
+				<button onclick="clearAllAndRestart()" title="Clear all">
+					<svg viewBox="0 0 100 100"><path d="M55,55h-10v-10h10v10ZM55,65h10v-10h-10v10ZM65,75h10v-10h-10v10ZM55,45h10v-10h-10v10ZM65,35h10v-10h-10v10ZM45,55h-10v10h10v-10ZM35,65h-10v10h10v-10ZM45,35h-10v10h10v-10ZM35,25h-10v10h10v-10Z"/></svg>
+				</button>
+			</div>
 		</div>
 
 		<nav class="nav">
@@ -316,10 +368,9 @@
 	<!-- JavaScript -->
 	<script>
 		// Target elements
-		const body = document.querySelector('body');
 		const container = document.querySelector('.container');
 		const content = document.querySelector('.content');
-		const controls = document.querySelector('.controls');
+		const input = document.querySelector('.controls-input');
 
 		// Controls
 		let leading = .5;
@@ -360,6 +411,27 @@
 				letter.remove();
 			}
 		}
+		function clearAllAndRestart() {
+			input.value = "";
+			for (let letter of content.querySelectorAll('div')) {
+				letter.remove();
+			}
+		}
+
+		// Pause and play videos
+		let playState = true;
+		function pauseVideos() {
+			playState = false;
+			for (let video of content.querySelectorAll('video')) {
+				video.pause();
+			}
+		}
+		function playVideos() {
+			playState = true;
+			for (let video of content.querySelectorAll('video')) {
+				video.play();
+			}
+		}
 
 		// Toggle brightness filter
 		let filter = false;
@@ -387,43 +459,52 @@
 		}
 
 		// Detect user input
-		let initialized = false;
-		document.addEventListener('keydown', (e) => {
-			// Remove placeholder text at the start
-			if (initialized == false) {
-				clearAll();
-				initialized = true;
-			}
+		input.addEventListener('input', () => {
+			clearAll();
 
-			// Prevent accidental button retriggers
-			if (e.key == " " || e.key == "Enter") {
-				e.preventDefault();
+			// Scrub input to only allow certain characters
+			let fixedInput = "";
+			for (let character of input.value) {
+				if (!letters.includes(character.toLowerCase()) && character != " " && character != "\n") {
+					continue
+				}
+				fixedInput += character.toLowerCase();
 			}
+			input.value = fixedInput;
 
-			const input = e.key.toLowerCase();
-			handleInput(input);
+			// Generate letters
+			handleInput(fixedInput);
 		});
 
 		// Main function for handling user input
 		function handleInput(input) {
-			console.log(input);
+			for (let character of input) {
+				if (validInputs.includes(character)) {
+					// Add new letter as video to DOM
+					let newLetter = document.createElement('div');
+					newLetter.innerHTML = `<video loop muted><source src="specimen-assets/${character}.mp4"></video>`;
+					content.appendChild(newLetter);
+					
+				} else if (character == " ") {
+					// Add space element
+					let space = document.createElement('div');
+					space.classList.add('space');
+					content.appendChild(space);
 
-			if (validInputs.includes(input)) {
-				// Add new letter as SVG to DOM
-				let newLetter = document.createElement('div');
-				newLetter.innerHTML = `<video loop muted autoplay><source src="specimen-assets/${input}.mp4"></video>`;
-				content.appendChild(newLetter);
-				
-			} else if (input == " ") {
-				// Add space element
-				let space = document.createElement('div');
-				space.classList.add('space');
-				content.appendChild(space);
+				} else if (character == "\n") {
+					// Add line break element
+					let lineBreak = document.createElement('div');
+					lineBreak.classList.add('line-break');
+					content.appendChild(lineBreak);
 
-			} else if (input == "backspace" && content.childNodes.length > 0) {
-				// Remove most recently typed letter
-				content.childNodes[content.childNodes.length-1].remove();
+				}
+			}
 
+			// Play videos if playState is true
+			if (playState) {
+				for (let video of content.querySelectorAll('video')) {
+					video.play();
+				}
 			}
 
 			// Scroll to most recently typed letter
@@ -437,10 +518,11 @@
 		// Intro text when page loads
 		let introTextOptions = [
 			"sylvania",
-			"back in time",
+			"back in\ntime",
 			"crt screens",
 			"video games",
 			"toomuchtype",
+			"bad signal",
 			"abcdefghijklmnopqrstuvwxyz",
 			"0123456789",
 		]

@@ -202,19 +202,19 @@ let fontInfo = {
 			}
 		}
 	},
-	// 'Avara Burst': {
-	// 	'download': '/fonts/avara-burst/TMT-AvaraBurst.zip',
-	// 	'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-	// 	'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
-	// 	'variation': {
-	// 		'Burst': {
-	// 			'code': 'BRST',
-	// 			'min': 0,
-	// 			'max': 100,
-	// 			'default': 0
-	// 		}
-	// 	}
-	// },
+	'Avara Burst': {
+		'download': '/fonts/avara-burst/TMT-AvaraBurst.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'variation': {
+			'Burst': {
+				'code': 'BRST',
+				'min': 0,
+				'max': 100,
+				'default': 0
+			}
+		}
+	},
 	// 'FT88 RISD': {
 	// 	'download': '/fonts/ft88-risd/TMT-FT88RISD.zip',
 	// 	'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
