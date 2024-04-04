@@ -107,7 +107,7 @@
 		}
 		.header-line span {
 			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
-			border-radius: 50px;
+			border-radius: .3em;
 			background-color: white;
 			padding: 20px;
 			margin: 5px;
@@ -327,7 +327,7 @@
 			color: white;
 			background-color: #a3a4a5;
 			border: 2px solid white;
-			font-size: 8vw;
+			font-size: 10vw !important;
 			line-height: 1em;
 			padding: 80px 40px 80px 40px;
 			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
@@ -356,6 +356,8 @@
 		footer p {
 			max-width: 500px;
 			width: 100%;
+			font-size: 18px;
+			line-height: 1.4em;
 		}
 		footer a {
 			color: #a3a4a5;
@@ -454,7 +456,8 @@
 				font-size: 10vw;
 			}
 			.header-line span {
-				border-radius: .3em;
+				margin: 2px;
+				height: 1.5em;
 				padding: 10px 10px 8px 10px;
 			}
 			.overview-line {
@@ -640,8 +643,8 @@
 		const letterGlyph = document.querySelector(".letter-glyph");
 		letter.addEventListener("mousemove", (e) => {
 			var rect = e.target.getBoundingClientRect();
-			var x = e.clientX - rect.left; // x position within the element.
-			var y = e.clientY - rect.top;  // y position within the element.
+			var x = e.clientX - rect.left; // x position within the element
+			var y = e.clientY - rect.top;  // y position within the element
 
 			let cursorX = e.pageX / letter.offsetWidth;
 			let cursorY = y / letter.offsetHeight;
