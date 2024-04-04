@@ -1647,6 +1647,13 @@ function openSettings() {
 	settingsBtn.dataset.active = 1;
 }
 
+// Close settings when buttons pressed on mobile
+function detectCloseSettings() {
+	if (window.innerWidth < 800) {
+		closeSettings();
+	}
+}
+
 // Close settings if clicked anywhere else
 window.addEventListener('mousedown', (e) => {
 	const settings = document.querySelector('.settings');
