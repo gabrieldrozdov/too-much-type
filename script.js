@@ -272,10 +272,20 @@ for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
 // Stores all active windows
 let windows = new Map();
 let windowData = {
+	'Mini Mochi': {
+		'icon': `<svg viewBox="0 0 100 100"><polygon points="90 20 90 80 80 80 80 90 70 90 70 40 60 40 60 90 40 90 40 40 30 40 30 90 20 90 20 80 10 80 10 20 20 20 20 10 40 10 40 20 60 20 60 10 80 10 80 20 90 20"/></svg>`,
+		'title': 'Mini Mochi',
+		'file': '/fonts/mini-mochi/'
+	},
 	'Music Box': {
-		'icon': `<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>`,
+		'icon': `<svg viewBox="0 0 100 100"><path d="m80,20v30h-10V10H10v80h60v-30h20V20h-10Zm-20,60H20V20h40v60Z"/><polygon points="50 30 50 70 30 70 30 50 40 50 40 30 50 30"/></svg>`,
 		'title': 'Music Box',
 		'file': '/fonts/music-box/'
+	},
+	'Work Sans Galapagos': {
+		'icon': `<svg viewBox="0 0 100 100"><polygon points="90 40 90 70 80 70 80 80 60 80 60 70 40 70 40 80 20 80 20 70 10 70 10 40 20 40 20 30 30 30 30 20 70 20 70 30 80 30 80 40 90 40"/></svg>`,
+		'title': 'Work Sans Galápagos',
+		'file': '/fonts/work-sans-galapagos/'
 	},
 	'Fun Font': {
 		'icon': `<svg viewBox="0 0 100 100"><path d="M30,90H10v-20h20v20ZM50,50h-20v20h20v-20ZM70,30h-20v20h20v-20ZM90,50h-20v20h20v-20ZM30,30H10v20h20v-20ZM50,10h-20v20h20V10ZM70,70h-20v20h20v-20ZM90,10h-20v20h20V10Z"/></svg>`,
@@ -929,15 +939,15 @@ class pseudoWindow {
 			if (dir == 'topleft') {
 				this.posX = posX;
 				this.dimX += rect.left - posX;
-				if (this.dimX < 300) {
-					this.dimX = 300;
-					this.posX = rect.right - 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
+					this.posX = rect.right - 350;
 				}
 				this.posY = posY;
 				this.dimY += rect.top - posY;
-				if (this.dimY < 300) {
-					this.dimY = 300;
-					this.posY = rect.bottom - 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
+					this.posY = rect.bottom - 350;
 				}
 				if (this.posY < screenTop) {
 					this.posY = screenTop;
@@ -951,9 +961,9 @@ class pseudoWindow {
 			} else if (dir == 'top') {
 				this.posY = posY;
 				this.dimY += rect.top - posY;
-				if (this.dimY < 300) {
-					this.dimY = 300;
-					this.posY = rect.bottom - 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
+					this.posY = rect.bottom - 350;
 				}
 				if (this.posY < screenTop) {
 					this.posY = screenTop;
@@ -962,8 +972,8 @@ class pseudoWindow {
 
 			} else if (dir == 'topright') {
 				this.dimX += posX - rect.right;
-				if (this.dimX < 300) {
-					this.dimX = 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
 				}
 				if (this.dimX + this.posX > window.innerWidth) {
 					this.posX = rect.left;
@@ -971,9 +981,9 @@ class pseudoWindow {
 				}
 				this.posY = posY;
 				this.dimY += rect.top - posY;
-				if (this.dimY < 300) {
-					this.dimY = 300;
-					this.posY = rect.bottom - 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
+					this.posY = rect.bottom - 350;
 				}
 				if (this.posY < screenTop) {
 					this.posY = screenTop;
@@ -986,8 +996,8 @@ class pseudoWindow {
 
 			} else if (dir == 'right') {
 				this.dimX += posX - rect.right;
-				if (this.dimX < 300) {
-					this.dimX = 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
 				}
 				if (this.dimX + this.posX > screenRight) {
 					this.posX = rect.left;
@@ -996,12 +1006,12 @@ class pseudoWindow {
 
 			} else if (dir == 'bottomright') {
 				this.dimX += posX - rect.right;
-				if (this.dimX < 300) {
-					this.dimX = 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
 				}
 				this.dimY += posY - rect.bottom;
-				if (this.dimY < 300) {
-					this.dimY = 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
 				}
 				if (this.posY + this.dimY > screenBottom) {
 					this.posY = rect.top;
@@ -1014,8 +1024,8 @@ class pseudoWindow {
 
 			} else if (dir == 'bottom') {
 				this.dimY += posY - rect.bottom;
-				if (this.dimY < 300) {
-					this.dimY = 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
 				}
 				if (this.posY + this.dimY > screenBottom) {
 					this.posY = rect.top;
@@ -1025,13 +1035,13 @@ class pseudoWindow {
 			} else if (dir == 'bottomleft') {
 				this.posX = posX;
 				this.dimX += rect.left - posX;
-				if (this.dimX < 300) {
-					this.dimX = 300;
-					this.posX = rect.right - 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
+					this.posX = rect.right - 350;
 				}
 				this.dimY += posY - rect.bottom;
-				if (this.dimY < 300) {
-					this.dimY = 300;
+				if (this.dimY < 350) {
+					this.dimY = 350;
 				}
 				if (this.posX < screenLeft) {
 					this.posX = screenLeft;
@@ -1045,9 +1055,9 @@ class pseudoWindow {
 			} else if (dir == 'left') {
 				this.posX = posX;
 				this.dimX += rect.left - posX;
-				if (this.dimX < 300) {
-					this.dimX = 300;
-					this.posX = rect.right - 300;
+				if (this.dimX < 350) {
+					this.dimX = 350;
+					this.posX = rect.right - 350;
 				}
 				if (this.posX < screenLeft) {
 					this.posX = screenLeft;

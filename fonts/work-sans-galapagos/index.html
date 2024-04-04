@@ -4,11 +4,21 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Galápagos Islands</title>
-	<link rel="icon" type="image/png" href="assets/favicon.png">
+	<title>Too Much Type | Work Sans Galápagos</title>
 
+	<!-- Meta information -->
+	<meta name="author" content="Gabriel Drozdov">
+	<meta name="keywords" content="Type Foundry, Type Design, Typography, Creative Coding, Graphic Design, Education, Variable Fonts">
+	<meta name="description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:url" content="https://toomuchtype.com/">
+	<meta name="og:title" property="og:title" content="Too Much Type">
+	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:image" content="/assets/meta/opengraph.jpg">
+	<link rel="icon" type="png" href="/assets/meta/favicon.png">
+
+	<!-- CSS -->
 	<style>
-		/* BASE STYLES */
+		/* Base styles */
 		:root {
 			--white: #fafafa;
 			--black: #141414;
@@ -27,16 +37,19 @@
 		}
 		@font-face {
 			font-family: "Work Sans Galapagos";
-			src: url("assets/fonts/WorkSansGalapagosVF.ttf") format("truetype");
+			src: url("regular/variable/TMT-WorkSansGalapagosVF.ttf") format("truetype"),
+				 url("regular/variable/TMT-WorkSansGalapagosVF.woff") format("woff"),
+				 url("regular/variable/TMT-WorkSansGalapagosVF.woff2") format("woff2");
 			font-style: normal;
 			font-weight: 100 900;
-			font-variation-settings: "shll" 0;
 		}
 		@font-face {
 			font-family: "Work Sans Galapagos";
-			src: url("assets/fonts/WorkSansGalapagosItalicVF.ttf") format("truetype");
+			src: url("italic/variable/TMT-WorkSansGalapagosItalicVF.ttf") format("truetype"),
+				 url("italic/variable/TMT-WorkSansGalapagosItalicVF.woff") format("woff"),
+				 url("italic/variable/TMT-WorkSansGalapagosItalicVF.woff2") format("woff2");
 			font-style: italic;
-			font-weight: 300 900;
+			font-weight: 100 900;
 		}
 		* {
 			margin: 0;
@@ -53,45 +66,7 @@
 			font-size: 20px;
 		}
 
-		/* HEADER */
-		.unesco {
-			height: 60px;
-			z-index: 999;
-			border-bottom: 1px solid var(--black);
-			display: flex;
-			justify-content: center;
-		}
-		.unesco div {
-			max-width: 1200px;
-			width: 100%;
-			padding: 10px 30px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		.unesco div a {
-			height: 40px;
-			transition: opacity .2s;
-			display: flex;
-			align-items: center;
-		}
-		.unesco div a:hover {
-			opacity: .8;
-		}
-		.unesco div a:active {
-			opacity: .5;
-		}
-		.unesco div img {
-			height: 25px;
-		}
-		.unesco div p {
-			font-weight: 400;
-			letter-spacing: .1em;
-			font-size: 14px;
-		}
-		.unesco div p strong {
-			font-weight: 600;
-		}
+		/* Header */
 		.header-container {
 			display: flex;
 			align-items: center;
@@ -119,13 +94,13 @@
 			text-decoration: none;
 			color: var(--black);
 			opacity: .8;
-			font-variation-settings: "shll" 0;
+			font-variation-settings: "SHLL" 0;
 			transition: opacity .2s, color .2s, font-variation-settings .2s;
 			font-weight: 300;
 		}
 		.nav-links li a:hover {
 			opacity: 1;
-			font-variation-settings: "shll" 100;
+			font-variation-settings: "SHLL" 100;
 		}
 		.nav-links li a:active {
 			opacity: .5;
@@ -155,7 +130,8 @@
 			text-decoration: none;
 			font-weight: 500;
 			transition: opacity .2s;
-			font-variation-settings: "shll" 100;
+			white-space: norap;
+			font-variation-settings: "SHLL" 100;
 		}
 		#logo1 {
 			transition: font-variation-settings .2s;
@@ -182,7 +158,7 @@
 			transition: font-variation-settings 1.6s;
 		} 
 		#logo:hover > *{
-			font-variation-settings: "shll" 0;
+			font-variation-settings: "SHLL" 0;
 		}
 		#logo:hover {
 			color: var(--black);
@@ -190,17 +166,14 @@
 		#logo:active {
 			opacity: .5;
 		}
-
-		.container {
-			background: var(--white);
-		}
 		.slogan {
 			font-weight: 500;
 			letter-spacing: -.05em;
-			font-size: 96px;
+			font-size: min(7vw, 96px);
 			line-height: 1em;
 			padding: 30px;
 			margin-top: 80px;
+			white-space: nowrap;
 		}
 		.slogan-line {
 			display: inline-block;
@@ -237,15 +210,15 @@
 		}
 		@keyframes sloganHighlight {
 			from {
-				font-variation-settings: "shll" 0;
+				font-variation-settings: "SHLL" 0;
 			}
 			to {
-				font-variation-settings: "shll" 100;
+				font-variation-settings: "SHLL" 100;
 				color: var(--green-light);
 			}
 		}
 
-		/* CONTENT */
+		/* Content */
 		.grid-container {
 			width: 100%;
 			display: flex;
@@ -315,7 +288,7 @@
 			display: none;
 		}
 
-		/* FOOTER */
+		/* Footer */
 		.footer-container {
 			background: var(--black);
 			display: flex;
@@ -343,14 +316,14 @@
 		footer a:active {
 			opacity: .5;
 		}
+		.footer-credits a {
+			text-decoration: underline;
+		}
 
-		/* MOBILE STYLES */
+		/* Mobile styles */
 		@media only screen and (max-width: 1100px) {
 			body {
 				font-size: 16px;
-			}
-			.slogan {
-				font-size: 48px;
 			}
 			.cell-txt h2 {
 				font-size: 24px;
@@ -408,9 +381,6 @@
 			}
 		}
 		@media only screen and (max-width: 600px) {
-			.slogan {
-				font-size: 42px;
-			}
 			.grid {
 				grid-template-columns: 1fr;
 			}
@@ -420,18 +390,9 @@
 			.cell-txt h2 {
 				font-size: 24px;
 			}
-			.unesco div {
-				gap: 10px;
-			}
-			.unesco div img {
-				height: 20px;
-			}
-			.unesco div p {
-				font-size: 10px;
-			}
 		}
 
-		/* VIEWPORT ANIMATIONS */
+		/* Viewport animations */
 		[data-inviewport="txt-in-left"] { 
 			transition: transform 1s;
 			transform: translateX(-50%);
@@ -449,17 +410,13 @@
 
 	</style>
 </head>
+
+<!-- HTML -->
 <body id="top">
-	<div class="unesco">
-		<div>
-			<a href="https://www.unesco.org/en" target="_blank"><img src="assets/imgs/unesco.svg"></a>
-			<p>WORLD HERITAGE SITE: <strong>ECUADOR</strong></p>
-		</div>
-	</div>
 	<div class="header-container">
 		<header>
 			<nav>
-				<a id="logo" href="https://whc.unesco.org/en/list/1/" target="_blank">
+				<a id="logo" href="https://toomuchtype.com/" target="_blank">
 					G<span id="logo1">a</span>l<span id="logo2">á</span><span id="logo3">p</span><span id="logo4">a</span><span id="logo5">g</span><span id="logo6">o</span>s Isl<span id="logo7">a</span>n<span id="logo8">d</span>s
 				</a>
 				<ul class="nav-links">
@@ -477,9 +434,10 @@
 				><span id="slogan3" class="slogan-line"><span>of <span class="slogan-highlight">evolution</span></span></span></h1>
 		</header>
 	</div>
+
 	<section id="maps" class="grid-container" style="background: var(--green-dark);">
 		<div class="grid">
-			<div><img src="assets/imgs/tortoise.jpg" class="img-left img-desktop"><img src="assets/imgs/tortoise.jpg" class="img-left img-mobile"></div>
+			<div><img src="specimen-assets/tortoise.jpg" class="img-left img-desktop"><img src="specimen-assets/tortoise.jpg" class="img-left img-mobile"></div>
 			<div class="cell-txt" style="background: var(--green-light);">
 				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
 					Three ocean currents make the Galápagos one of the richest marine ecosystems in the world.
@@ -487,11 +445,12 @@
 				<p style="color:var(--green-dark);" data-inviewport="txt-in-right">
 					The Galapagos Islands area situated in the Pacific Ocean some 1,000 km from the Ecuadorian coast. Ongoing seismic and volcanic activity reflects the processes that formed the islands.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Navigate the Maps</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">Navigate the Maps</a>
 				</p>
 			</div>
 		</div>
 	</section>
+
 	<section id="documents" class="grid-container" style="background: var(--sky-dark);">
 		<div class="grid">
 			<div class="cell-txt" style="background:var(--sky-light);">
@@ -501,15 +460,16 @@
 				<p style="color:var(--sky-dark);"  data-inviewport="txt-in-left">
 					The Galapagos Islands area situated in the Pacific Ocean some 1,000 km from the Ecuadorian coast. Its geographical location at the confluence of three ocean currents makes it one of the richest marine ecosystems in the world. Ongoing seismic and volcanic activity reflects the processes that formed the islands.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Look Through the Documents</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">Look Through the Documents</a>
 				</p>
 			</div>
-			<div class="grid-flip"><img src="assets/imgs/booby.png" class="img-right img-desktop"><img src="assets/imgs/booby-mobile.jpg" class="img-right img-mobile"></div>
+			<div class="grid-flip"><img src="specimen-assets/booby.png" class="img-right img-desktop"><img src="specimen-assets/booby-mobile.jpg" class="img-right img-mobile"></div>
 		</div>
 	</section>
+
 	<section id="gallery" class="grid-container" style="background: var(--orange-dark);">
 		<div class="grid">
-			<div><img src="assets/imgs/iguana.png" class="img-left img-desktop"><img src="assets/imgs/iguana-mobile.jpg" class="img-left img-mobile"></div>
+			<div><img src="specimen-assets/iguana.png" class="img-left img-desktop"><img src="specimen-assets/iguana-mobile.jpg" class="img-left img-mobile"></div>
 			<div class="cell-txt" style="background: var(--orange-light);">
 				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
 					More unique life than you can imagine.
@@ -517,11 +477,12 @@
 				<p style="color:var(--orange-dark);" data-inviewport="txt-in-right">
 					The islands have relatively high species diversity for such young oceanic islands and contain emblematic creatures such as giant tortoises and land iguanas.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">View the Gallery</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">View the Gallery</a>
 				</p>
 			</div>
 		</div>
 	</section>
+
 	<section id="description" class="grid-container" style="background: var(--pink-dark);">
 		<div class="grid">
 			<div class="cell-txt" style="background:var(--pink-light);">
@@ -531,27 +492,29 @@
 				<p style="color:var(--pink-dark);" data-inviewport="txt-in-left">
 					The Islands’ location, together with the extreme isolation of the islands, led to the development of unusual plant and animal life – such as marine iguanas, flightless cormorants, giant tortoises, huge cacti, endemic trees and the many different subspecies of mockingbirds and finches – all of which inspired Charles Darwin’s theory of evolution by natural selection following his visit in 1835.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Read More about the Islands</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">Read More about the Islands</a>
 				</p>
 			</div>
-			<div class="grid-flip"><img src="assets/imgs/flamingo.png" class="img-right img-desktop"><img src="assets/imgs/flamingo-mobile.jpg" class="img-right img-mobile"></div>
+			<div class="grid-flip"><img src="specimen-assets/flamingo.png" class="img-right img-desktop"><img src="specimen-assets/flamingo-mobile.jpg" class="img-right img-mobile"></div>
 		</div>
 	</section>
+
 	<section id="threats" class="grid-container" style="background: var(--red-dark);">
 		<div class="grid">
-			<div><img src="assets/imgs/frigate.png" class="img-left img-desktop"><img src="assets/imgs/frigate-mobile.jpg" class="img-left img-mobile"></div>
+			<div><img src="specimen-assets/frigate.png" class="img-left img-desktop"><img src="specimen-assets/frigate-mobile.jpg" class="img-left img-mobile"></div>
 			<div class="cell-txt" style="background: var(--red-light);">
 				<h2 style="color:var(--white);" data-inviewport="txt-in-right">
 					We fight to keep the Islands alive.
 				</h2>
 				<p style="color:var(--red-dark);" data-inviewport="txt-in-right">
-					 The main threats to the Galapagos are the introduction of invasive species, increased tourism, demographic growth, illegal fishing and governance issues. We monitor and minimize these threats daily.
+					The main threats to the Galapagos are the introduction of invasive species, increased tourism, demographic growth, illegal fishing and governance issues. We monitor and minimize these threats daily.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Learn How You Can Help</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">Learn How You Can Help</a>
 				</p>
 			</div>
 		</div>
 	</section>
+
 	<section id="visit" class="grid-container" style="background: var(--blue-dark);">
 		<div class="grid">
 			<div class="cell-txt" style="background:var(--blue-light);">
@@ -561,12 +524,13 @@
 				<p style="color:var(--blue-dark);" data-inviewport="txt-in-left">
 					No other site in the world can offer the experience of diving with such a diversity of marine life forms that are so familiar with human beings, that they accompany divers frequently.
 					<br>
-					<a class="cta" href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands">Make a Trip</a>
+					<a class="cta" href="https://toomuchtype.com/" target="_blank">Make a Trip</a>
 				</p>
 			</div>
-			<div class="grid-flip"><img src="assets/imgs/sealion.png" class="img-right img-desktop"><img src="assets/imgs/sealion-mobile.jpg" class="img-right img-mobile"></div>
+			<div class="grid-flip"><img src="specimen-assets/sealion.png" class="img-right img-desktop"><img src="specimen-assets/sealion-mobile.jpg" class="img-right img-mobile"></div>
 		</div>
 	</section>
+
 	<div class="footer-container">
 		<footer>
 			<div>
@@ -582,12 +546,14 @@
 				<li><a href="#threats">Threats</a></li>
 				<li><a href="#visit">Visit</a></li>
 			</ul>
-			<div style="opacity: .5">
-				Design + Code: Gabriel&nbsp;Drozdov
+			<div style="opacity: .5" class="footer-credits">
+				A <a href='https://toomuchtype.com/' target="_blank">Too Much Type</a> Specimen<br><br>
+				Featuring Work Sans Galápagos by Gabriel Drozdov, based on <a href='https://fonts.google.com/specimen/Work+Sans' target="_blank">Work Sans</a> by Wei Huang
 			</div>
 		</footer>
 	</div>
 
+	<!-- JavaScript -->
 	<script>
 		const elements = document.querySelectorAll('[data-inviewport]');
 		const callback = str => { console.log(str); };

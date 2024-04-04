@@ -1,16 +1,538 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Gabriel Drozdov | Web Type | Specimen</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="assets/script.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Too Much Type | Mini Mochi</title>
+
+	<!-- Meta information -->
+	<meta name="author" content="Gabriel Drozdov">
+	<meta name="keywords" content="Type Foundry, Type Design, Typography, Creative Coding, Graphic Design, Education, Variable Fonts">
+	<meta name="description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:url" content="https://toomuchtype.com/">
+	<meta name="og:title" property="og:title" content="Too Much Type">
+	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:image" content="/assets/meta/opengraph.jpg">
+	<link rel="icon" type="png" href="/assets/meta/favicon.png">
+
+	<!-- CSS -->
+	<style>
+		/* Base Styles */
+		@font-face {
+			font-family: "Mini Mochi";
+			src: url("variable/TMT-MiniMochiVF.ttf") format("truetype"),
+				 url("variable/TMT-MiniMochiVF.woff") format("woff"),
+				 url("variable/TMT-MiniMochiVF.woff2") format("woff2");
+		}
+		@font-face {
+			font-family: "Limkin Pixel";
+			src: url("/fonts/limkin-pixel/variable/TMT-LimkinPixelVF.ttf");
+			font-weight: 100 900;
+		}
+		:root {
+			--STCH: 50;
+			--FLAV: 0;
+			--SLCE: 0;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			background-color: #ffe375;
+		}
+		.content {
+			font-family: "Mini Mochi", sans-serif;
+			margin: 20px;
+			padding: 40px;
+			max-width: 100vw;
+			overflow-x: hidden;
+			background-color: #f3f4f5;
+			color: white;
+			font-size: 24px;
+			line-height: 1.3em;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+			border-radius: 200px;
+		}
+
+		/* Generic block */
+		.block-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 20px;
+			margin-top: 20px;
+			font-family: "Limkin Pixel", sans-serif;
+			font-size: 22px;
+			line-height: 1.4em;
+			color: #a3a4a5;
+		}
+		.block {
+			border-radius: 100px;
+			padding: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			text-align: center;
+			background-color: white;
+			transition: border-radius .5s;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+		}
+		.block:hover {
+			border-radius: 150px;
+		}
+		.block p {
+			max-width: 500px;
+			width: 100%;
+		}
+
+		/* Header */
+		.header-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 0 40px 0;
+			width: 100%;
+			color: white;
+		}
+		.header-line {
+			font-size: 10vw;
+			line-height: 1em;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			display: flex;
+		}
+		.header-line span {
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+			border-radius: 50px;
+			background-color: white;
+			padding: 20px;
+			margin: 5px;
+			transition: transform .5s, color .5s;
+			display: flex;
+			aspect-ratio: 1/1;
+			height: 1.2em;
+			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
+			cursor: crosshair;
+		}
+		.header-line span:hover {
+			color: rgba(0,0,0,.3);
+			transform: scale(.8);
+		}
+		@keyframes header {
+			0% {font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;}
+			12% {font-variation-settings: "STCH" 0, "FLAV" 0, "SLCE" 0;}
+			25% {font-variation-settings: "STCH" 100, "FLAV" 0, "SLCE" 0;}
+			37% {font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;}
+			50% {font-variation-settings: "STCH" 50, "FLAV" 100, "SLCE" 0;}
+			62% {font-variation-settings: "STCH" 0, "FLAV" 100, "SLCE" 0;}
+			75% {font-variation-settings: "STCH" 100, "FLAV" 100, "SLCE" 0;}
+			87% {font-variation-settings: "STCH" 50, "FLAV" 100, "SLCE" 0;}
+			100% {font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;}
+		}
+
+		/* Overview */
+		.overview-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.overview-line {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: "Mini Mochi", sans-serif;
+			font-size: 9vw;
+			line-height: 1.1em;
+		}
+		.overview-axes {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			margin-left: 40px;
+			font-size: 18px;
+		}
+		.overview-topaxis {
+			padding: 7px 0 5px 0;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+			border-radius: 25px;
+			font-weight: 500;
+			font-variation-settings: "wght" 500;
+			background-color: #c8aaf3;
+			color: #64557a;
+			max-width: unset !important;
+			width: 100%;
+		}
+		.overview-sideaxis {
+			position: absolute;
+			font-weight: 500;
+			font-variation-settings: "wght" 500;
+			max-width: unset !important;
+			width: 105% !important;
+			bottom: 0;
+			padding: 7px 0 5px 0;
+			left: 0;
+			transform: rotate(270deg) translateY(-200%);
+			transform-origin: 0 0;
+			box-shadow: inset -10px 10px 10px rgba(255,255,255,.2), inset 10px -10px 10px rgba(0,0,0,.1);
+			border-radius: 25px;
+			background-color: #ffe375;
+			color: #80723b;
+		}
+
+		/* Alphabet */
+		.alphabet-container {
+			padding: 80px;
+			margin-top: 20px;
+			border-radius: 100px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: #fd8d8d;
+			transition: border-radius .5s;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+		}
+		.alphabet-container:hover {
+			border-radius: 150px;
+		}
+		.alphabet {
+			cursor: crosshair;
+			text-align: center;
+			padding-bottom: 30px;
+		}
+		.alphabet-letters {
+			line-height: .8em;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-size: 15vw;
+		}
+		.alphabet-letters span {
+			font-variation-settings: "STCH" var(--STCH), "FLAV" 0, "SLCE" var(--SLCE);
+			transition: font-variation-settings .2s, color .2s;
+		}
+		.alphabet-letters span:hover {
+			font-variation-settings: "STCH" var(--STCH), "FLAV" 100, "SLCE" var(--SLCE);
+			color: rgba(0,0,0,.3);
+		}
+		.alphabet-mobile {
+			display: none;
+		}
+
+		/* Letter */
+		.letter-container {
+			background-color: #aed982;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 80px;
+			margin-top: 20px;
+			border-radius: 100px;
+			width: 100%;
+			transition: border-radius .5s;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+		}
+		.letter-container:hover {
+			border-radius: 150px;
+		}
+		.letter {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			cursor: crosshair;
+			transition: color .2s;
+			padding-bottom: 10px;
+		}
+		.letter:hover {
+			color: rgba(0,0,0,.3);
+		}
+		.letter-glyph {
+			font-variation-settings: "STCH" var(--STCH), "FLAV" var(--FLAV), "SLCE" var(--SLCE);
+			pointer-events: none;
+			font-size:40vw;
+			line-height:1em;
+		}
+
+		/* Words */
+		.words-container {
+			grid-column: 1 / span 2;
+			background-color: #82b9d9;
+			color: white;
+		}
+		#words {
+			grid-column: 1 /  span 2;
+			font-family: "Mini Mochi", sans-serif;
+			font-size: 4vw;
+			line-height: 1em;
+			text-align: center;
+			max-width: 100%;
+			padding: 20px;
+			width: 100%;
+		}
+		#words span {
+			font-variation-settings: "STCH" var(--STCH), "FLAV" var(--FLAV), "SLCE" var(--SLCE);
+			transition: font-variation-settings .5s, color .2s;
+		}
+
+		/* Tester */
+		.tester-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 80px;
+			margin-top: 20px;
+			border-radius: 100px;
+			width: 100%;
+			color: white;
+			background-color: #c8aaf3;
+			transition: border-radius .5s;
+			box-shadow: inset 10px 10px 10px rgba(255,255,255,.2), inset -10px -10px 10px rgba(0,0,0,.1);
+		}
+		.tester-container:hover {
+			border-radius: 150px;
+		}
+		.tester-container:hover .tester{
+			border-radius: 100px;
+		}
+		.tester {
+			font-variation-settings: "STCH" var(--STCH), "FLAV" var(--FLAV), "SLCE" var(--SLCE);
+			width: 100%;
+			padding: 40px;
+			margin-bottom: 30px;
+			font-size: 8vw;
+			line-height: 1em;
+			text-align: center;
+			box-shadow: inset 10px 10px 10px rgba(0,0,0,.1), inset -10px -10px 10px rgba(255,255,255,.2);
+			border-radius: 50px;
+			transition: border-radius .5s;
+		}
+
+		/* Download Button */
+		.download {
+			font-family: "Mini Mochi", sans-serif;
+			grid-column: span 2;
+			text-decoration: none;
+			color: white;
+			background-color: #a3a4a5;
+			border: 2px solid white;
+			font-size: 8vw;
+			line-height: 1em;
+			padding: 80px 40px 80px 40px;
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+			transition: background-color .2s, color .2s, opacity .2s, font-variation-settings .2s, border-radius .2s, transform .5s;
+		}
+		.download:hover {
+			font-variation-settings: "STCH" 100, "FLAV" 100, "SLCE" 0;
+			color: rgba(255,255,255,.8);
+		}
+		.download:active {
+			font-variation-settings: "STCH" 0, "FLAV" 0, "SLCE" 0;
+			background-color: #737475;
+			transform: scale(.9);
+			color: rgba(255,255,255,.5);
+		}
+
+		/* Footer */
+		footer {
+			font-family: "Limkin Pixel", sans-serif;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			padding-top: 40px;
+			color: #a3a4a5;
+		}
+		footer p {
+			max-width: 500px;
+			width: 100%;
+		}
+		footer a {
+			color: #a3a4a5;
+			transition: opacity .2s;
+		}
+		footer a:hover {
+			opacity: .8;
+		}
+		footer a:active {
+			opacity: .5;
+		}
+
+		/* Sliders */
+		.slider-container {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 48px;
+			padding: 0 20px 0 20px;
+		}
+		.slider {
+			width: 100%;
+			max-width: 400px;
+			padding: 10px;
+			margin: 0 20px 0 20px;
+			-webkit-appearance: none;
+			width: 100%;
+			height: 40px;
+			border: 2px solid white;
+			background-color: rgba(0,0,0,0);
+			outline: none;
+			-webkit-transition: .2s;
+			transition: .2s;
+			border-radius: 10px;
+			box-shadow: inset 2px 2px 2px rgba(255,255,255,.2), inset -2px -2px 2px rgba(0,0,0,.1);
+		}
+		.slider:hover {
+			box-shadow: inset 5px 5px 5px rgba(255,255,255,.2), inset -5px -5px 5px rgba(0,0,0,.1);
+			cursor: pointer;
+		}
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 25px;
+			height: 25px;
+			border-radius: 5px;
+			background: rbga(0,0,0,0);
+			border: 2px solid white;
+			transition: .2s;
+		}
+		.slider::-webkit-slider-thumb:hover {
+			background: white;
+		}
+		.slider::-moz-range-thumb {
+			width: 25px;
+			height: 25px;
+			border-radius: 5px;
+			background: rbga(0,0,0,0);
+			border: 2px solid white;
+			cursor: pointer;
+			transition: .2s;
+		}
+		.slider::-moz-range-thumb:hover {
+			background: white;
+		}
+
+		/* Responsive styles */
+		@media screen and (max-width: 1000px) {
+			body {
+				padding: 5px;
+			}
+			.content {
+				font-size: 24px;
+				line-height: 1.5em;
+				padding: 20px;
+				margin: 5px;
+				border-radius: 50px;
+			}
+			.block-container {
+				grid-template-columns: 1fr;
+			}
+			.block {
+				border-radius: 50px;
+				padding: 40px;
+				font-size: 18px;
+				line-height: 1.4em;
+			}
+			.block:hover {
+				border-radius: 100px;
+			}
+			.block p {
+				max-width: 100%;
+			}
+			.header-line {
+				font-size: 10vw;
+			}
+			.header-line span {
+				border-radius: .3em;
+				padding: 10px 10px 8px 10px;
+			}
+			.overview-line {
+				font-size: 15vw;
+			}
+			.overview-topaxis {
+				font-size: 14px;
+				line-height: 1.5em;
+			}
+			.overview-sideaxis {
+				font-size: 14px;
+				line-height: 1.5em;
+				transform: rotate(270deg) translateY(-50px);
+				bottom: 0;
+			}
+			.alphabet-container {
+				border-radius: 50px;
+				padding: 40px;
+			}
+			.alphabet-container:hover {
+				border-radius: 100px;
+			}
+			.alphabet-letters {
+				font-size: 25vw;
+			}
+			.alphabet-desktop {
+				display: none;
+			}
+			.alphabet-mobile {
+				display: block;
+			}
+			.letter-container {
+				border-radius: 50px;
+				padding: 40px;
+			}
+			.letter-container:hover {
+				border-radius: 100px;
+			}
+			#words{
+				font-size: 7vw;
+			}
+			.letter-glyph {
+				font-size: 60vw;
+			}
+			.tester-container {
+				border-radius: 50px;
+				padding: 20px 20px 40px 20px;
+			}
+			.tester-container:hover {
+				border-radius: 100px;
+			}
+			.tester {
+				border-radius: 25px;
+				margin-bottom: 20px;
+			}
+			.tester:hover {
+				border-radius: 50px;
+			}
+			.download {
+				padding: 40px 20px 40px 20px;
+				border-radius: 50px;
+			}
+			.download:hover {
+				border-radius: 75px;
+			}
+			footer {
+				padding-top: 20px;
+			}
+			.slider {
+				width: 100%;
+				height: 40px;
+				padding: 5px 10px 5px 10px;
+			}
+		}
+	</style>
 </head>
-
 <body>
-
+	<!-- HTML -->
 	<div class="content">
 
 		<header id="header" class="header-container">
@@ -24,7 +546,7 @@
 
 		<section id="overview" class="block-container">
 			<div class="block">
-				<p><strong>MINI MOCHI</strong> is a playful, delectable, variable display font with a little bit of *stretch* and a little bit of *flavor*. Each letter is like a mochi-shaped cube engraved with pudgy counterforms that squish and mutate in response to two variable axes ("stretch" and "flavor"). While originally inspired by the anonymous tofu-shaped glyphs that appear when a font is missing a character, Mini Mochi evolved into something of its own. (On a side note, the flavorful glyphs also look kind of like rotten teeth. Don‘t eat too much sugar or you might end up like these letters!)</p>
+				<p><strong>MINI MOCHI</strong> is a playful, delectable, variable display font with a little bit of *stretch* and a little bit of *flavor.* Each letter is like a mochi-shaped cube engraved with pudgy counterforms that squish and mutate in response to three variable axes (“stretch” and “flavor,” plus “slice” which turns all curves into straight lines). While originally inspired by the anonymous tofu-shaped glyphs that appear when a font is missing a character, Mini Mochi evolved into something of its own. (On a side note, the flavorful glyphs also look kind of like rotten teeth. Don‘t eat too much sugar or you might end up like these letters!)</p>
 			</div>
 			<div class="block">
 				<div class="overview-axes">
@@ -32,13 +554,13 @@
 					<p class="overview-sideaxis"><strong>FLAVOR</strong></p>
 					<div class="overview-container">
 						<div class="overview-line">
-							<span style="font-variation-settings:'STCH'0,'FLAV'0;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'0;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'0;color:#82b9d9;">A</span>
+							<span style="font-variation-settings:'STCH'0,'FLAV'0,'SLCE'0;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'0;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'0,'SLCE'0;color:#82b9d9;">A</span>
 						</div>
 						<div class="overview-line">
-							<span style="font-variation-settings:'STCH'0,'FLAV'50;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'50;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'50;color:#aed982;">A</span>
+							<span style="font-variation-settings:'STCH'0,'FLAV'50,'SLCE'0;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'50,'SLCE'0;color:#fd8d8d;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'50,'SLCE'0;color:#aed982;">A</span>
 						</div>
 						<div class="overview-line">
-							<span style="font-variation-settings:'STCH'0,'FLAV'100;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'100;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'100;color:#fd8d8d;">A</span>
+							<span style="font-variation-settings:'STCH'0,'FLAV'100,'SLCE'0;color:#aed982;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'50,'FLAV'100,'SLCE'0;color:#82b9d9;">A</span><span style="width:2vw;"></span><span style="font-variation-settings:'STCH'100,'FLAV'100,'SLCE'0;color:#fd8d8d;">A</span>
 						</div>
 					</div>
 				</div>
@@ -64,7 +586,10 @@
 				</span>
 			</div>
 			<div class="slider-container">
-				<span style="font-variation-settings:'STCH'0,'FLAV'0;">o</span><input id="alphabet-slider" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0;">o</span>
+				<span style="font-variation-settings:'STCH'0,'FLAV'0,'SLCE'0;">A</span><input id="alphabet-slider1" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0,'SLCE'0;">A</span>
+			</div>
+			<div class="slider-container" style="padding-top:20px;">
+				<span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'0;">A</span><input id="alphabet-slider2" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'100;">A</span>
 			</div>
 		</section>
 
@@ -73,7 +598,7 @@
 				<span class="letter-glyph">A</span>
 			</div>
 			<div class="slider-container">
-				A<input id="letter-slider" class="slider" type="range" min="65" max="90" value="50">Z
+				A<input id="letter-slider" class="slider" type="range" min="0" max="25" value="0">Z
 			</div>
 		</section>
 
@@ -84,31 +609,116 @@
 		</section>
 
 		<section id="tester" class="tester-container">
-			<div class="tester" contenteditable>
-				Test me out if u wanna!
-			</div>
+			<div class="tester" contenteditable="plaintext-only">Test me out if u wanna!</div>
 			<div class="slider-container">
-				<span style="font-variation-settings:'STCH'0,'FLAV'0;">o</span><input id="tester-slider1" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0;">o</span>
+				<span style="font-variation-settings:'STCH'0,'FLAV'0,'SLCE'0;">A</span><input id="tester-slider1" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'100,'FLAV'0,'SLCE'0;">A</span>
 			</div>
 			<div class="slider-container" style="padding-top:20px;">
-				<span style="font-variation-settings:'STCH'50,'FLAV'0;">A</span><input id="tester-slider2" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'50,'FLAV'100;">A</span>
+				<span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'0;">A</span><input id="tester-slider2" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'50,'FLAV'100,'SLCE'0;">A</span>
+			</div>
+			<div class="slider-container" style="padding-top:20px;">
+				<span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'0;">A</span><input id="tester-slider3" class="slider" type="range" min="0" max="100" value="50"><span style="font-variation-settings:'STCH'50,'FLAV'0,'SLCE'100;">A</span>
 			</div>
 		</section>
 
 		<section id="download" class="block-container">
-			<a class="block download" href="css/fonts/MiniMochi.ttf"><strong>DOWNLOAD</strong></a>
+			<a class="block download" href="TMT-MiniMochi.zip"><strong>DOWNLOAD</strong></a>
 		</section>
 
 		<footer id="footer">
 			<p>
-				<strong>MINI MOCHI</strong> and this web specimen were created by <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a> in 2022 for RISD‘s Web Type course taught by Marie Otsuka.<br><br>
-				<strong>APFEL GROTESK</strong> by <a href="http://collletttivo.it/" target="_blank">Collletttivo</a> is also featured on this page.<br><br>
-				<a href="../../">Click here to return to the Web Type homepage.</a>
+				<strong>MINI MOCHI</strong> and this web specimen were created by <a href="https://www.gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a> in 2022 for RISD’s Web Type course taught by Marie Otsuka.<br><br>
+				<a href="https://toomuchtype.com" target="_blank">Find more fonts at Too Much Type.</a>
 			</p>
 		</footer>
-
 	</div>
 
-</body>
+	<!-- JavaScript -->
+	<script>
+		// Letter hover
+		const letter = document.querySelector('.letter');
+		const letterGlyph = document.querySelector(".letter-glyph");
+		letter.addEventListener("mousemove", (e) => {
+			var rect = e.target.getBoundingClientRect();
+			var x = e.clientX - rect.left; // x position within the element.
+			var y = e.clientY - rect.top;  // y position within the element.
 
+			let cursorX = e.pageX / letter.offsetWidth;
+			let cursorY = y / letter.offsetHeight;
+
+			let settingX = Math.floor(cursorX * 100);
+			let settingY = Math.floor(cursorY * 100);
+
+			letterGlyph.style.setProperty("--FLAV", settingX);
+			letterGlyph.style.setProperty("--STCH", settingY);
+		});
+
+		// Letter slider
+		const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+		const letterSlider = document.querySelector('#letter-slider');
+		letterSlider.addEventListener('input', () => {
+			let value = parseInt(letterSlider.value);
+			const slidertype = letterSlider.type; // get slider axis
+			letterGlyph.innerText = letters[value];
+		});
+
+		// Alphabet sliders
+		const alphabetSlider1 = document.querySelector('#alphabet-slider1');
+		alphabetSlider1.addEventListener('input', () => {
+			let value = parseInt(alphabetSlider1.value);
+			for (let span of document.querySelectorAll('.alphabet span')) {
+				span.style.setProperty("--STCH", value);
+			}
+		});
+		const alphabetSlider2 = document.querySelector('#alphabet-slider2');
+		alphabetSlider2.addEventListener('input', () => {
+			let value = parseInt(alphabetSlider2.value);
+			for (let span of document.querySelectorAll('.alphabet span')) {
+				span.style.setProperty("--SLCE", value);
+			}
+		});
+
+		// Randomize word parameters
+		const words = document.querySelector('#words');
+		let temp = "";
+		for (let letter of words.innerText) {
+			temp += `<span>${letter}</span>`;
+		}
+		words.innerHTML = temp;
+		const wordsLetters = document.querySelectorAll('#words span');
+		setInterval(() => {
+			for (let i=0; i<20; i++) {
+				let randomLetter = wordsLetters[Math.floor(Math.random()*wordsLetters.length)];
+				randomLetter.style.color = 'rgba(0,0,0,.3)';
+				setTimeout(() => {
+					randomLetter.style.setProperty('--STCH', Math.round(Math.random()*100));
+					randomLetter.style.setProperty('--FLAV', Math.round(Math.random()*100));
+					randomLetter.style.setProperty('--SLCE', Math.round(Math.random()*100));
+				}, 200)
+				setTimeout(() => {
+					randomLetter.style.color = 'unset';
+				}, 1000)
+			}
+
+		}, 1200)
+
+		// Tester sliders
+		const testerSlider1 = document.querySelector('#tester-slider1');
+		const tester = document.querySelector(".tester");
+		testerSlider1.addEventListener('input', () => {
+			let value = parseInt(testerSlider1.value);
+			tester.style.setProperty("--STCH", value);
+		});
+		const testerSlider2 = document.querySelector('#tester-slider2');
+		testerSlider2.addEventListener('input', () => {
+			let value = parseInt(testerSlider2.value);
+			tester.style.setProperty("--FLAV", value);
+		});
+		const testerSlider3 = document.querySelector('#tester-slider3');
+		testerSlider3.addEventListener('input', () => {
+			let value = parseInt(testerSlider3.value);
+			tester.style.setProperty("--SLCE", value);
+		});
+	</script>
+</body>
 </html>
