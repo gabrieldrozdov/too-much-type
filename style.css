@@ -81,6 +81,12 @@
 		 url("/fonts/avara-burst/variable/TMT-AvaraBurstVF.woff2") format('woff2');
 }
 @font-face {
+	font-family: "FT88 RISD";
+	src: url("/fonts/ft88-risd/variable/TMT-FT88RISDVF.ttf") format("truetype"),
+		 url("/fonts/ft88-risd/variable/TMT-FT88RISDVF.woff") format("woff"),
+		 url("/fonts/ft88-risd/variable/TMT-FT88RISDVF.woff2") format('woff2');
+}
+@font-face {
 	font-family: "Work Sans Galapagos";
 	src: url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.ttf") format("truetype"),
 		 url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.woff") format("woff"),
@@ -407,7 +413,7 @@ body[data-color-mode="1"] * {
 }
 @keyframes menu-bashful {
 	0% {
-		font-variation-settings: 'BASH' 0,;
+		font-variation-settings: 'BASH' 0;
 	}
 	100% {
 		font-variation-settings: 'BASH' 100;
@@ -635,6 +641,19 @@ body[data-color-mode="1"] * {
 	}
 	100% {
 		font-variation-settings: 'BRST' 3;
+	}
+}
+.menu-typeface[data-font='FT88 RISD'] .menu-typeface-preview {
+	font-family: 'FT88 RISD';
+	font-variation-settings: 'DISP' 0;
+	animation: menu-ft88risd 1s infinite ease-in-out alternate;
+}
+@keyframes menu-ft88risd {
+	0% {
+		font-variation-settings: 'DISP' 0;
+	}
+	100% {
+		font-variation-settings: 'DISP' 100;
 	}
 }
 .menu-typeface[data-font='Work Sans Galapagos'] .menu-typeface-preview {

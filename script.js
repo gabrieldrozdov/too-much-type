@@ -34,7 +34,7 @@ let fontInfo = {
 	'Caffeine': {
 		'download': '/fonts/caffeine/TMT-Caffeine.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?•*#//\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678 .,:;!?•*#/\\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': {
 			'Scribble': {
 				'code': 'SCRI',
@@ -66,7 +66,7 @@ let fontInfo = {
 	'Limkin': {
 		'download': '/fonts/limkin/TMT-Limkin.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789`,
+		'glyphs': `AÁĂẶǍÂẬÄẠÀẢĀĄÅÃÆBḄɃCĆČÇĈĊDÐĎḒĐḌƊḎƉEÉĚȨÊỆËĖẸÈẺĒĘƎẼƏƷǮFGĞǦĜĢĠḠǤHĦĤḤIĲÍǏÎÏİỊÌỈĪĮƗĨJĴKǨĶLĹĽḼĻḶŁMḾNŃŇṊŅṄṆÑŊOÓǑÔỘÖỌÒỎƠŐŌØǾÕŒPÞQRŔŘŖɌSŚŠŞŜȘṢẞTŦŤŢṰȚṬṮUÚɄŬÛÜỤÙỦƯŰŪŲƱŮŨVɅWẂŴẄẀXYÝŶŸỴỲỶỸZŹŽŻẒaáăặǎâậäạàảāąåãæbḅcćčçĉċdðďḓđḍḏeéěȩêệëėẹèẻēęẽǝəʒǯfgğǧĝģġḡǥhħĥḥiıíǐîïịìỉĳīįɨĩjȷĵkǩķlĺľḽļḷłmḿnńňṋņṅṇñŋoóǒôộöọòỏơőōøǿõœpþqrŕřŗsśšşŝșṣßtŧťţṱțṭṯuúʉŭûüụùủưűūųůũvʌwẃŵẅẁxyýŷÿỵỳỷỹzźžżẓΩπ0123456789.,:;…!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'@&©®™°|¦†‡¢¤$€£¥+−×÷=≠><≥≤±≈~¬^∞∫∏∑√∂%‰↑↗→↘↓↙←↖↔↕◌◊`,
 		'variation': {
 			'Weight': {
 				'code': 'wght',
@@ -85,7 +85,7 @@ let fontInfo = {
 	'Limkin Pixel': {
 		'download': '/fonts/limkin-pixel/TMT-LimkinPixel.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdeéëfghijklmnopqrstuvwxyz0123456789.,:;!?*#/\\-–—_(){}[]“”‘’"'@&|$+−=><~^%`,
 		'variation': {
 			'Weight': {
 				'code': 'wght',
@@ -142,13 +142,13 @@ let fontInfo = {
 	'Paint': {
 		'download': '/fonts/paint/TMT-Paint.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?*#//\-–—_(){}[]“”‘’"'@&|$+−×÷=><~^%↑↗→↘↓↙←↖↔↕`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?*#/\\-–—_(){}[]“”‘’"'@&|$+−×÷=><~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': ''
 	},
 	'PowerPack': {
 		'download': '/fonts/power-pack/TMT-PowerPack.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#//\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#/\\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
 		'variation': {
 			'Charge': {
 				'code': 'CHRG',
@@ -167,7 +167,7 @@ let fontInfo = {
 	'That Then This': {
 		'download': '/fonts/that-then-this/TMT-ThatThenThis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
-		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;!?#//-[]“”‘’"'`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;!?#/-[]“”‘’"'`,
 		'variation': {
 			'Variation': {
 				'code': 'THAT',
@@ -183,10 +183,10 @@ let fontInfo = {
 			}
 		}
 	},
-	'Authentic Remixed': {
+	'AUTHENTIC Remixed': {
 		'download': '/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,./:;?@¡¿•…+<=>|~$\`¨´¸˜©🄯`,
 		'variation': {
 			'X axis': {
 				'code': 'XAXI',
@@ -205,7 +205,7 @@ let fontInfo = {
 	'Avara Burst': {
 		'download': '/fonts/avara-burst/TMT-AvaraBurst.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'glyphs': `&ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,:;…-!?‘’“”'"«»(){}[]_–—•·*@#\\/|^~$0123456789%+−±×÷=≈<>≤≥°≠`,
 		'variation': {
 			'Burst': {
 				'code': 'BRST',
@@ -215,23 +215,23 @@ let fontInfo = {
 			}
 		}
 	},
-	// 'FT88 RISD': {
-	// 	'download': '/fonts/ft88-risd/TMT-FT88RISD.zip',
-	// 	'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-	// 	'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
-	// 	'variation': {
-	// 		'Dispersion': {
-	// 			'code': 'DISP',
-	// 			'min': 0,
-	// 			'max': 100,
-	// 			'default': 0
-	// 		}
-	// 	}
-	// },
+	'FT88 RISD': {
+		'download': '/fonts/ft88-risd/TMT-FT88RISD.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-`,
+		'variation': {
+			'Dispersion': {
+				'code': 'DISP',
+				'min': 0,
+				'max': 100,
+				'default': 0
+			}
+		}
+	},
 	'Work Sans Galapagos': {
 		'download': '/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
-		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,.//:;?@¡¿•…+<=>|~$¨´¸˜©🄯`,
+		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,./:;?@¡¿•…+<=>|~$¨´¸˜©`,
 		'variation': {
 			'Weight': {
 				'code': 'wght',
@@ -1503,7 +1503,7 @@ function generateLetterset(id) {
 
 	// Generate glyphs
 	let lettersetContent = ``;
-	for (let glyph of fontInfo[font]['letters']) {
+	for (let glyph of fontInfo[font]['glyphs']) {
 		lettersetContent += `<div>${glyph}</div>`;
 	}
 	lettersetGlyphs.innerHTML = lettersetContent;
