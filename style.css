@@ -5,7 +5,7 @@
 		 url("/fonts/paint/variable/TMT-Paint-Regular.woff2") format('woff2');
 }
 @font-face {
-	font-family: "Authentic Remixed";
+	font-family: "AUTHENTIC Remixed";
 	src: url("/fonts/authentic-remixed/variable/TMT-AUTHENTICRemixedVF.ttf") format("truetype"),
 		 url("/fonts/authentic-remixed/variable/TMT-AUTHENTICRemixedVF.woff") format("woff"),
 		 url("/fonts/authentic-remixed/variable/TMT-AUTHENTICRemixedVF.woff2") format('woff2');
@@ -364,6 +364,8 @@ body[data-color-mode="1"] * {
 	cursor: pointer;
 	border: unset;
 	font-family: "Limkin Pixel", sans-serif;
+	font-variation-settings: "wght" 500;
+	font-weight: 500;
 	color: var(--primary);
 	gap: 8px;
 	text-decoration: none;
@@ -597,8 +599,8 @@ body[data-color-mode="1"] * {
 		font-variation-settings: 'THAT' 0, 'THIS' 0;
 	}
 }
-.menu-typeface[data-font='Authentic Remixed'] .menu-typeface-preview {
-	font-family: 'Authentic Remixed';
+.menu-typeface[data-font='AUTHENTIC Remixed'] .menu-typeface-preview {
+	font-family: 'AUTHENTIC Remixed';
 	font-variation-settings: 'XAXI' 0, 'YAXI' 0;
 	animation: menu-authenticremixed 2s infinite ease-in-out alternate;
 	padding-top: .5em;
@@ -856,6 +858,11 @@ body[data-color-mode="1"] * {
 		display: none;
 	}
 	.dock-clock-date {
+		display: none;
+	}
+}
+@media screen and (max-width: 600px) {
+	.dock-clock {
 		display: none;
 	}
 }
@@ -1622,6 +1629,8 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	min-width: min-content;
 	flex-shrink: 0;
 	flex-basis: min-content;
+	font-variation-settings: "wght" 500;
+	font-weight: 500;
 }
 .window-controls button[data-active="1"] {
 	background-color: var(--primary);
@@ -1687,6 +1696,8 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	color: var(--secondary);
 	fill: var(--secondary);
 	text-decoration: none;
+	font-variation-settings: "wght" 500;
+	font-weight: 500;
 	text-align: left;
 	padding: 4px 8px;
 	height: 24px;
