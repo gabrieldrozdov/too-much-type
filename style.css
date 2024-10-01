@@ -725,7 +725,7 @@ body[data-color-mode="1"] * {
 	fill: var(--secondary);
 	padding: 4px 16px;
 	cursor: pointer;
-	border: unset;
+	border: 4px outset rgba(255,255,255,.5);
 	font-family: "Limkin Pixel", sans-serif;
 	color: var(--secondary);
 	gap: 8px;
@@ -748,9 +748,10 @@ body[data-color-mode="1"] * {
 	fill: var(--primary);
 	background-color: var(--secondary);
 	color: var(--primary);
+	border: 4px outset rgba(0,0,0,.5);
 }
 .dock-toggle:active {
-	opacity: 0.5;
+	border: 4px inset rgba(0,0,0,.5);
 }
 .dock-toggle[data-active="1"] {
 	background-image: linear-gradient(45deg, var(--secondary) 25%, transparent 25%), linear-gradient(-45deg, var(--secondary) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--secondary) 75%), linear-gradient(-45deg, transparent 75%, var(--secondary) 75%);
@@ -2043,7 +2044,6 @@ body[data-color-mode="1"] .typey {
 	transition: transform .5s cubic-bezier(0.83, 0, 0.17, 1);
 }
 .typey-text button {
-	border: unset;
 	padding: 4px 8px 2px 8px;
 	font-size: 14px;
 	background-color: transparent;
