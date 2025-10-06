@@ -1,14 +1,14 @@
 let screenLeft = 0;
 let screenTop = 0;
 let screenRight = window.innerWidth;
-let screenBottom = window.innerHeight - 40;
+let screenBottom = window.innerHeight - 60;
 let screenHeight = screenBottom-screenTop;
 let screenWidth = screenRight-screenLeft;
 
 window.addEventListener('resize', calculateBorders);
 function calculateBorders() {
 	screenRight = window.innerWidth;
-	screenBottom = window.innerHeight - 40;
+	screenBottom = window.innerHeight - 60;
 	screenHeight = screenBottom-screenTop;
 	screenWidth = screenRight-screenLeft;	
 }
@@ -92,6 +92,25 @@ let fontInfo = {
 				'min': 100,
 				'max': 900,
 				'default': 500
+			}
+		}
+	},
+	'M Krone': {
+		'download': '/fonts/m-krone/TMT-MKrone.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678 .,:;!?•*#/\\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
+		'variation': {
+			'Scribble': {
+				'code': 'SCRI',
+				'min': 0,
+				'max': 100,
+				'default': 0
+			},
+			'Scrabble': {
+				'code': 'SCRA',
+				'min': 0,
+				'max': 100,
+				'default': 0
 			}
 		}
 	},
@@ -183,6 +202,42 @@ let fontInfo = {
 			}
 		}
 	},
+	'Urging Osmosis A': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
+	'Urging Osmosis B': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
+	'Urging Osmosis C': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
+	'Urging Osmosis E': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
+	'Urging Osmosis K': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
+	'Urging Osmosis L': {
+		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
+		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
+		'variation': ''
+	},
 	'AUTHENTIC Remixed': {
 		'download': '/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
@@ -248,22 +303,7 @@ let fontInfo = {
 		}
 	},
 }
-
-// Generate color palette
 let fontNames = Object.keys(fontInfo);
-let colorSplit = 360/(fontNames.length+1);
-let fontColor = 0;
-for (let fontName of fontNames) {
-	fontInfo[fontName]['letters'] = fontInfo[fontName]['letters'].split('');
-	fontInfo[fontName]['glyphs'] = fontInfo[fontName]['glyphs'].split('');
-	fontInfo[fontName]['color'] = fontColor;
-	fontColor += colorSplit;
-}
-for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
-	let fontName = menuTypeface.dataset.font;
-	menuTypeface.style.setProperty('--primary', `hsl(${fontInfo[fontName]['color']}deg, 100%, 70%)`);
-	menuTypeface.style.setProperty('--tertiary', `hsl(${fontInfo[fontName]['color']}deg, 100%, 10%)`);
-}
 
 // ———————————————————————————————————————————————
 // WINDOWS
@@ -340,17 +380,6 @@ class pseudoWindow {
 
 		let titleName = document.createElement('h3');
 		titleName.classList.add('window-title-name');
-
-		// Style with color, icon, and info
-		let color = Math.floor(Math.random()*360);
-		if (Object.keys(fontInfo).includes(src)) {
-			color = fontInfo[src]['color'];
-		}
-		let primary = `hsl(${color}deg, 100%, 70%)`;
-		let secondary = `hsl(${color}deg, 100%, 10%)`;
-
-		this.elmnt.style.setProperty('--primary', primary);
-		this.elmnt.style.setProperty('--secondary', secondary);
 
 		title.innerHTML += windowData[this.src]['icon'];
 		titleName.innerText = windowData[this.src]['title'];
@@ -559,8 +588,6 @@ class pseudoWindow {
 		this.dockItem = dockItem;
 		dockItem.classList.add('dock-item');
 		dockItem.dataset.window = this.id;
-		dockItem.style.setProperty('--primary', primary);
-		dockItem.style.setProperty('--secondary', secondary);
 		dockItem.innerHTML = `
 			${windowData[this.src]['icon']}
 			<p class="dock-item-text">${windowData[this.src]['title']}</p>
@@ -738,6 +765,7 @@ class pseudoWindow {
 		this.elmnt.remove();
 		this.dockItem.remove();
 		windows.delete(this.id);
+		checkWindows();
 	}
 	snapPosition = (side) => {
 		if (side == 'top') {
@@ -1083,6 +1111,7 @@ class pseudoWindow {
 
 function newWindow(src) {
 	windows.set(windowIdCounter, new pseudoWindow(src));
+	checkWindows();
 }
 
 // Activate and deactivate previews to avoid mouse capture
@@ -1110,7 +1139,7 @@ function openLink(url) {
 
 let letterIdCounter = 0;
 class desktopLetter {
-	constructor(font, letter, variation, size, color) {
+	constructor(font, letter, variation, size) {
 		this.id = letterIdCounter;
 		letterIdCounter++;
 
@@ -1118,14 +1147,11 @@ class desktopLetter {
 		this.letters = fontInfo[this.font]['letters'];
 		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
 		this.variation = variation || this.randomizeVariation();
-		this.color = color || fontInfo[this.font]['color'];
 		this.size = size || 50;
 
 		// Create desktop element
 		this.elmnt = document.createElement('div');
 		this.elmnt.classList.add('desktop-letter');
-		this.elmnt.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
-		this.elmnt.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
 		this.elmnt.innerHTML = `
 			<div class="desktop-letter-glyph" style="font-family:'${this.font}'; ${this.convertVariationToStyle()};">${this.letter}</div>
 			<span>${this.font}</span>
@@ -1153,7 +1179,7 @@ class desktopLetter {
 		setTimeout(() => {
 			this.elmnt.dataset.initialize = 1;
 			this.elmnt.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
-			this.elmnt.style.top = (window.innerHeight*(Math.random()*.8+.05)).toFixed(2) + "px";
+			this.elmnt.style.top = (window.innerHeight*(Math.random()*.75+.1)).toFixed(2) + "px";
 			this.elmnt.addEventListener('mousedown', (e) => {dragElmnt(e, this.elmnt)});
 			this.elmnt.addEventListener('touchstart', (e) => {dragElmnt(e, this.elmnt)});
 			this.elmnt.addEventListener('click', (e) => {this.clickDesktopElmnt(e)});
@@ -1180,23 +1206,10 @@ class desktopLetter {
 		lettersetContent.style.fontVariationSettings = this.convertVariationToStyle2();
 	}
 	
-	// Size and color
+	// Size
 	updateSize = (val) => {
 		this.size = val;
 		this.glyph.style.fontSize = val + "px";
-	}
-	updateColor = (val) => {
-		this.color = val;
-		this.elmnt.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
-		this.elmnt.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
-
-		// Also change colors of desktop settings and letterset
-		const desktopSettings = document.querySelector('.desktop-settings');
-		const letterset = document.querySelector('.desktop-letterset');
-		desktopSettings.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
-		desktopSettings.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
-		letterset.style.setProperty('--primary', `hsl(${this.color}deg,100%,70%)`);
-		letterset.style.setProperty('--secondary', `hsl(${this.color}deg,100%,10%)`);
 	}
 
 	// Returns with font-variation-settings
@@ -1242,7 +1255,7 @@ class desktopLetter {
 
 	// Delete class instance and remove from DOM
 	duplicateLetter = () => {
-		desktopLetters[letterIdCounter] = new desktopLetter(this.font, this.letter, this.variation, this.size, this.color);
+		desktopLetters[letterIdCounter] = new desktopLetter(this.font, this.letter, this.variation, this.size);
 	}
 
 	// Delete class instance and remove from DOM
@@ -1270,10 +1283,6 @@ function initializeDesktop() {
 		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
 		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
 		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-	} else if (diceRoll < .8) {
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
 		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
 	} else {
 		for (let fontName of fontNames) {
@@ -1291,10 +1300,6 @@ function initializeDesktop() {
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
 	} else if (diceRoll < .6) {
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-	} else if (diceRoll < .8) {
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
@@ -1317,7 +1322,7 @@ function initializeDesktop() {
 	// }
 
 	// The number of letters to be generated
-	let count = Math.floor(window.innerWidth/20);
+	let count = Math.floor(window.innerWidth/18);
 
 	for (let i=0; i<count; i++) {
 		setTimeout(() => {
@@ -1325,11 +1330,14 @@ function initializeDesktop() {
 		}, loopDelay)
 		loopDelay += 10;
 	}
+
+	setTimeout(checkDesktop, 10)
 }
 setTimeout(initializeDesktop, 500);
 
 function generateLetter(font, letter, variation) {
 	desktopLetters[letterIdCounter] = new desktopLetter(font, letter, variation);
+	checkDesktop();
 }
 
 function generateLettersFromPreview(font) {
@@ -1368,7 +1376,6 @@ function generateLetterSettings(id) {
 	const desktopSettingsDownload = desktopSettings.querySelector('.desktop-settings-download');
 	const desktopSettingsVariable = desktopSettings.querySelector('.desktop-settings-variable');
 	const desktopSettingsSize = desktopSettings.querySelector('.desktop-settings-size');
-	const desktopSettingsColor = desktopSettings.querySelector('.desktop-settings-color');
 
 	const glyphInfo = desktopLetters[id];
 
@@ -1380,11 +1387,6 @@ function generateLetterSettings(id) {
 
 	// Set size
 	desktopSettingsSize.value = glyphInfo.size;
-	
-	// Set color
-	desktopSettings.style.setProperty('--primary', `hsl(${glyphInfo.color}deg,100%,70%)`);
-	desktopSettings.style.setProperty('--secondary', `hsl(${glyphInfo.color}deg,100%,10%)`);
-	desktopSettingsColor.value = glyphInfo.color;
 
 	// Generate variable axes sliders
 	let variableSliders = '';
@@ -1436,13 +1438,11 @@ function generateLetterSettings(id) {
 	settingsDuplicate.addEventListener('click', glyphInfo.duplicateLetter);
 
 	const settingsDelete = newDesktopSettings.querySelector('.desktop-settings-delete');
-	settingsDelete.addEventListener('click', () => {glyphInfo.deleteLetter(); closeLetterSettings(); closeLetterset();});
+	settingsDelete.addEventListener('click', () => {glyphInfo.deleteLetter(); closeLetterSettings(); closeLetterset(); checkDesktop();});
 
 	const sizeSlider = newDesktopSettings.querySelector('input[name="size"]');
 	sizeSlider.addEventListener('input', () => {glyphInfo.updateSize(sizeSlider.value)});
 	
-	const colorSlider = newDesktopSettings.querySelector('input[name="color"]');
-	colorSlider.addEventListener('input', () => {glyphInfo.updateColor(colorSlider.value)});
 	for (let slider of newDesktopSettings.querySelectorAll('.slider-variable')) {
 		slider.addEventListener('input', () => {glyphInfo.updateVariation(slider.value, slider.name)});
 	}
@@ -1509,8 +1509,6 @@ function generateLetterset(id) {
 	lettersetGlyphs.innerHTML = lettersetContent;
 
 	// Set styles
-	letterset.style.setProperty('--primary', `hsl(${glyphInfo.color}deg, 100%, 70%)`);
-	letterset.style.setProperty('--secondary', `hsl(${glyphInfo.color}deg, 100%, 10%)`);
 	lettersetGlyphs.style.fontFamily = '"' + font + '"';
 	
 	// Remove previous listeners
@@ -1555,6 +1553,20 @@ function positionLetterset(e) {
 function closeLetterset() {
 	const letterset = document.querySelector('.desktop-letterset');
 	letterset.dataset.active = 0;
+}
+
+// Check if any letters are on desktop
+function checkDesktop() {
+	let totalLetters = document.querySelectorAll('.desktop-letter').length;
+	if (totalLetters == 0) {
+		for (let setting of document.querySelectorAll('[data-setting="desktop"]')) {
+			setting.dataset.active = 0;
+		}
+	} else {
+		for (let setting of document.querySelectorAll('[data-setting="desktop"]')) {
+			setting.dataset.active = 1;
+		}
+	}
 }
 
 
@@ -1664,14 +1676,6 @@ window.addEventListener('mousedown', (e) => {
 }, false);
 
 // Settings functions
-function changeColorMode() {
-	let body = document.querySelector('body');
-	if (parseInt(body.dataset.colorMode) == 0) {
-		body.dataset.colorMode = 1;
-	} else {
-		body.dataset.colorMode = 0;
-	}
-}
 function sortDesktop() {
 	let posX = 50;
 	let posY = 50;
@@ -1758,7 +1762,25 @@ function closeWindows() {
 	for (let window of windows.keys()) {
 		windows.get(window).close();
 	}
+	let body = document.querySelector('body');
+	body.dataset.windowsOpen = 0;
 }
+function checkWindows() {
+	let body = document.querySelector('body');
+	let totalWindows = document.querySelectorAll('.window').length;
+	if (totalWindows == 0) {
+		body.dataset.windowsOpen = 0;
+		for (let setting of document.querySelectorAll('[data-setting="window"]')) {
+			setting.dataset.active = 0;
+		}
+	} else {
+		body.dataset.windowsOpen = 1;
+		for (let setting of document.querySelectorAll('[data-setting="window"]')) {
+			setting.dataset.active = 1;
+		}
+	}
+}
+checkWindows();
 function tileWindows() {
 	// Calculate how many windows are showing
 	let totalWindows = 0;
@@ -1949,7 +1971,6 @@ function dragElmnt(e1, elmnt) {
 // TYPEY!
 // ———————————————————————————————————————————
 function showTypey() {
-	initalizeTypey();
 	const typey = document.querySelector('.typey');
 	typey.dataset.active = 1;
 	const toggle = document.querySelector('#toggle-typey');
@@ -1971,10 +1992,29 @@ function toggleTypey() {
 }
 setTimeout(showTypey, 1500);
 
-// Random color
-function initalizeTypey() {
-	let color = Math.round(Math.random()*360);
-	const typey = document.querySelector('.typey');
-	typey.style.setProperty('--typey', color+"deg");
+// Generate menubar (shuffle fonts first)
+function shuffle(array) {
+	let currentIndex = array.length;
+	while (currentIndex != 0) {
+		let randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+	}
+}  
+function generateMenubar() {
+	let menuBar = document.querySelector('.menubar');
+	let temp = '';
+	let names = Object.keys(fontInfo);
+	shuffle(names);
+	let totalNames = names.length;
+	let nameIndex = 0;
+	for (let fontName of names) {
+		temp += `<div onclick="generateLetter('${fontName}', undefined, undefined);" class="menubar-button" data-font="${fontName}"><div style="animation-delay: -${(nameIndex/totalNames)*2}s;">Too Much Type</div></div>`;
+		nameIndex++;
+	}
+	temp = `<div class="menubar-group">${temp}</div>`;
+	for (let i=0; i<10; i++) {
+		menuBar.innerHTML += temp;
+	}
 }
-initalizeTypey();
+generateMenubar();
