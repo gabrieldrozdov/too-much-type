@@ -147,7 +147,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	overscroll-behavior: none;
-	touch-action: none;
+	touch-action: manipulation;
 }
 :root {
 	--pink: #ff0055;
@@ -310,6 +310,33 @@ body {
 }
 .menu-typeface:hover {
 	outline: 1px solid var(--black);
+}
+.menu-typeface-name {
+	padding-top: .2em;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-variation-settings: 'wght' 700;
+	letter-spacing: .2em;
+	font-size: 9px;
+	line-height: 1em;
+	display: flex;
+	color: #777;
+	align-items: center;
+	justify-content: center;
+}
+.menu-typeface:hover .menu-typeface-name {
+	color: var(--black);
+}
+.menu-typeface-name::after {
+	content: "";
+	flex-grow: 1;
+	padding-top: 1px;
+	border-top: 3px double #777;
+	border-bottom: 3px double #777;
+	display: inline-block;
+	/* background-color: var(--black); */
+	margin-left: 4px;
+	transform: translateY(-.5px);
 }
 .menu-typeface-links {
 	display: flex;
@@ -525,7 +552,7 @@ body {
 	content: "TYPE HERE";
 	position: absolute;
 	bottom: 8px;
-	right: calc(93px - .1em);
+	right: calc(95px - .1em);
 	line-height: 1em;
 	font-family: "Limkin Pixel", sans-serif;
 	font-variation-settings: "wght" 500;
@@ -873,6 +900,9 @@ body {
 	}
 }
 @media screen and (max-width: 800px) {
+	.menu-typeface-preview-container {
+		grid-template-columns: 1fr 40px;
+	}
 	.menu-typeface-preview {
 		font-size: 32px;
 		height: 64px;
@@ -880,6 +910,15 @@ body {
 	}
 	.menu-typeface[data-font='Music Box'] .menu-typeface-preview {
 		font-size: 22px;
+	}
+	.menu-typeface-preview-add {
+		height: 64px;
+	}
+	.menu-typeface-preview-add span {
+		display: none;
+	}
+	.menu-typeface-preview-container::after {
+		right: calc(55px - .1em);
 	}
 }
 
@@ -1399,11 +1438,10 @@ body[data-windows-open="0"] .dock-windows {
 	font-size: 12px;
 	letter-spacing: 0.05em;
 	line-height: 1.1em;
-	opacity: .5;
-	color: var(--white);
+	color: #ccc;
 }
 .desktop-letter:hover span {
-	opacity: 1;
+	color: var(--white);
 }
 body[data-hide-font-names="1"] .desktop-letter span {
 	display: none;
@@ -2408,6 +2446,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	margin-top: 6px;
 	font-size: 16px;
 	padding: 4px;
+	color: var(--black);
 	outline: 1px solid var(--black);
 	display: block;
 	background-color: #eee;
