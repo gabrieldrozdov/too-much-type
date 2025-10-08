@@ -160,6 +160,9 @@
 	--right: 0px;
 	--bottom: 60px;
 	--left: 0px;
+	overscroll-behavior: none;
+	height: 100%;
+	overflow: hidden;
 }
 body {
 	font-family: "Limkin Pixel", sans-serif;
@@ -170,8 +173,20 @@ body {
 	background-size: 8px 8px;
 	background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
 	width: 100vw;
-	height: 100dvh;
+	height: 100%;
+	position: relative;
 	font-synthesis: none;
+	overscroll-behavior: none;
+	overflow: hidden;
+}
+*:focus {
+	scroll-margin: 0;
+	scroll-padding: 0;
+	scroll-behavior: auto;
+  }
+:focus {
+	scroll-behavior: auto;
+	scroll-margin: 0;
 }
 .container {
 	width: 100vw;

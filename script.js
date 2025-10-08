@@ -2032,3 +2032,9 @@ function generateMenubar() {
 	menubarButtons.innerHTML = temp;
 }
 generateMenubar();
+
+// Prevent scrolling by accident
+const container = document.querySelector('.container');
+container.addEventListener('scroll', () => {
+	container.scrollTop = 0;
+});
