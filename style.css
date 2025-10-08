@@ -2179,7 +2179,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 .minimized {
 	top: 100% !important;
 	pointer-events: none;
-	transition: ease-in .3s, z-index 0s;
+	transition: steps(5) .3s, z-index 0s;
 	transform-origin: center;
 	transform: scale(0);
 }
