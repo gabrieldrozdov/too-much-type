@@ -103,13 +103,13 @@ let fontInfo = {
 			'Scribble': {
 				'code': 'SCRI',
 				'min': 0,
-				'max': 100,
+				'max': 1000,
 				'default': 0
 			},
 			'Scrabble': {
 				'code': 'SCRA',
 				'min': 0,
-				'max': 100,
+				'max': 1000,
 				'default': 0
 			}
 		}
@@ -1293,7 +1293,7 @@ function initializeDesktop() {
 	// What letters to use
 	diceRoll = Math.random();
 	let glyphs = [];
-	let glyphNames = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split('');
+	let glyphNames = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split('');
 	if (diceRoll < .2) {
 		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
 	} else if (diceRoll < .4) {
@@ -1518,7 +1518,7 @@ function generateLetterset(id) {
 	letterset = document.querySelector('.desktop-letterset');
 	
 	// Add listeners
-	let lettersetTitle = letterset.querySelector('.desktop-letterset-titlebar');
+	let lettersetTitle = letterset.querySelector('.desktop-letterset-font');
 	lettersetTitle.addEventListener('mousedown', (e) => {dragElmnt(e, letterset)});
 	lettersetTitle.addEventListener('touchstart', (e) => {dragElmnt(e, letterset)});
 
@@ -1678,7 +1678,7 @@ window.addEventListener('mousedown', (e) => {
 // Settings functions
 function sortDesktop() {
 	let posX = 50;
-	let posY = 50;
+	let posY = 100;
 	let loopDelay = 0;
 	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		let pos = [posX, posY];
@@ -1699,7 +1699,7 @@ function unsortDesktop() {
 	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		setTimeout(() => {
 			desktopLink.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
-			desktopLink.style.top = (window.innerHeight*(Math.random()*.9+.05)).toFixed(2) + "px";
+			desktopLink.style.top = (window.innerHeight*(Math.random()*.9+.1)).toFixed(2) + "px";
 		}, loopDelay)
 		loopDelay += 5;
 	}
@@ -2002,19 +2002,29 @@ function shuffle(array) {
 	}
 }  
 function generateMenubar() {
-	let menuBar = document.querySelector('.menubar');
+	let menubarButtons = document.querySelector('.menubar-buttons');
 	let temp = '';
 	let names = Object.keys(fontInfo);
 	shuffle(names);
-	let totalNames = names.length;
-	let nameIndex = 0;
-	for (let fontName of names) {
-		temp += `<div onclick="generateLetter('${fontName}', undefined, undefined);" class="menubar-button" data-font="${fontName}"><div style="animation-delay: -${(nameIndex/totalNames)*2}s;">Too Much Type</div></div>`;
-		nameIndex++;
-	}
-	temp = `<div class="menubar-group">${temp}</div>`;
 	for (let i=0; i<10; i++) {
-		menuBar.innerHTML += temp;
+		let temptemp = '';
+		for (let fontName of names) {
+			let glyphs = fontInfo[fontName]['glyphs'];
+			let randomGlyph = glyphs[Math.floor(Math.random()*glyphs.length)];
+			let axes = fontInfo[fontName]['variation'];
+			let variation = '';
+			if (axes != '') {
+				for (let axis of Object.keys(axes)) {
+					let axisInfo = axes[axis];
+					// let range = axisInfo['max'] - axisInfo['min'];
+					// let randomValue = Math.round(Math.random()*range);
+					variation += `'${axisInfo['code']}' ${axisInfo['default']},`;
+				}
+			}
+			temptemp += `<div onclick="generateLetter('${fontName}', '${randomGlyph}', undefined);" class="menubar-button" style="font-family: '${fontName}'; font-variation-settings: ${variation.slice(0, -1)}">${randomGlyph}</div>`;
+		}
+		temp += `<div class="menubar-group">${temptemp}</div>`;
 	}
+	menubarButtons.innerHTML = temp;
 }
 generateMenubar();

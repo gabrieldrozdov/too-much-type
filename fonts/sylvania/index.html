@@ -12,8 +12,8 @@
 	<meta property="og:url" content="https://toomuchtype.com/">
 	<meta name="og:title" property="og:title" content="Too Much Type">
 	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
-	<meta property="og:image" content="/assets/meta/opengraph.jpg">
-	<link rel="icon" type="png" href="/assets/meta/favicon.png">
+	<meta property="og:image" content="https://toomuchtype.com/assets/meta/opengraph.jpg">
+	<link rel="icon" type="png" href="https://toomuchtype.com/assets/meta/favicon.png">
 
 	<!-- CSS -->
 	<style>
@@ -31,10 +31,10 @@
 			display: block;
 		}
 		body {
-			background-color: black;
-			background-image: url('/assets/ui/checkerboard-round.svg');
+			background-color: #222;
+			background-image: linear-gradient(45deg, #111 25%, transparent 25%), linear-gradient(-45deg, #111 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #111 75%), linear-gradient(-45deg, transparent 75%, #111 75%);
 			background-size: 8px 8px;
-			background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+			background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
 		}
 		.container {
 			height: 100dvh;
@@ -77,142 +77,211 @@
 
 		/* Controls */
 		.controls {
-			position: fixed;
+			position: absolute;
 			bottom: 0;
-			left: 50%;
-			height: 120px;
+			left: 0;
+			right: 0;
+			width: 100vw;
 			display: flex;
 			flex-direction: column;
-			transform: translateX(-50%);
+			gap: 1px;
+			background-color: black;
+			overflow: hidden;
 			align-items: center;
-		}
-		.controls > * {
-			flex-shrink: 0;
+			outline: 1px solid black;
 		}
 		.controls-input {
+			height: calc(1.2em + 32px);
 			resize: none;
-			display: flex;
 			width: 100%;
-			max-width: 100vw;
+			display: flex;
 			align-items: center;
-			height: 60px;
-			gap: 10px;
-			padding: 22px 20px 18px 20px;
+			outline: 1px solid black;
+			border-radius: 0;
+			overflow: scroll;
+			padding: calc(12px + .2em) 12px 12px 12px;
+			white-space: nowrap;
+			color: black;
 			background-color: white;
-			border: 1px solid white;
-			border-bottom: unset;
-			background-color: black;
-			color: white;
+			border: 4px inset #eee;
+			font-size: 18px;
+			line-height: 1em;
 			text-align: center;
 			font-family: "Limkin Pixel", sans-serif;
-			line-height: 1em;
-			font-size: 18px;
 			font-variation-settings: "wght" 500;
 			font-weight: 500;
-			border-radius: unset;
 		}
 		.controls-input::placeholder {
-			color: white;
-			opacity: .5;
+			color: black;
+			opacity: .25;
 		}
 		.controls-input:focus {
 			outline: unset;
 		}
 		.controls-buttons {
 			display: flex;
-			max-width: 100vw;
+			width: 100%;
 			align-items: center;
-			gap: 10px;
-			padding: 10px 20px;
+			gap: 5px;
+			padding: 5px;
 			overflow-x: scroll;
-			background-color: white;
+			transition: background-color .2s;
+			background-color: #bbb;
+			border: 4px outset #ccc;
 		}
-		.controls-buttons * {
-			flex-shrink: 0;
+		.controls-buttons-group {
+			display: flex;
+			gap: 5px;
+			flex-grow: 1;
 		}
 		.controls-buttons button {
-			border: unset;
-			background-color: unset;
+			outline: 1px solid black;
+			flex-basis: 64px;
+			flex-grow: 1;
+			border-radius: 4px;
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #eee;
+			fill: black;
+			padding: 4px 8px;
 			cursor: pointer;
-			outline: unset;
+			border: 4px outset white;
+			font-family: "Limkin Pixel", sans-serif;
+			color: black;
+			gap: 8px;
+		}
+		.controls-buttons button[data-active="0"] {
+			opacity: .25;
+			pointer-events: none;
 		}
 		.controls-buttons button svg {
-			height: 40px;
-			width: 40px;
-			fill: black;
+			flex-shrink: 0;
+			aspect-ratio: 1/1;
+			width: 16px;
+			height: 16px;
 		}
-		.controls-buttons button svg:hover {
-			opacity: .8;
+		.controls-buttons button span {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			font-size: 12px;
+			letter-spacing: 0.02em;
+			line-height: 1.1em;
 		}
-		.controls-buttons button svg:active {
-			opacity: .5;
+		.controls-buttons button:hover {
+			background-color: white;
+		}
+		.controls-buttons button:active {
+			background-color: #ccc;
+			border: 4px inset #aaa;
 		}
 		.controls-buttons-divider {
 			width: 1px;
-			height: 100%;
-			background-color: black;
-			margin: 0 10px;
+			border-radius: 2px;
+			height: 10px;
+			margin: 0 5px;
+			background-color: #777;
+			flex-shrink: 0;
 		}
-		
+		@media screen and (max-width: 800px) {
+			.controls-buttons span {
+				display: none;
+			}
+		}
+
 		/* Nav and info */
 		.nav {
-			position: fixed;
-			top: 10px;
-			right: 10px;
+			position: absolute;
+			top: 9px;
+			left: 9px;
 			gap: 5px;
 			display: flex;
-			flex-direction: column;
 		}
 		.nav-link {
 			display: block;
 			width: 40px;
 			height: 40px;
-			fill: white;
-			background-color: black;
-			border: unset;
-			outline: unset;
+			fill: black;
+			border-radius: 4px;
+			background-color: #eee;
+			outline: 1px solid black;
 			cursor: pointer;
-			border: 1px solid white;
+			border: 4px outset white;
 			padding: 4px;
 		}
 		.nav-link:hover {
-			fill: black;
 			background-color: white;
 		}
 		.nav-link:active {
-			opacity: .5;
+			background-color: #ccc;
+			border: 4px inset #aaa;
+		}
+		.logo {
+			width: 80px;
+			background-color: #eee;
+			border-radius: 4px;
+			width: 80px;
+			padding: 8px;
+			display: flex;
+			border: 4px outset white;
+			align-items: center;
+			justify-content: center;
+			fill: black;
+			outline: 1px solid black;
+			cursor: pointer;
+		}
+		.logo svg {
+			width: 100%;
+			display: block;
+		}
+		.logo:hover {
+			background-color: white;
+		}
+		.logo:active {
+			background-color: #ccc;
+			border: 4px inset #aaa;
 		}
 		.info {
-			position: fixed;
-			top: calc(50% - 20px);
-			left: calc(50% - 20px);
+			position: absolute;
+			top: calc(50% - 24px);
+			left: calc(50% - 24px);
 			transform: translate(-50%, -50%);
-			width: calc(100% - 40px);
+			width: calc(100% - 48px);
 			max-width: 640px;
-			max-height: calc(100% - 40px);
-			margin: 20px;
-			background-color: white;
-			color: black;
+			max-height: calc(100% - 48px);
+			margin: 24px;
 			font-family: "Limkin Pixel", sans-serif;
 			font-variation-settings: "wght" 400;
-			letter-spacing: .02em;
 			font-weight: 400;
 			display: flex;
 			flex-direction: column;
 			gap: 20px;
 			padding: 20px 20px 60px 20px;
 			overflow-y: scroll;
-			font-size: 16px;
-			text-wrap: pretty;
-			line-height: 1.3em;
-			box-shadow: 0 0 10px rgba(0,0,0,.5);
 			z-index: 9;
+			background-color: #eee;
+			color: black;
+			outline: 1px solid black;
+			overflow-y: scroll;
+			line-height: 1.2em;
+			border-radius: 4px;
+			font-size: 16px;
+			letter-spacing: .01em;
+			text-wrap: pretty;
+			border: 4px outset white;
+			transform-origin: bottom right;
+			box-shadow: 8px 8px black;
 		}
 		.info a {
 			color: black;
+			text-decoration-thickness: 1px;
+			transition: font-variation-settings .2s steps(3);
+			text-underline-offset: .2em;
 		}
 		.info a:hover {
-			text-decoration: none;
+			font-variation-settings: "wght" 900;
+			font-weight: 900;
 		}
 		.info a:active {
 			opacity: .5;
@@ -223,14 +292,18 @@
 		.info-close {
 			position: sticky;
 			top: 0;
-			width: 24px;
-			height: 24px;
+			width: 32px;
+			height: 32px;
 			padding: 2px;
 			margin-left: auto;
-			background-color: black;
-			fill: white;
-			border: 1px solid black;
+			display: block;
+			fill: black;
+			border-radius: 4px;
+			background-color: #eee;
+			outline: 1px solid black;
 			cursor: pointer;
+			border: 4px outset white;
+			padding: 4px;
 		}
 		.info-close svg {
 			width: 100%;
@@ -241,35 +314,8 @@
 			fill: black;
 		}
 		.info-close:active {
-			opacity: .5;
-		}
-
-		/* Logo */
-		.logo {
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			width: 80px;
-			image-rendering: pixelated;
-			filter: drop-shadow(0 0 10px rgba(0,0,0,.5));
-		}
-		.logo img {
-			width: 100%;
-		}
-		.logo-static {
-			filter: brightness(500%);
-		}
-		.logo-animation {
-			display: none;
-		}
-		.logo:hover .logo-static {
-			display: none;
-		}
-		.logo:hover .logo-animation {
-			display: block;
-		}
-		.logo:active {
-			opacity: .5;
+			background-color: #ccc;
+			border: 4px inset #aaa;
 		}
 	</style>
 </head>
@@ -283,60 +329,82 @@
 		<div class="controls">
 			<textarea class="controls-input" type="text" name="input" placeholder="Type here!" spellcheck="false"></textarea>
 
-			<div class="controls-buttons">
-				<button onclick="align('start')" title="Align left">
-					<svg viewBox="0 0 100 100"><path d="M90,35H10v-10h80v10ZM90,45H10v10h80v-10ZM50,65H10v10h40v-10Z"/></svg>
-				</button>
-				<button onclick="align('center')" title="Align center">
-					<svg viewBox="0 0 100 100"><path d="M30,25h40v10H30v-10ZM10,55h80v-10H10v10ZM30,75h40v-10H30v10Z"/></svg>
-				</button>
-				<button onclick="align('end')" title="Align right">
-					<svg viewBox="0 0 100 100"><path d="M10,25h80v10H10v-10ZM10,55h80v-10H10v10ZM50,75h40v-10h-40v10Z"/></svg>
-				</button>
-				<div class="controls-buttons-divider"></div>
-				<button onclick="changeLeading(-1)" title="Decrease line height">
-					<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM60,45v10h30v-10h-30Z"/></svg>
-				</button>
-				<button onclick="changeLeading(1)" title="Increase line height">
-					<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
-				</button>
+			<div class="controls-buttons">	
+				<div class="controls-buttons-group">
+					<button onclick="pauseVideos()" title="Pause videos">
+						<svg viewBox="0 0 100 100"><path d="M45,75h-10V25h10v50ZM65,25h-10v50h10V25Z"/></svg>
+						<span>Pause Videos</span>
+					</button>
+					<button onclick="playVideos()" title="Play videos">
+						<svg viewBox="0 0 100 100"><path d="M65,45v10h-10v10h-10v10h-10V25h10v10h10v10h10Z"/></svg>
+						<span>Play Videos</span>
+					</button>
+				</div>
 	
 				<div class="controls-buttons-divider"></div>
-	
-				<button onclick="changeTracking(-.2)" title="Decrease letter spacing">
-					<svg viewBox="0 0 100 100"><path d="M75,55v10h-10v-10h-10v-10h10v-10h10v10h20v10h-20ZM15,25v10h10v-10h-10ZM85,75v-10h-10v10h10ZM15,75h10v-10h-10v10ZM35,35h-10v10H5v10h20v10h10v-10h10v-10h-10v-10ZM85,25h-10v10h10v-10Z"/></svg>
-				</button>
-				<button onclick="changeTracking(.2)" title="Increase letter spacing">
-					<svg viewBox="0 0 100 100"><path d="M95,45v10h-10v10h-10v-10h-20v-10h20v-10h10v10h10ZM65,25v10h10v-10h-10ZM65,75h10v-10h-10v10ZM35,25h-10v10h10v-10ZM25,35h-10v10H5v10h10v10h10v-10h20v-10h-20v-10ZM35,75v-10h-10v10h10Z"/></svg>
-				</button>
-	
-				<div class="controls-buttons-divider"></div>
-	
-				<button onclick="changeFontSize(-1)" title="Decrease font size">
-					<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM60,45v10h30v-10h-30Z"/></svg>
-				</button>
-				<button onclick="changeFontSize(1)" title="Increase font size">
-					<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
-				</button>
-	
-				<div class="controls-buttons-divider"></div>
-	
-				<button onclick="pauseVideos()" title="Pause videos">
-					<svg viewBox="0 0 100 100"><path d="M45,75h-10V25h10v50ZM65,25h-10v50h10V25Z"/></svg>
-				</button>
-				<button onclick="playVideos()" title="Play videos">
-					<svg viewBox="0 0 100 100"><path d="M65,45v10h-10v10h-10v10h-10V25h10v10h10v10h10Z"/></svg>
-				</button>
+
+				<div class="controls-buttons-group">
+					<button onclick="align('start')" title="Align left">
+						<svg viewBox="0 0 100 100"><path d="M90,35H10v-10h80v10ZM90,45H10v10h80v-10ZM50,65H10v10h40v-10Z"/></svg>
+						<span>Left</span>
+					</button>
+					<button onclick="align('center')" title="Align center">
+						<svg viewBox="0 0 100 100"><path d="M30,25h40v10H30v-10ZM10,55h80v-10H10v10ZM30,75h40v-10H30v10Z"/></svg>
+						<span>Center</span>
+					</button>
+					<button onclick="align('end')" title="Align right">
+						<svg viewBox="0 0 100 100"><path d="M10,25h80v10H10v-10ZM10,55h80v-10H10v10ZM50,75h40v-10h-40v10Z"/></svg>
+						<span>Right</span>
+					</button>
+				</div>
 	
 				<div class="controls-buttons-divider"></div>
+
+				<div class="controls-buttons-group">
+					<div class="controls-buttons-divider"></div>
+					<button onclick="changeLeading(-1)" title="Decrease line height">
+						<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM60,45v10h30v-10h-30Z"/></svg>
+						<span>Line Height −</span>
+					</button>
+					<button onclick="changeLeading(1)" title="Increase line height">
+						<svg viewBox="0 0 100 100"><path d="M10,25h40v10H10v-10ZM10,55h40v-10H10v10ZM10,75h40v-10H10v10ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+						<span>Line Height +</span>
+					</button>
+				</div>
 	
-				<button onclick="clearAllAndRestart()" title="Clear all">
-					<svg viewBox="0 0 100 100"><path d="M55,55h-10v-10h10v10ZM55,65h10v-10h-10v10ZM65,75h10v-10h-10v10ZM55,45h10v-10h-10v10ZM65,35h10v-10h-10v10ZM45,55h-10v10h10v-10ZM35,65h-10v10h10v-10ZM45,35h-10v10h10v-10ZM35,25h-10v10h10v-10Z"/></svg>
-				</button>
+				<div class="controls-buttons-divider"></div>
+
+				<div class="controls-buttons-group">
+					<button onclick="changeTracking(-.2)" title="Decrease letter spacing">
+						<svg viewBox="0 0 100 100"><path d="M75,55v10h-10v-10h-10v-10h10v-10h10v10h20v10h-20ZM15,25v10h10v-10h-10ZM85,75v-10h-10v10h10ZM15,75h10v-10h-10v10ZM35,35h-10v10H5v10h20v10h10v-10h10v-10h-10v-10ZM85,25h-10v10h10v-10Z"/></svg>
+						<span>Letter Spacing −</span>
+					</button>
+					<button onclick="changeTracking(.2)" title="Increase letter spacing">
+						<svg viewBox="0 0 100 100"><path d="M95,45v10h-10v10h-10v-10h-20v-10h20v-10h10v10h10ZM65,25v10h10v-10h-10ZM65,75h10v-10h-10v10ZM35,25h-10v10h10v-10ZM25,35h-10v10H5v10h10v10h10v-10h20v-10h-20v-10ZM35,75v-10h-10v10h10Z"/></svg>
+						<span>Letter Spacing +</span>
+					</button>
+				</div>
+	
+				<div class="controls-buttons-divider"></div>
+
+				<div class="controls-buttons-group">
+					<button onclick="changeFontSize(-1)" title="Decrease font size">
+						<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM60,45v10h30v-10h-30Z"/></svg>
+						<span>Font Size −</span>
+					</button>
+					<button onclick="changeFontSize(1)" title="Increase font size">
+						<svg viewBox="0 0 100 100"><path d="M50,35v40h-10v-20h-20v20h-10v-40h10v10h20v-10h10ZM20,25v10h20v-10h-20ZM80,45v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10Z"/></svg>
+						<span>Font Size +</span>
+					</button>
+				</div>
 			</div>
 		</div>
 
+		<!-- Nav -->
 		<nav class="nav">
+			<a class="logo" href="https://toomuchtype.com/" target="_blank">
+				<svg viewBox="0 0 658 702"><path d="M164.954 702H179.891V694.532H194.827V672.128H187.359V642.255H179.891V612.383H172.423V575.042H164.954V545.17H157.486V507.83H164.954V500.362H194.827V492.894H224.699V477.957H217.231V470.489H187.359V477.957H150.018V485.425H120.146V492.894H82.8055V500.362H52.9332V522.766H97.7417V515.298H127.614V530.234H135.082V567.574H142.55V597.447H150.018V634.787H157.486V664.659H164.954V702Z"/><path d="M202.295 672.128V679.596H209.763V687.064H224.699V694.532H232.167V702H262.04V694.532H269.508V687.064H284.444V679.596H291.912V664.66H299.38V649.724H306.848V634.787H314.316V619.851H321.784V604.915H329.252V589.979H336.72V575.043H344.188V560.106H351.657V545.17H359.125V530.234H366.593V515.298H374.061V500.362H344.188V515.298H336.72V530.234H329.252V545.17H321.784V560.106H314.316V575.043H306.848V589.979H299.38V597.447H291.912V582.511H284.444V567.575H276.976V545.17H269.508V530.234H262.04V515.298H254.571V500.362H224.699V507.83H232.167V522.766H239.635V545.17H247.103V560.106H254.571V575.043H262.04V597.447H269.508V612.383H276.976V627.319H284.444V642.255H276.976V657.192H269.508V664.66H262.04V672.128H232.167V664.66H224.699V657.192H217.231V664.66H209.763V672.128H202.295Z"/><path d="M374.061 582.511V545.17H381.529V507.83H388.997V470.489H396.465V440.617H403.933V418.213H426.337V440.617H433.806V433.149H448.742V425.681H486.082V433.149H501.018V440.617H508.486V448.085H515.954V463.021H523.423V522.766H515.954V537.702H508.486V545.17H501.018V552.638H493.55V560.107H478.614V567.575H441.274V560.107H426.337V552.638H418.869V545.17H411.401V537.702H403.933V567.575H396.465V604.915H388.997V612.383H366.593V582.511H374.061ZM411.401 492.894V507.83H418.869V522.766H426.337V530.234H433.806V537.702H478.614V530.234H486.082V522.766H493.55V507.83H501.018V477.958H493.55V463.021H486.082V455.553H463.678V448.085H448.742V455.553H433.806V463.021H426.337V470.489H418.869V492.894H411.401Z"/><path d="M530.891 530.234V522.766H538.359V515.298H545.827V507.83H560.763V500.362H613.04V507.83H627.976V515.298H635.444V522.766H642.912V537.702H650.38V552.638H657.848V582.511H650.38V589.979H627.976V582.511H590.635V575.043H553.295V567.575H538.359V582.511H545.827V597.447H553.295V604.915H560.763V612.383H575.699V619.851H598.103V612.383H613.04V604.915H620.508V597.447H627.976V604.915H635.444V612.383H642.912V619.851H635.444V627.319H620.508V634.787H605.571V642.255H575.699V634.787H553.295V627.319H538.359V619.851H530.891V604.915H523.423V589.979H515.954V552.638H523.423V530.234H530.891ZM545.827 537.702V545.17H560.763V552.638H598.103V560.106H627.976V545.17H620.508V537.702H613.04V530.234H598.103V522.766H568.231V530.234H553.295V537.702H545.827Z"/><path d="M0.656616 403.276V425.681H30.529V395.808H37.997V351H45.4651V306.191H52.9332V268.851H60.4013V283.787H67.8694V321.127H75.3375V358.468H82.8056V395.808H90.2736V425.681H97.7417V440.617H127.614V425.681H135.082V410.744H142.55V395.808H150.018V388.34H157.486V373.404H164.954V358.468H172.423V351H179.891V336.064H187.359V321.127H194.827V306.191H202.295V298.723H209.763V283.787H217.231V298.723H209.763V343.532H202.295V388.34H194.827V433.149H187.359V455.553H217.231V418.213H224.699V373.404H232.167V328.595H239.635V283.787H247.103V246.447H202.295V261.383H194.827V268.851H187.359V283.787H179.891V298.723H172.423V313.659H164.954V321.127H157.486V336.064H150.018V351H142.55V358.468H135.082V373.404H127.614V388.34H120.146V403.276H112.678V373.404H105.21V336.064H97.7417V298.723H90.2736V261.383H82.8056V224.042H75.3375V216.574H37.997V231.51H30.529V283.787H23.0609V321.127H15.5928V373.404H8.1247V403.276H0.656616Z"/><path d="M247.103 313.66V336.064H254.571V373.404H262.04V410.745H269.508V425.681H276.976V433.149H291.912V440.617H336.72V433.149H344.188V425.681H351.657V418.213H359.125V410.745H366.593V425.681H388.997V388.34H381.529V351H374.061V313.66H366.593V291.255H351.657V298.723H344.188V336.064H351.657V365.936H359.125V388.34H351.657V403.277H344.188V410.745H329.252V418.213H306.848V410.745H299.38V403.277H291.912V388.34H284.444V351H276.976V313.66H247.103Z"/><path d="M471.146 410.744V418.213H486.082V425.681H501.018V410.744H508.486V388.34H515.955V373.404H523.423V358.468H530.891V343.532H538.359V336.064H553.295V328.595H568.231V336.064H583.167V343.532H590.635V351H598.103V373.404H590.635V395.808H583.167V410.744H575.699V425.681H568.231V448.085H560.763V455.553H575.699V463.021H590.635V440.617H598.103V425.681H605.572V410.744H613.04V388.34H620.508V365.936H627.976V351H620.508V336.064H613.04V328.595H605.572V321.127H598.103V313.659H545.827V306.191H553.295V283.787H560.763V268.851H568.231V246.447H575.699V231.51H583.167V224.042H568.231V216.574H553.295V238.978H545.827V253.915H538.359V268.851H530.891V291.255H523.423V306.191H515.955V328.595H508.486V343.532H501.018V358.468H493.55V373.404H486.082V395.808H478.614V410.744H471.146Z"/><path d="M426.337 351H463.678V343.532H486.082V336.064H493.55V328.596H501.018V321.128H508.486V313.66H493.55V306.192H478.614V313.66H471.146V321.128H426.337V313.66H411.401V298.723H403.933V253.915H411.401V246.447H418.869V238.979H441.274V231.511H456.21V238.979H471.146V246.447H478.614V253.915H486.082V261.383H493.55V253.915H508.486V238.979H501.018V231.511H493.55V224.043H486.082V216.575H471.146V209.106H418.869V216.575H411.401V224.043H396.465V231.511H388.997V246.447H381.529V261.383H374.061V298.723H381.529V313.66H388.997V321.128H396.465V328.596H403.933V336.064H411.401V343.532H426.337V351Z"/><path d="M75.3374 37.3404V52.2766H82.8055V67.2128H97.7417V59.7447H120.146V52.2766H150.018V59.7447H157.486V89.617H164.954V119.489H172.423V156.83H179.891V186.702H187.359V216.574H194.827V231.511H217.231V194.17H209.763V164.298H202.295V134.426H194.827V97.0851H187.359V67.2128H179.891V37.3404H217.231V29.8723H247.103V14.9362H239.635V0H224.699V7.46808H202.295V14.9362H172.423V22.4043H142.55V29.8723H112.678V37.3404H75.3374Z"/><path d="M239.635 149.362V141.894H247.103V126.957H262.04V119.489H269.508V112.021H329.252V119.489H344.189V126.957H351.657V134.425H359.125V149.362H366.593V209.106H359.125V224.043H351.657V231.511H344.189V238.979H329.252V246.447H306.848V253.915H291.912V246.447H269.508V238.979H254.571V231.511H247.103V224.043H239.635V209.106H232.167V149.362H239.635ZM254.571 164.298V194.17H262.04V209.106H269.508V216.574H276.976V224.043H321.784V216.574H329.252V209.106H336.72V201.638H344.189V164.298H336.72V149.362H329.252V141.894H314.316V134.425H284.444V141.894H269.508V149.362H262.04V164.298H254.571Z"/><path d="M381.529 104.553V89.617H388.997V82.1489H396.465V74.6808H403.933V67.2127H418.869V59.7446H471.146V67.2127H486.082V74.6808H493.55V82.1489H501.018V89.617H508.486V112.021H515.954V149.362H508.486V164.298H501.018V171.766H493.55V179.234H486.082V186.702H478.614V194.17H456.21V201.638H433.805V194.17H411.401V186.702H396.465V179.234H388.997V164.298H381.529V149.362H374.061V104.553H381.529ZM396.465 119.489V134.425H403.933V156.83H411.401V164.298H426.337V171.766H463.678V164.298H478.614V149.362H486.082V134.425H493.55V119.489H486.082V104.553H478.614V97.0851H471.146V89.617H456.21V82.1489H433.805V89.617H418.869V97.0851H411.401V104.553H403.933V119.489H396.465Z"/></svg>
+			</a>
 			<button onclick="toggleInfo()" class="nav-link">
 				<svg viewBox="0 0 100 100"><path d="M45,80h10v10h-10v-10ZM45,70h10v-10h-10v10ZM55,60h10v-10h-10v10ZM65,20v30h10v-30h-10ZM35,10v10h30v-10h-30ZM25,40h10v-20h-10v20Z"/></svg>
 			</button>
@@ -362,12 +430,6 @@
 				<a href="https://toomuchtype.com/" target="_blank">Find more fonts at Too Much Type</a>
 			</p>
 		</section>
-
-		<!-- Logo -->
-		<a class="logo" href="https://toomuchtype.com/" target="_blank">
-			<img src="/assets/ui/logo.png" class="logo-static">
-			<img src="/assets/ui/logo-animation.gif" class="logo-animation">
-		</a>
 	</div>
 
 	<!-- JavaScript -->
