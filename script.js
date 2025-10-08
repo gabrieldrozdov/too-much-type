@@ -664,10 +664,14 @@ class pseudoWindow {
 			this.dimX = screenWidth*3/5 + Math.random()*20-10;
 			this.dimY = screenHeight*8/10 + Math.random()*20-10;
 		} else { // mobile
-			this.posX = screenLeft + 10 + Math.random()*10-5;
-			this.posY = screenTop + 10 + Math.random()*10-5;
-			this.dimX = screenWidth - 20 + Math.random()*10-5;
-			this.dimY = screenHeight - 20 + Math.random()*10-5;
+			// this.posX = screenLeft + 10 + Math.random()*10-5;
+			// this.posY = screenTop + 10 + Math.random()*10-5;
+			// this.dimX = screenWidth - 20 + Math.random()*10-5;
+			// this.dimY = screenHeight - 20 + Math.random()*10-5;
+			this.posX = screenLeft + 4 + Math.random()*4-2;
+			this.posY = screenTop + 4 + Math.random()*4-2;
+			this.dimX = screenWidth - 8 + Math.random()*4-2;
+			this.dimY = screenHeight - 8 + Math.random()*4-2;
 		}
 		this.refreshPosition();
 	}

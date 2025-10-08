@@ -252,8 +252,8 @@ body {
 	padding: 16px;
 	font-size: 18px;
 	color: var(--black);
-	font-weight: 300;
-	font-variation-settings: "wght" 300;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	text-wrap: pretty;
 	line-height: 1.2em;
 	display: flex;
@@ -418,8 +418,8 @@ body {
 	line-height: .5em;
 	padding: 16px 16px 12px 16px;
 	height: 64px;
-	font-weight: 300;
-	font-variation-settings: "wght" 300;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	white-space: nowrap;
 	color: var(--black);
 	background-color: #ddd;
@@ -1137,8 +1137,8 @@ body[data-windows-open="0"] .dock-windows {
 	padding: 16px;
 	font-size: 18px;
 	color: var(--black);
-	font-weight: 300;
-	font-variation-settings: "wght" 300;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	text-wrap: pretty;
 	line-height: 1.2em;
 	display: flex;
@@ -1256,6 +1256,7 @@ body[data-windows-open="0"] .dock-windows {
 	top: 0;
 	left: 86px;
 	right: 0;
+	z-index: 998;
 	transform: translateY(-100%);
 	animation: menubar .5s 2s forwards steps(10);
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -1329,7 +1330,7 @@ body[data-windows-open="0"] .dock-windows {
 	left: 9px;
 	width: 80px;
 	padding: 8px;
-	z-index: 999999;
+	z-index: 999;
 	display: flex;
 	border: 4px outset var(--white);
 	align-items: center;
@@ -1474,8 +1475,8 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	padding: 16px;
 	font-size: 18px;
 	color: var(--black);
-	font-weight: 300;
-	font-variation-settings: "wght" 300;
+	font-weight: 400;
+	font-variation-settings: "wght" 400;
 	text-wrap: pretty;
 	line-height: 1.2em;
 	display: flex;
@@ -1950,9 +1951,10 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	min-width: 0;
 }
 .window-titlebar-btn {
-	flex: 0 0 auto;
+	flex-shrink: 0;
 	aspect-ratio: 1/1;
-	height: 100%;
+	width: 32px;
+	height: 32px;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -2483,13 +2485,13 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	.typey-character {
 		right: 12px;
 		bottom: 12px;
-		font-size: 40px;
-		width: 80px;
-		height: 80px;
+		font-size: 64px;
+		width: 100px;
+		height: 100px;
 	}
 	.typey-character div {
-		left: 19px;
-		top: 10px;
+		left: 18px;
+		top: 2px;
 	}
 }
 
