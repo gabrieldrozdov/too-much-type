@@ -1361,6 +1361,9 @@ function initializeDesktop() {
 
 	// The number of letters to be generated
 	let count = Math.floor(window.innerWidth/18);
+	if (window.innerWidth < 600) {
+		count = Math.floor(window.innerWidth/25);
+	}
 
 	for (let i=0; i<count; i++) {
 		animations.push(setTimeout(() => {
