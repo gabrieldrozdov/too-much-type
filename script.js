@@ -13,12 +13,19 @@ function calculateBorders() {
 	screenWidth = screenRight-screenLeft;	
 }
 
+// Random initial colors
+let logo = document.querySelector('.logo img');
+logo.style.filter = `hue-rotate(${Math.random()*50-25}deg) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(1vmin 1vmin 0 black) drop-shadow(2vmin 2vmin 0 black) drop-shadow(3vmin 3vmin 0 black)`;
+let overlay = document.querySelector('.overlay');
+overlay.style.animationDelay = `-${Math.random()*50}s`;
+
 // ———————————————————————————————————————————————
 // FONTS
 // ———————————————————————————————————————————————
 
 let fontInfo = {
 	'Bashful': {
+		'type': 'original',
 		'download': '/fonts/bashful/TMT-Bashful.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
@@ -32,6 +39,7 @@ let fontInfo = {
 		}
 	},
 	'Caffeine': {
+		'type': 'original',
 		'download': '/fonts/caffeine/TMT-Caffeine.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678 .,:;!?•*#/\\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
@@ -51,6 +59,7 @@ let fontInfo = {
 		}
 	},
 	'Dreidel': {
+		'type': 'original',
 		'download': '/fonts/dreidel/TMT-Dreidel.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;-`,
@@ -64,6 +73,7 @@ let fontInfo = {
 		}
 	},
 	'Limkin': {
+		'type': 'original',
 		'download': '/fonts/limkin/TMT-Limkin.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÁĂẶǍÂẬÄẠÀẢĀĄÅÃÆBḄɃCĆČÇĈĊDÐĎḒĐḌƊḎƉEÉĚȨÊỆËĖẸÈẺĒĘƎẼƏƷǮFGĞǦĜĢĠḠǤHĦĤḤIĲÍǏÎÏİỊÌỈĪĮƗĨJĴKǨĶLĹĽḼĻḶŁMḾNŃŇṊŅṄṆÑŊOÓǑÔỘÖỌÒỎƠŐŌØǾÕŒPÞQRŔŘŖɌSŚŠŞŜȘṢẞTŦŤŢṰȚṬṮUÚɄŬÛÜỤÙỦƯŰŪŲƱŮŨVɅWẂŴẄẀXYÝŶŸỴỲỶỸZŹŽŻẒaáăặǎâậäạàảāąåãæbḅcćčçĉċdðďḓđḍḏeéěȩêệëėẹèẻēęẽǝəʒǯfgğǧĝģġḡǥhħĥḥiıíǐîïịìỉĳīįɨĩjȷĵkǩķlĺľḽļḷłmḿnńňṋņṅṇñŋoóǒôộöọòỏơőōøǿõœpþqrŕřŗsśšşŝșṣßtŧťţṱțṭṯuúʉŭûüụùủưűūųůũvʌwẃŵẅẁxyýŷÿỵỳỷỹzźžżẓΩπ0123456789.,:;…!¡?¿·•*#/\\-–—_(){}[]‚„“”‘’«»‹›"'@&©®™°|¦†‡¢¤$€£¥+−×÷=≠><≥≤±≈~¬^∞∫∏∑√∂%‰↑↗→↘↓↙←↖↔↕◌◊`,
@@ -83,6 +93,7 @@ let fontInfo = {
 		}
 	},
 	'Limkin Pixel': {
+		'type': 'original',
 		'download': '/fonts/limkin-pixel/TMT-LimkinPixel.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdeéëfghijklmnopqrstuvwxyz0123456789.,:;!?*#/\\-–—_(){}[]“”‘’"'@&|$+−=><~^%`,
@@ -96,6 +107,7 @@ let fontInfo = {
 		}
 	},
 	'M Krone': {
+		'type': 'original',
 		'download': '/fonts/m-krone/TMT-MKrone.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012345678 .,:;!?•*#/\\-–—_(){}[]“”‘’"'@&©°|†‡$+−×÷=><≈~^%↑↗→↘↓↙←↖↔↕`,
@@ -115,6 +127,7 @@ let fontInfo = {
 		}
 	},
 	'Mini Mochi': {
+		'type': 'original',
 		'download': '/fonts/mini-mochi/TMT-MiniMochi.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:;!?-–—_“”‘’"'`,
@@ -140,6 +153,7 @@ let fontInfo = {
 		}
 	},
 	'Music Box': {
+		'type': 'original',
 		'download': '/fonts/music-box/TMT-MusicBox.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
@@ -159,12 +173,14 @@ let fontInfo = {
 		}
 	},
 	'Paint': {
+		'type': 'original',
 		'download': '/fonts/paint/TMT-Paint.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;!?*#/\\-–—_(){}[]“”‘’"'@&|$+−×÷=><~^%↑↗→↘↓↙←↖↔↕`,
 		'variation': ''
 	},
 	'PowerPack': {
+		'type': 'original',
 		'download': '/fonts/power-pack/TMT-PowerPack.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#/\\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
@@ -184,6 +200,7 @@ let fontInfo = {
 		}
 	},
 	'That Then This': {
+		'type': 'original',
 		'download': '/fonts/that-then-this/TMT-ThatThenThis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;!?#/-[]“”‘’"'`,
@@ -203,42 +220,49 @@ let fontInfo = {
 		}
 	},
 	'Urging Osmosis A': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'Urging Osmosis B': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'Urging Osmosis C': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'Urging Osmosis E': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'Urging Osmosis K': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'Urging Osmosis L': {
+		'type': 'original',
 		'download': '/fonts/urging-osmosis/TMT-UrgingOsmosis.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
 		'variation': ''
 	},
 	'AUTHENTIC Remixed': {
+		'type': 'remixed',
 		'download': '/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,./:;?@¡¿•…+<=>|~$\`¨´¸˜©🄯`,
@@ -258,6 +282,7 @@ let fontInfo = {
 		}
 	},
 	'Avara Burst': {
+		'type': 'remixed',
 		'download': '/fonts/avara-burst/TMT-AvaraBurst.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `&ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,:;…-!?‘’“”'"«»(){}[]_–—•·*@#\\/|^~$0123456789%+−±×÷=≈<>≤≥°≠`,
@@ -265,12 +290,13 @@ let fontInfo = {
 			'Burst': {
 				'code': 'BRST',
 				'min': 0,
-				'max': 100,
+				'max': 20,
 				'default': 0
 			}
 		}
 	},
 	'FT88 RISD': {
+		'type': 'remixed',
 		'download': '/fonts/ft88-risd/TMT-FT88RISD.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-`,
@@ -284,6 +310,7 @@ let fontInfo = {
 		}
 	},
 	'Work Sans Galapagos': {
+		'type': 'remixed',
 		'download': '/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `AÀÁÃÄBCÇDEÈÉËFGHIÌÍÏĨJKLMNÑŃOÒÓÕÖPQRSTUÙÚÜŨVWXYÝŸỲZØĲaàáãäbcçdeèéëfghiìíïĩjklmnñńoòóõöpqrstuùúüũvwxyýÿỳzøıĳȷ0123456789_-–—([{)]}‘“’”!"#%&'*,./:;?@¡¿•…+<=>|~$¨´¸˜©`,
@@ -302,8 +329,35 @@ let fontInfo = {
 			}
 		}
 	},
+	'Fun Font': {
+		'type': 'experimental'
+	},
+	'Meal Kit': {
+		'type': 'experimental'
+	},
+	'Sylvania': {
+		'type': 'experimental'
+	}
 }
 let fontNames = Object.keys(fontInfo);
+let normalFontNames = [];
+for (let name of fontNames) {
+	if (fontInfo[name]['type'] != 'experimental') {
+		normalFontNames.push(name);
+	}
+}
+
+// Generate color palette 
+let colorSplit = 360/(fontNames.length+1);
+let fontColor = Math.random()*360;
+for (let fontName of fontNames) {
+	fontInfo[fontName]['color'] = Math.round(fontColor);
+	fontColor += Math.random()*90+20;
+}
+for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
+	let fontName = menuTypeface.dataset.font;
+	menuTypeface.style.setProperty('--primary', fontInfo[fontName]['color']);
+}
 
 // ———————————————————————————————————————————————
 // WINDOWS
@@ -1147,7 +1201,7 @@ class desktopLetter {
 		this.id = letterIdCounter;
 		letterIdCounter++;
 
-		this.font = font || fontNames[Math.floor(Math.random()*fontNames.length)];
+		this.font = font || normalFontNames[Math.floor(Math.random()*normalFontNames.length)];
 		this.letters = fontInfo[this.font]['letters'];
 		this.letter = letter || this.letters[Math.floor(Math.random()*this.letters.length)];
 		this.variation = variation || this.randomizeVariation();
@@ -1156,24 +1210,14 @@ class desktopLetter {
 		// Create desktop element
 		this.elmnt = document.createElement('div');
 		this.elmnt.classList.add('desktop-letter');
+		this.elmnt.style.setProperty('--primary', fontInfo[this.font]['color'] + Math.random()*50);
 		this.elmnt.innerHTML = `
 			<div class="desktop-letter-glyph" style="font-family:'${this.font}'; ${this.convertVariationToStyle()};">${this.letter}</div>
 			<span>${this.font}</span>
 		`
 		this.glyph = this.elmnt.querySelector('.desktop-letter-glyph');
 		this.glyph.style.fontSize = this.size + "px";
-
-		// Set initial position
-		if (Math.random() < .5) {
-			this.elmnt.style.left = '-100%';
-		} else {
-			this.elmnt.style.left = '100%';
-		}
-		if (Math.random() < .5) {
-			this.elmnt.style.top = '-100%';
-		} else {
-			this.elmnt.style.top = '100%';
-		}
+		this.elmnt.style.transform = 'scale(0) translate(-50%, -50%)';
 
 		// Add to DOM
 		const desktop = document.querySelector('.desktop');
@@ -1182,8 +1226,9 @@ class desktopLetter {
 		// Transition in
 		setTimeout(() => {
 			this.elmnt.dataset.initialize = 1;
+			this.elmnt.style.transform = 'scale(1) translate(-50%, -50%)';
 			this.elmnt.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
-			this.elmnt.style.top = (window.innerHeight*(Math.random()*.75+.1)).toFixed(2) + "px";
+			this.elmnt.style.top = (window.innerHeight*(Math.random()*.7+.1)).toFixed(2) + "px";
 			this.elmnt.addEventListener('mousedown', (e) => {dragElmnt(e, this.elmnt)});
 			this.elmnt.addEventListener('touchstart', (e) => {dragElmnt(e, this.elmnt)});
 			this.elmnt.addEventListener('click', (e) => {this.clickDesktopElmnt(e)});
@@ -1268,74 +1313,64 @@ class desktopLetter {
 	}
 }
 
+// Stop all animations
+let animations = [];
+function stopAnimations() {
+	for (let animation of animations) {
+		clearTimeout(animation);
+	}
+	animations = [];
+}
+
 // On page load
 let desktopLetters = {};
 function initializeDesktop() {
+	stopAnimations();
+
 	// Generate desktop links
 	let loopDelay = 0;
 
-	// How many fonts to use at first
+	// Prepare for selecting case
 	let diceRoll = Math.random();
 	let fonts = [];
-	let fontNames = Object.keys(fontInfo);
-	if (diceRoll < .2) {
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-	} else if (diceRoll < .4) {
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-	} else if (diceRoll < .6) {
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
-	} else {
-		for (let fontName of fontNames) {
-			fonts.push(fontName);
-		}
-	}
-
-	// What letters to use
-	diceRoll = Math.random();
+	let fontNames = normalFontNames;
 	let glyphs = [];
 	let glyphNames = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split('');
-	if (diceRoll < .2) {
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-	} else if (diceRoll < .4) {
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-	} else if (diceRoll < .6) {
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
-	} else {
-		for (let glyphName of glyphNames) {
-			glyphs.push(glyphName);
-		}
-	}
 
-	// What font size to use (OLD CODE)
-	// diceRoll = Math.random();
-	// let sizes = [];
-	// if (diceRoll < .3) {
-	// 	sizes.push(50);
-	// } else if (diceRoll < .6) {
-	// 	sizes.push(50, 100);
-	// } else {
-	// 	sizes.push(25, 50, 100);
-	// }
+	if (diceRoll < .1) {
+		// CASE 1: One font, one letter
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+
+	} else if (diceRoll < .3) {
+		// CASE 2: One font, all letters
+		fonts.push(fontNames[Math.floor(Math.random()*fontNames.length)]);
+		glyphs = glyphNames;
+		
+	} else if (diceRoll < .7) {
+		// CASE 3: All fonts, one letter
+		fonts = fontNames;
+		glyphs.push(glyphNames[Math.floor(Math.random()*glyphNames.length)]);
+
+	} else {
+		// CASE 4: All fonts, all letters
+		fonts = fontNames;
+		glyphs = glyphNames;
+
+	}
 
 	// The number of letters to be generated
 	let count = Math.floor(window.innerWidth/18);
 
 	for (let i=0; i<count; i++) {
-		setTimeout(() => {
+		animations.push(setTimeout(() => {
 			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, 50);
-		}, loopDelay)
+		}, loopDelay))
 		loopDelay += 10;
 	}
 
-	setTimeout(checkDesktop, 10)
+	setTimeout(checkDesktop, 10);
+	animations.push(setTimeout(sortDesktop, Math.max(count*10, 1000)));
 }
 setTimeout(initializeDesktop, 500);
 
@@ -1573,42 +1608,91 @@ function checkDesktop() {
 	}
 }
 
+// Generate menubar
+function generateMenubar() {
+	let menubarButtons = document.querySelector('.menubar-buttons');
+	let temp = '';
+	let names = [];
+	for (let name of Object.keys(fontInfo)) {
+		if (fontInfo[name]['type'] == 'experimental') {
+			continue
+		} else {
+			names.push(name);
+		}
+	}
+	for (let i=0; i<10; i++) {
+		let temptemp = '';
+		for (let fontName of names) {
+			let axes = fontInfo[fontName]['variation'];
+			let variation = '';
+			if (axes != '') {
+				for (let axis of Object.keys(axes)) {
+					let axisInfo = axes[axis];
+					variation += `'${axisInfo['code']}' ${axisInfo['default']},`;
+				}
+			}
+			temptemp += `<div onclick="generateLetter('${fontName}', undefined, undefined);" class="menubar-button" style="font-family: '${fontName}'; font-variation-settings: ${variation.slice(0, -1)}; --primary: ${fontInfo[fontName]['color']}">A</div>`;
+		}
+		temp += `<div class="menubar-group">${temptemp}</div>`;
+	}
+	menubarButtons.innerHTML = temp;
+}
+generateMenubar();
 
-// ———————————————————————————————————————————
-// MENU
-// ———————————————————————————————————————————
-
-// Open/close menu
-function toggleMenu() {
-	const menu = document.querySelector('.menu');
-	const menuBtn = document.querySelector('#toggle-menu');
-	if (parseInt(menu.dataset.active) == 0) {
-		menu.dataset.active = 1;
-		menuBtn.dataset.active = 1;
+// Hide/show menubar
+let menubarActive = 0;
+function toggleMenubar() {
+	let menubar = document.querySelector('.menubar');
+	if (parseInt(menubar.dataset.active) == 0) {
+		menubar.dataset.active = 1;
+		menubarActive = 1;
+		for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
+			desktopLink.style.top = parseInt(desktopLink.style.top)+42 + "px";
+		}
 	} else {
-		menu.dataset.active = 0;
-		menuBtn.dataset.active = 0;
+		menubar.dataset.active = 0;
+		menubarActive = 0;
+		for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
+			desktopLink.style.top = parseInt(desktopLink.style.top)-42 + "px";
+		}
 	}
 }
-function closeMenu() {
-	const menu = document.querySelector('.menu');
-	const menuBtn = document.querySelector('#toggle-menu');
-	menu.dataset.active = 0;
-	menuBtn.dataset.active = 0;
+
+// ———————————————————————————————————————————
+// FONTS
+// ———————————————————————————————————————————
+
+// Open/close fonts
+function toggleFonts() {
+	const fonts = document.querySelector('#fonts');
+	const fontsBtn = document.querySelector('#toggle-fonts');
+	if (parseInt(fonts.dataset.active) == 0) {
+		fonts.dataset.active = 1;
+		fontsBtn.dataset.active = 1;
+	} else {
+		fonts.dataset.active = 0;
+		fontsBtn.dataset.active = 0;
+	}
 }
-function openMenu() {
-	const menu = document.querySelector('.menu');
-	const menuBtn = document.querySelector('#toggle-menu');
-	menu.dataset.active = 1;
-	menuBtn.dataset.active = 1;
+function closeFonts() {
+	const fonts = document.querySelector('#fonts');
+	const fontsBtn = document.querySelector('#toggle-fonts');
+	fonts.dataset.active = 0;
+	fontsBtn.dataset.active = 0;
+}
+function openFonts() {
+	const fonts = document.querySelector('#fonts');
+	const fontsBtn = document.querySelector('#toggle-fonts');
+	fonts.dataset.active = 1;
+	fontsBtn.dataset.active = 1;
 }
 
-// Close menu if clicked anywhere else
+// Close fonts if clicked anywhere else
 window.addEventListener('mousedown', (e) => {
-	const menu = document.querySelector('.menu');
-	const menuToggle = document.querySelector('#toggle-menu');
-	if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-		closeMenu();
+	const fonts = document.querySelector('#fonts');
+	const fontsBtn = document.querySelector('#toggle-fonts');
+	if (!fonts.contains(e.target) && !fontsBtn.contains(e.target)) {
+		closeFonts();
 	}
 }, false);
 
@@ -1635,60 +1719,63 @@ for (let preview of menuTypefacePreviews) {
 }
 
 // ———————————————————————————————————————————
-// SETTINGS
+// CONTROLS
 // ———————————————————————————————————————————
 
 // Open/close settings
-function toggleSettings() {
-	const settings = document.querySelector('.settings');
-	const settingsBtn = document.querySelector('#toggle-settings');
-	if (parseInt(settings.dataset.active) == 0) {
-		settings.dataset.active = 1;
-		settingsBtn.dataset.active = 1;
+function toggleControls() {
+	const controls = document.querySelector('#controls');
+	const controlsBtn = document.querySelector('#toggle-controls');
+	if (parseInt(controls.dataset.active) == 0) {
+		controls.dataset.active = 1;
+		controlsBtn.dataset.active = 1;
 	} else {
-		settings.dataset.active = 0;
-		settingsBtn.dataset.active = 0;
+		controls.dataset.active = 0;
+		controlsBtn.dataset.active = 0;
 	}
 }
-function closeSettings() {
-	const settings = document.querySelector('.settings');
-	const settingsBtn = document.querySelector('#toggle-settings');
-	settings.dataset.active = 0;
-	settingsBtn.dataset.active = 0;
+function closeControls() {
+	const controls = document.querySelector('#controls');
+	const controlsBtn = document.querySelector('#toggle-controls');
+	controls.dataset.active = 0;
+	controlsBtn.dataset.active = 0;
 }
-function openSettings() {
-	const settings = document.querySelector('.settings');
-	const settingsBtn = document.querySelector('#toggle-settings');
-	settings.dataset.active = 1;
-	settingsBtn.dataset.active = 1;
+function openControls() {
+	const controls = document.querySelector('#controls');
+	const controlsBtn = document.querySelector('#toggle-controls');
+	controls.dataset.active = 1;
+	controlsBtn.dataset.active = 1;
 }
 
-// Close settings when buttons pressed on mobile
-function detectCloseSettings() {
+// Close controls when buttons pressed on mobile
+function detectCloseControls() {
 	if (window.innerWidth < 800) {
-		closeSettings();
+		closeControls();
 	}
 }
 
-// Close settings if clicked anywhere else
+// Close controls if clicked anywhere else
 window.addEventListener('mousedown', (e) => {
-	const settings = document.querySelector('.settings');
-	const settingsToggle = document.querySelector('#toggle-settings');
-	if (!settings.contains(e.target) && !settingsToggle.contains(e.target)) {
-		closeSettings();
+	const controls = document.querySelector('#controls');
+	const controlsToggle = document.querySelector('#toggle-controls');
+	if (!controls.contains(e.target) && !controlsToggle.contains(e.target)) {
+		closeControls();
 	}
 }, false);
 
-// Settings functions
+// Controls functions
 function sortDesktop() {
-	let posX = 50;
-	let posY = 100;
+	let posX = 60;
+	let posY = 83;
+	if (menubarActive == 1) {
+		posY = 125;
+	}
 	let loopDelay = 0;
 	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		let pos = [posX, posY];
 		posX += 100;
 		if (posX >= window.innerWidth-50) {
-			posX = 50;
+			posX = 60;
 			posY += 100;
 		}
 		setTimeout(() => {
@@ -1703,7 +1790,7 @@ function unsortDesktop() {
 	for (let desktopLink of document.querySelectorAll('.desktop-letter')) {
 		setTimeout(() => {
 			desktopLink.style.left = (window.innerWidth*(Math.random()*.9+.05)).toFixed(2) + "px";
-			desktopLink.style.top = (window.innerHeight*(Math.random()*.9+.1)).toFixed(2) + "px";
+			desktopLink.style.top = (window.innerHeight*(Math.random()*.7+.1)).toFixed(2) + "px";
 		}, loopDelay)
 		loopDelay += 5;
 	}
@@ -1717,6 +1804,7 @@ function toggleFontNames() {
 	}
 }
 function clearDesktop() {
+	stopAnimations();
 	for (let id of Object.keys(desktopLetters)) {
 		const desktopLetter = desktopLetters[id];
 		desktopLetter.deleteLetter();
@@ -1844,7 +1932,7 @@ function randomWindow() {
 
 // Open/close info
 function toggleInfo() {
-	const info = document.querySelector('.info');
+	const info = document.querySelector('#info');
 	const infoBtn = document.querySelector('#toggle-info');
 	if (parseInt(info.dataset.active) == 0) {
 		info.dataset.active = 1;
@@ -1855,13 +1943,13 @@ function toggleInfo() {
 	}
 }
 function closeInfo() {
-	const info = document.querySelector('.info');
+	const info = document.querySelector('#info');
 	const infoBtn = document.querySelector('#toggle-info');
 	info.dataset.active = 0;
 	infoBtn.dataset.active = 0;
 }
 function openInfo() {
-	const info = document.querySelector('.info');
+	const info = document.querySelector('#info');
 	const infoBtn = document.querySelector('#toggle-info');
 	info.dataset.active = 1;
 	infoBtn.dataset.active = 1;
@@ -1869,7 +1957,7 @@ function openInfo() {
 
 // Close info if clicked anywhere else
 window.addEventListener('mousedown', (e) => {
-	const info = document.querySelector('.info');
+	const info = document.querySelector('#info');
 	const infoToggle = document.querySelector('#toggle-info');
 	if (!info.contains(e.target) && !infoToggle.contains(e.target)) {
 		closeInfo();
@@ -1995,43 +2083,6 @@ function toggleTypey() {
 	}
 }
 setTimeout(showTypey, 1500);
-
-// Generate menubar (shuffle fonts first)
-function shuffle(array) {
-	let currentIndex = array.length;
-	while (currentIndex != 0) {
-		let randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex--;
-		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-	}
-}  
-function generateMenubar() {
-	let menubarButtons = document.querySelector('.menubar-buttons');
-	let temp = '';
-	let names = Object.keys(fontInfo);
-	shuffle(names);
-	for (let i=0; i<10; i++) {
-		let temptemp = '';
-		for (let fontName of names) {
-			let glyphs = fontInfo[fontName]['glyphs'];
-			let randomGlyph = glyphs[Math.floor(Math.random()*glyphs.length)];
-			let axes = fontInfo[fontName]['variation'];
-			let variation = '';
-			if (axes != '') {
-				for (let axis of Object.keys(axes)) {
-					let axisInfo = axes[axis];
-					// let range = axisInfo['max'] - axisInfo['min'];
-					// let randomValue = Math.round(Math.random()*range);
-					variation += `'${axisInfo['code']}' ${axisInfo['default']},`;
-				}
-			}
-			temptemp += `<div onclick="generateLetter('${fontName}', '${randomGlyph}', undefined);" class="menubar-button" style="font-family: '${fontName}'; font-variation-settings: ${variation.slice(0, -1)}">${randomGlyph}</div>`;
-		}
-		temp += `<div class="menubar-group">${temptemp}</div>`;
-	}
-	menubarButtons.innerHTML = temp;
-}
-generateMenubar();
 
 // Prevent scrolling by accident
 const container = document.querySelector('.container');
