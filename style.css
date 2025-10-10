@@ -109,7 +109,7 @@
 		 url("/fonts/music-box/variable/TMT-MusicBoxVF.woff2") format('woff2');
 }
 @font-face {
-	font-family: "Work Sans Galapagos";
+	font-family: "Work Sans Galápagos";
 	src: url("/fonts/work-sans-galapagos/regular/variable/TMT-WorkSansGalapagosVF.ttf") format("truetype"),
 		 url("/fonts/work-sans-galapagos/regular/variable/TMT-WorkSansGalapagosVF.woff") format("woff"),
 		 url("/fonts/work-sans-galapagos/regular/variable/TMT-WorkSansGalapagosVF.woff2") format('woff2');
@@ -129,7 +129,7 @@
 		 url("/fonts/ft88-risd/variable/TMT-FT88RISDVF.woff2") format('woff2');
 }
 @font-face {
-	font-family: "Work Sans Galapagos";
+	font-family: "Work Sans Galápagos";
 	src: url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.ttf") format("truetype"),
 		 url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.woff") format("woff"),
 		 url("/fonts/work-sans-galapagos/italic/variable/TMT-WorkSansGalapagosVF.woff2") format('woff2');
@@ -191,7 +191,19 @@ body {
 	left: var(--left);
 	top: var(--top);
 	overflow: hidden;
-	background-color: hsl(0, 0%, 67%);
+	background-color: hsl(0, 0%, 50%);
+	background-position: left center;
+	background-image: url('/assets/ui/background.jpg');
+	/* background-size: cover; */
+	animation: container 5s ease-in-out alternate infinite;
+}
+@keyframes container {
+	from {
+		background-size: 100% 100%;
+	}
+	to {
+		background-size: 100% 150%;
+	}
 }
 .overlay {
 	position: absolute;
@@ -202,23 +214,24 @@ body {
 	z-index: 99999999999;
 	pointer-events: none;
 	mix-blend-mode: overlay;
-	animation: container 50s infinite linear;
+	/* animation: overlay 50s infinite linear; */
+	background: linear-gradient(to bottom right, hsl(160, 100%, 50%), hsl(200, 100%, 50%), hsl(220, 100%, 50%));
 }
-@keyframes container {
+@keyframes overlay {
 	0% {
-		background-color: hsl(0, 25%, 70%);
+		background-color: hsl(0, 100%, 50%);
 	}
 	25% {
-		background-color: hsl(90, 25%, 70%);
+		background-color: hsl(90, 100%, 50%);
 	}
 	50% {
-		background-color: hsl(180, 25%, 70%);
+		background-color: hsl(180, 100%, 50%);
 	}
 	75% {
-		background-color: hsl(270, 25%, 70%);
+		background-color: hsl(270, 100%, 50%);
 	}
 	100% {
-		background-color: hsl(360, 25%, 70%);
+		background-color: hsl(360, 100%, 50%);
 	}
 }
 .vignette {
@@ -228,17 +241,19 @@ body {
 	right: 0;
 	bottom: 0;
 	z-index: 999999999;
-	box-shadow: 0 0 min(5vw, 100px) rgba(50,50,50,.9) inset, 0 0 min(10vw, 200px) rgba(50,50,50,0.5) inset;
-	mix-blend-mode: multiply;
+	box-shadow: 0 0 min(5vw, 100px) hsl(180, 50%, 8%) inset, 0 0 min(10vw, 200px) hsl(240, 100%, 8%) inset;
+	/* mix-blend-mode: multiply; */
 	pointer-events: none;
-	animation: vignette 4s infinite ease-in-out alternate;
+	/* display: none; */
+	opacity: .75;
+	animation: vignette 10s infinite ease-in-out alternate;
 }
 @keyframes vignette {
 	from {
-		opacity: 1;
+		opacity: .75;
 	}
 	to {
-		opacity: .25;
+		opacity: .5;
 	}
 }
 .crt {
@@ -248,12 +263,11 @@ body {
 	right: 0;
 	bottom: 0;
 	z-index: 9999999999;
-	background-color: #eee;
-	background: linear-gradient(to top, #eee, #eee, #fff, #fff);
+	background: linear-gradient(to top, hsl(240, 100%, 20%), hsl(240, 100%, 20%), transparent, transparent);
 	background-size: 100% 4px;
 	pointer-events: none;
-	mix-blend-mode: multiply;
-	opacity: .25;
+	/* mix-blend-mode: overlay; */
+	opacity: .05;
 	animation: crt 5s infinite linear;
 }
 @keyframes crt {
@@ -272,7 +286,7 @@ body {
 /* Logo */
 .logo {
 	position: absolute;
-	top: calc(50% - var(--bottom));
+	top: 48%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	image-rendering: pixelated;
@@ -285,7 +299,8 @@ body {
 .logo img {
 	height: 50vmin;
 	will-change: filter;
-	animation: logo-in .25s steps(5) forwards, logo-out .5s 1.25s steps(10) forwards;
+	animation: logo-in .25s .05s steps(5) forwards, logo-out .5s 1.5s steps(10) forwards;
+	transform: scale(0);
 	filter: drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(1vmin 1vmin 0 black) drop-shadow(2vmin 2vmin 0 black) drop-shadow(3vmin 3vmin 0 black);
 }
 @keyframes logo-in {
@@ -317,13 +332,13 @@ body {
 	max-height: calc(100dvh - calc(var(--bottom) + 10px));
 	z-index: 9997;
 	background-color: #ddd;
-	transform: translateY(100%);
+	transform: translateY(110%);
 	transition: transform .2s steps(5);
 	display: flex;
 	flex-direction: column;
 	gap: 1px;
 	overflow-y: auto;
-	box-shadow: 8px 8px 0 var(--black);
+	box-shadow: 8px 8px 0 rgba(0,0,0,.75);
 }
 .menu::-webkit-scrollbar {
 	width: 16px;
@@ -401,10 +416,10 @@ body {
 	align-items: center;
 	white-space: nowrap;
 	gap: 8px;
-	background-color: #ddd;
+	background-color: hsl(240, 100%, 80%);
 	padding: 8px 16px;
 	color: var(--black);
-	border: 4px outset #eee;
+	border: 4px outset hsl(240, 100%, 90%);
 	outline: 1px solid var(--black);
 	fill: var(--black);
 	position: relative;
@@ -440,8 +455,8 @@ body {
 	gap: 6px;
 	fill: var(--black);
 	color: var(--black);
-	background-color: hsl(var(--primary), 100%, 50%);
-	border: 2px outset hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 70%);
+	border: 2px outset hsl(var(--primary), 100%, 80%);
 }
 .menu-typeface-name {
 	padding-top: .2em;
@@ -452,10 +467,10 @@ body {
 	font-size: 10px;
 	line-height: 1em;
 	display: flex;
-	color: var(--white);
+	color: hsl(var(--primary), 100%, 20%);
 	align-items: center;
 	justify-content: center;
-	text-shadow: 1px 1px hsl(var(--primary), 100%, 20%);
+	text-shadow: 1px 1px hsl(var(--primary), 100%, 80%);
 }
 .menu-typeface-name::after {
 	content: "";
@@ -466,7 +481,7 @@ body {
 	display: inline-block;
 	margin-left: 4px;
 	transform: translateY(-.5px);
-	filter: drop-shadow(0px -1px hsl(var(--primary), 100%, 60%));
+	filter: drop-shadow(0px -1px hsl(var(--primary), 100%, 80%));
 }
 .menu-typeface-links {
 	display: flex;
@@ -487,11 +502,11 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 80%);
 	fill: var(--black);
 	padding: 4px 12px;
 	cursor: pointer;
-	border: 4px outset hsl(var(--primary), 100%, 70%);
+	border: 4px outset hsl(var(--primary), 100%, 90%);
 	outline: 1px solid var(--black);
 	font-family: "Limkin Pixel", sans-serif;
 	font-weight: 500;
@@ -536,16 +551,16 @@ body {
 	font-weight: 400;
 	font-variation-settings: "wght" 400;
 	white-space: nowrap;
-	color: var(--black);
-	background-color: hsl(var(--primary), 100%, 70%);
-	border: 4px inset hsl(var(--primary), 100%, 60%);
+	color: hsl(var(--primary), 100%, 20%);
+	background-color: hsl(var(--primary), 100%, 80%);
+	border: 4px inset hsl(var(--primary), 100%, 70%);
 	outline: 1px solid var(--black);
 	cursor: default;
 }
 .menu-typeface-experimental svg {
 	height: 32px;
 	width: 32px;
-	fill: var(--black);
+	fill: hsl(var(--primary), 100%, 20%);
 }
 .menu-typeface-experimental span {
 	padding-top: .15em;
@@ -566,11 +581,11 @@ body {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-color: hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 80%);
 	fill: var(--black);
 	padding: 8px;
 	cursor: pointer;
-	border: 4px outset hsl(var(--primary), 100%, 70%);
+	border: 4px outset hsl(var(--primary), 100%, 90%);
 	font-family: "Limkin Pixel", sans-serif;
 	color: var(--black);
 	gap: 8px;
@@ -610,22 +625,22 @@ body {
 	padding: 16px 16px 12px 16px;
 	height: 80px;
 	white-space: nowrap;
-	color: var(--black);
+	color: hsl(var(--primary), 100%, 20%);
 	background-color: var(--white);
-	border: 4px inset hsl(var(--primary), 100%, 60%);
+	border: 4px inset hsl(var(--primary), 100%, 90%);
 }
 .menu-typeface-preview-container::after {
-	opacity: .25;
 	content: "TYPE HERE";
+	opacity: .75;
 	position: absolute;
 	bottom: 8px;
-	right: calc(95px - .1em);
+	right: calc(95px - .2em);
 	line-height: 1em;
 	font-family: "Limkin Pixel", sans-serif;
-	font-variation-settings: "wght" 500;
-	font-weight: 500;
-	font-size: 10px;
-	letter-spacing: .1em;
+	font-variation-settings: "wght" 700;
+	font-weight: 700;
+	font-size: 8px;
+	letter-spacing: .2em;
 	pointer-events: none;
 }
 .menu-typeface-preview:focus {
@@ -936,8 +951,8 @@ body {
 		font-variation-settings: 'DISP' 100;
 	}
 }
-.menu-typeface[data-font='Work Sans Galapagos'] .menu-typeface-preview {
-	font-family: 'Work Sans Galapagos';
+.menu-typeface[data-font='Work Sans Galápagos'] .menu-typeface-preview {
+	font-family: 'Work Sans Galápagos';
 	font-variation-settings: 'wght' 500, 'SHLL' 100;
 	animation: menu-worksansgalapagos 8s infinite ease-in-out;
 	font-feature-settings: "ss01" 1, "ss06" 1;
@@ -985,7 +1000,7 @@ body {
 		display: none;
 	}
 	.menu-typeface-preview-container::after {
-		right: calc(55px - .1em);
+		right: calc(55px - .2em);
 	}
 }
 
@@ -1060,9 +1075,19 @@ body {
 	align-items: stretch;
 	padding: 6px;
 	z-index: 9999;
-	background-color: #ddd;
-	border: 4px outset #eee;
+	background-color: #ccc;
+	border: 4px outset #ddd;
 	outline: 1px solid var(--black);
+	transform: translateY(110%);
+	animation: dock .5s 2s forwards steps(10);
+}
+@keyframes dock {
+	from {
+		transform: translateY(110%);
+	}
+	to {
+		transform: translateY(0%);
+	}
 }
 .dock-toggle {
 	flex-shrink: 0;
@@ -1109,7 +1134,7 @@ body {
 	filter: unset;
 }
 .dock-toggle[data-active="1"] {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5) 25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5) 75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5) 75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;
 }
@@ -1165,7 +1190,7 @@ body[data-windows-open="0"] .dock-windows {
 	opacity: .25;
 }
 .dock-item[data-selected="1"] {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;
 }
@@ -1293,8 +1318,8 @@ body[data-windows-open="0"] .dock-windows {
 	height: 40px;
 	width: 40px;
 	outline: 1px solid var(--black);
-	background-color: hsl(var(--primary), 100%, 50%);
-	border: 4px outset hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 70%);
+	border: 4px outset hsl(var(--primary), 100%, 80%);
 }
 .menubar-button:hover {
 	background-color: var(--white);
@@ -1309,7 +1334,7 @@ body[data-windows-open="0"] .dock-windows {
 /* Desktop logo */
 .desktop-logo {
 	position: absolute;
-	background-color: #111;
+	background-color: hsl(240, 100%, 50%);
 	color: var(--white);
 	height: 24px;
 	top: 0;
@@ -1354,10 +1379,10 @@ body[data-windows-open="0"] .dock-windows {
 	margin-left: 12px;
 }
 .desktop-logo:hover {
-	background-color: #333;
+	background-color: hsl(240, 100%, 60%);
 }
 .desktop-logo:active {
-	background-color: #222;
+	background-color: hsl(240, 100%, 50%);
 }
 @keyframes desktop-logo-rotation {
 	0% {
@@ -1420,18 +1445,18 @@ body[data-windows-open="0"] .dock-windows {
 .desktop-letter:hover {
 	outline: 1px solid var(--black);
 	z-index: 5;
-	background-color: hsl(var(--primary), 100%, 50%);
-	border: 4px outset hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 80%);
+	border: 4px outset hsl(var(--primary), 100%, 90%);
 }
 .desktop-letter[data-active="1"] {
 	outline: 1px solid var(--black);
 	z-index: 5;
-	background-color: hsl(var(--primary), 100%, 50%);
-	border: 4px outset hsl(var(--primary), 100%, 60%);
+	background-color: hsl(var(--primary), 100%, 80%);
+	border: 4px outset hsl(var(--primary), 100%, 90%);
 }
 .desktop-letter:active {
-	background-color: hsl(var(--primary), 100%, 40%);
-	border: 4px inset hsl(var(--primary), 100%, 50%);
+	background-color: hsl(var(--primary), 100%, 80%);
+	border: 4px inset hsl(var(--primary), 100%, 90%);
 }
 .desktop-letter:active {
 	z-index: 5;
@@ -1441,21 +1466,21 @@ body[data-windows-open="0"] .dock-windows {
 	height: 48px;
 	flex-shrink: 0;
 	image-rendering: pixelated;
-	color: hsl(var(--primary), 100%, 50%);
+	color: hsl(var(--primary), 100%, 90%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 48px;
 	pointer-events: none;
-	-webkit-text-stroke: 3px var(--black);
+	-webkit-text-stroke: 3px hsl(var(--primary), 100%, 20%);
 	paint-order: stroke fill;
-	text-shadow: 2px 2px 0px var(--black), 0 0 10px hsla(var(--primary), 100%, 50%, .5);
+	text-shadow: 2px 2px 0px hsl(var(--primary), 100%, 10%);
 }
 .desktop-letter:hover .desktop-letter-glyph {
-	color: var(--white);
+	/* color: var(--white); */
 }
 .desktop-letter[data-active="1"] .desktop-letter-glyph {
-	color: var(--white);
+	/* color: var(--white); */
 }
 .desktop-letter span {
 	font-family: "Limkin Pixel", sans-serif;
@@ -1463,16 +1488,16 @@ body[data-windows-open="0"] .dock-windows {
 	text-wrap: balance;
 	letter-spacing: 0.05em;
 	line-height: 1.1em;
-	color: hsl(var(--primary), 50%, 20%);
-	text-shadow: 1px 1px hsl(var(--primary), 100%, 90%);
+	color: hsl(var(--primary), 50%, 90%);
+	text-shadow: 1px 1px hsl(var(--primary), 100%, 20%), 1.5px 1.5px hsl(var(--primary), 100%, 10%);
 }
 .desktop-letter:hover span {
-	color: var(--white);
-	text-shadow: 1px 1px var(--black);
+	/* color: var(--white); */
+	/* text-shadow: 1px 1px var(--black); */
 }
 .desktop-letter[data-active="1"] span {
-	color: var(--white);
-	text-shadow: 1px 1px var(--black);
+	/* color: var(--white); */
+	/* text-shadow: 1px 1px var(--black); */
 }
 body[data-hide-font-names="1"] .desktop-letter span {
 	display: none;
@@ -1490,7 +1515,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	outline: 1px solid var(--black);
 	display: grid;
 	z-index: 999;
-	box-shadow: 8px 8px var(--black);
+	box-shadow: 8px 8px rgba(0,0,0,.75);
 	overflow: hidden;
 }
 .desktop-settings[data-active="0"] {
@@ -1518,13 +1543,13 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	padding: 4px 8px;
 }
 .desktop-settings-font:hover {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px; 
 }
 .desktop-settings-font:active {
 	cursor: grabbing;
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;  
 }
@@ -1707,7 +1732,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	gap: 1px;
 	z-index: 999;
 	background-color: #bbb;
-	box-shadow: 8px 8px var(--black);
+	box-shadow: 8px 8px rgba(0,0,0,.75);
 }
 .desktop-letterset[data-active="0"] {
 	display: none;
@@ -1734,16 +1759,16 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	border-radius: 4px 0 0 0;
 }
 .desktop-letterset-font:hover {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px; 
 }
 .desktop-letterset-font:active {
 	cursor: grabbing;
-	opacity: .5;
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	/* opacity: .5;
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
-	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;  
+	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;   */
 }
 .desktop-letterset-font svg {
 	flex-shrink: 0;
@@ -1827,7 +1852,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	gap: 1px;
 	color: var(--black);
 	fill: var(--black);
-	box-shadow: 8px 8px var(--black);
+	box-shadow: 8px 8px rgba(0,0,0,.75);
 }
 .window[data-reposition='1'] {
 	transition: none;
@@ -1864,7 +1889,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	border: 4px outset var(--white);
 }
 .window-title:hover {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;  
 }
@@ -1872,7 +1897,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	color: var(--black);
 	fill: var(--black);
 	cursor: grabbing;
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;  
 }
@@ -1936,7 +1961,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 }
 .window-controls-spacer {
 	flex-grow: 1;
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;
 	opacity: .5;
@@ -1962,7 +1987,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	border: 2px outset #ddd;
 }
 .window-controls button[data-active="1"] {
-	background-image: linear-gradient(45deg, var(--black) 25%, transparent 25%), linear-gradient(-45deg, var(--black) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--black) 75%), linear-gradient(-45deg, transparent 75%, var(--black) 75%);
+	background-image: linear-gradient(45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,.5)  25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,.5)  75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,.5)  75%);
 	background-size: 2px 2px;
 	background-position: 0 0, 0 1px, 1px -1px, -1px 0px;
 }
@@ -2245,6 +2270,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	.desktop-letter-glyph {
 		/* text-shadow: unset; */
 		/* color: var(--black); */
+		color: hsl(var(--primary), 100%, 50%);
 	}
 	.desktop {
 		position: relative;
@@ -2309,14 +2335,13 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	line-height: 1.3em;
 	overflow: hidden;
 	border-radius: 50%;
-	box-shadow: 8px 8px 0 var(--black);
+	box-shadow: 8px 8px 0 rgba(0,0,0,.75);
 	border: 1px solid var(--black);
 	transition: font-variation-settings .2s steps(4), transform .25s steps(5), background-color .5s;
+	background-image: radial-gradient(hsl(180, 100%, 50%), hsl(200, 100%, 50%));
 	z-index: 1;
 	cursor: pointer;
-	animation: typey-rotation infinite steps(10) 5s;
-	background-size: cover;
-	background-size: 100% 4px;
+	/* animation: typey-rotation infinite steps(10) 5s; */
 }
 @keyframes typey-rotation {
 	0% {
@@ -2365,18 +2390,18 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 2;
 }
 .typey-letter {
-	color: #ddd;
+	color: hsl(200, 100%, 70%);
 	z-index: 1;
-	animation: typey-speak .2s infinite alternate steps(3), typey-letter-rotation infinite steps(10) 5s !important;
+	animation: typey-speak .2s infinite alternate steps(3);
 }
 .typey-glasses {
 	color: var(--white);
 	z-index: 1;
 }
 .typey-nose {
-	color: #eee;
+	color: hsl(200, 100%, 80%);
 	z-index: 1;
-	animation: typey-speak .2s infinite alternate steps(3), typey-nose-rotation infinite steps(10) 5s !important;
+	animation: typey-speak .2s infinite alternate steps(3);
 }
 .typey-mouth {
 	color: var(--white);
@@ -2437,7 +2462,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	text-wrap: pretty;
 	border: 4px outset var(--white);
 	transform-origin: bottom right;
-	box-shadow: 8px 8px var(--black);
+	box-shadow: 8px 8px rgba(0,0,0,.75);
 	transition: transform .25s .25s steps(5);
 }
 .typey-text p {
@@ -2534,7 +2559,8 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	margin-right: 4px;
 	border-radius: 50%;
 	line-height: 1em;
-	animation: typey-rotation infinite steps(10) 5s;
+	background-image: radial-gradient(hsl(180, 100%, 40%), hsl(240, 100%, 70%));
+	/* animation: typey-rotation infinite steps(10) 5s; */
 	background-size: cover;
 	background-size: 100% 2px;
 	outline: 1px solid var(--black);
@@ -2558,18 +2584,18 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 2;
 }
 .popup-typey-letter {
-	color: #ddd;
+	color: hsl(200, 100%, 70%);
 	z-index: 1;
-	animation: typey-speak .2s infinite alternate steps(3), typey-letter-rotation infinite steps(10) 5s !important;
+	/* animation: typey-speak .2s infinite alternate steps(3), typey-letter-rotation infinite steps(10) 5s !important; */
 }
 .popup-typey-glasses {
 	color: var(--white);
 	z-index: 1;
 }
 .popup-typey-nose {
-	color: #eee;
+	color: hsl(200, 100%, 80%);
 	z-index: 1;
-	animation: typey-speak .2s infinite alternate steps(3), typey-nose-rotation infinite steps(10) 5s !important;
+	/* animation: typey-speak .2s infinite alternate steps(3), typey-nose-rotation infinite steps(10) 5s !important; */
 }
 .popup-typey-mouth {
 	color: #eee;

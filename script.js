@@ -15,7 +15,7 @@ function calculateBorders() {
 
 // Random initial colors
 let logo = document.querySelector('.logo img');
-logo.style.filter = `hue-rotate(${Math.random()*50-25}deg) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(1vmin 1vmin 0 black) drop-shadow(2vmin 2vmin 0 black) drop-shadow(3vmin 3vmin 0 black)`;
+// logo.style.filter = `hue-rotate(${Math.random()*100-50}deg) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(1vmin 1vmin 0 black) drop-shadow(2vmin 2vmin 0 black) drop-shadow(3vmin 3vmin 0 black)`;
 let overlay = document.querySelector('.overlay');
 overlay.style.animationDelay = `-${Math.random()*50}s`;
 
@@ -309,7 +309,7 @@ let fontInfo = {
 			}
 		}
 	},
-	'Work Sans Galapagos': {
+	'Work Sans Galápagos': {
 		'type': 'remixed',
 		'download': '/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
@@ -349,10 +349,10 @@ for (let name of fontNames) {
 
 // Generate color palette 
 let colorSplit = 360/(fontNames.length+1);
-let fontColor = Math.random()*360;
+let fontColor = 0;
 for (let fontName of fontNames) {
 	fontInfo[fontName]['color'] = Math.round(fontColor);
-	fontColor += Math.random()*90+20;
+	fontColor += colorSplit;
 }
 for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
 	let fontName = menuTypeface.dataset.font;
@@ -376,7 +376,7 @@ let windowData = {
 		'title': 'Music Box',
 		'file': '/fonts/music-box/'
 	},
-	'Work Sans Galapagos': {
+	'Work Sans Galápagos': {
 		'icon': `<svg viewBox="0 0 100 100"><polygon points="90 40 90 70 80 70 80 80 60 80 60 70 40 70 40 80 20 80 20 70 10 70 10 40 20 40 20 30 30 30 30 20 70 20 70 30 80 30 80 40 90 40"/></svg>`,
 		'title': 'Work Sans Galápagos',
 		'file': '/fonts/work-sans-galapagos/'
@@ -1210,7 +1210,7 @@ class desktopLetter {
 		// Create desktop element
 		this.elmnt = document.createElement('div');
 		this.elmnt.classList.add('desktop-letter');
-		this.elmnt.style.setProperty('--primary', fontInfo[this.font]['color'] + Math.random()*50);
+		this.elmnt.style.setProperty('--primary', fontInfo[this.font]['color'] + Math.random()*20);
 		this.elmnt.innerHTML = `
 			<div class="desktop-letter-glyph" style="font-family:'${this.font}'; ${this.convertVariationToStyle()};">${this.letter}</div>
 			<span>${this.font}</span>
@@ -1373,7 +1373,9 @@ function initializeDesktop() {
 	}
 
 	setTimeout(checkDesktop, 10);
-	animations.push(setTimeout(sortDesktop, Math.max(count*10, 1000)));
+	if (Math.random() < .75) {
+		animations.push(setTimeout(sortDesktop, Math.max(count*10, 1000)));
+	}
 }
 setTimeout(initializeDesktop, 500);
 
@@ -2085,7 +2087,7 @@ function toggleTypey() {
 		showTypey();
 	}
 }
-setTimeout(showTypey, 1500);
+setTimeout(showTypey, 2500);
 
 // Prevent scrolling by accident
 const container = document.querySelector('.container');
