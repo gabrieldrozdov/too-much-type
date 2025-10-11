@@ -14,10 +14,10 @@ function calculateBorders() {
 }
 
 // Random initial colors
-let logo = document.querySelector('.logo img');
+// let logo = document.querySelector('.logo img');
 // logo.style.filter = `hue-rotate(${Math.random()*100-50}deg) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black) drop-shadow(1vmin 1vmin 0 black) drop-shadow(2vmin 2vmin 0 black) drop-shadow(3vmin 3vmin 0 black)`;
-let overlay = document.querySelector('.overlay');
-overlay.style.animationDelay = `-${Math.random()*50}s`;
+// let overlay = document.querySelector('.overlay');
+// overlay.style.animationDelay = `-${Math.random()*50}s`;
 
 // ———————————————————————————————————————————————
 // FONTS
@@ -181,7 +181,7 @@ let fontInfo = {
 	},
 	'PowerPack': {
 		'type': 'original',
-		'download': '/fonts/power-pack/TMT-PowerPack.zip',
+		'download': '/fonts/powerpack/TMT-PowerPack.zip',
 		'letters': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`,
 		'glyphs': `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;…!?•*#/\\-–—_(){}[]“”‘’"'@&©|¢$+−×÷=><~%↑→↓←`,
 		'variation': {
