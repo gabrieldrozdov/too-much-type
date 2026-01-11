@@ -348,16 +348,22 @@ for (let name of fontNames) {
 }
 
 // Generate color palette 
-let colorSplit = 360/(fontNames.length+1);
-let fontColor = 0;
-for (let fontName of fontNames) {
-	fontInfo[fontName]['color'] = Math.round(fontColor);
-	fontColor += colorSplit;
+function initColors() {
+	let randoPrimary = Math.random()*360;
+	let container = document.querySelector('.container');
+	container.style.setProperty('--primary', randoPrimary);
+	let colorSplit = 360/(fontNames.length+1);
+	let fontColor = 0;
+	for (let fontName of fontNames) {
+		fontInfo[fontName]['color'] = Math.round(fontColor);
+		fontColor += colorSplit;
+	}
+	for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
+		let fontName = menuTypeface.dataset.font;
+		menuTypeface.style.setProperty('--primary', fontInfo[fontName]['color']);
+	}
 }
-for (let menuTypeface of document.querySelectorAll('.menu-typeface')) {
-	let fontName = menuTypeface.dataset.font;
-	menuTypeface.style.setProperty('--primary', fontInfo[fontName]['color']);
-}
+initColors();
 
 // ———————————————————————————————————————————————
 // WINDOWS
@@ -1367,7 +1373,7 @@ function initializeDesktop() {
 
 	for (let i=0; i<count; i++) {
 		animations.push(setTimeout(() => {
-			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, 50);
+			desktopLetters[letterIdCounter] = new desktopLetter(fonts[Math.floor(Math.random()*fonts.length)], glyphs[Math.floor(Math.random()*glyphs.length)], undefined, 64);
 		}, loopDelay))
 		loopDelay += 10;
 	}
