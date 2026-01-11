@@ -152,10 +152,6 @@
 	--black: oklch(25% .1 var(--primary));
 }
 :root {
-	--pink: hsl(340, 100%, 50%);
-	--blue: hsl(250, 100%, 50%);
-	--yellow: hsl(50, 100%, 50%);
-	--green: hsl(150, 100%, 50%);
 	--white: white;
 	--black: black;
 	--top: 0px;
@@ -392,18 +388,17 @@ body {
 	color: oklch(20% .7 var(--primary));
 	align-items: center;
 	justify-content: center;
-	text-shadow: 0px -1px oklch(100% .2 var(--primary));
+	text-shadow: 0px 1px oklch(100% .2 var(--primary));
 }
 .menu-typeface-name::after {
 	content: "";
 	flex-grow: 1;
 	padding-top: 1px;
-	border-top: 3px double oklch(20% .7 var(--primary));
-	border-bottom: 3px double oklch(20% .7 var(--primary));
+	border-top: 3px double oklch(100% .2 var(--primary));
+	border-bottom: 3px double oklch(100% .2 var(--primary));
 	display: inline-block;
 	margin-left: 4px;
-	transform: translateY(-.5px);
-	filter: drop-shadow(0px -1px oklch(100% .2 var(--primary)));
+	filter: drop-shadow(0px -1px oklch(20% .7 var(--primary)));
 }
 .menu-typeface-links {
 	display: flex;
@@ -945,16 +940,15 @@ body {
 	outline: 1px solid var(--black);
 	flex-grow: 0;
 	border-radius: 4px;
-	/* filter: drop-shadow(1px 1px 0 var(--black)); */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background-color: oklch(80% .25 var(--primary));
 	fill: var(--black);
 	padding: 8px;
 	cursor: pointer;
-	border: 4px outset oklch(90% .25 var(--primary));
+	background-color: oklch(80% .25 calc(var(--primary) + 90));
+	border: 4px outset oklch(90% .25 calc(var(--primary) + 90));
 	font-family: "Limkin Pixel", sans-serif;
 	color: var(--black);
 	gap: 8px;
@@ -977,12 +971,12 @@ body {
 	line-height: 1.1em;
 }
 .menu-grid button:hover {
-	background-color: oklch(90% .25 var(--primary));
-	border: 4px outset oklch(100% .25 var(--primary));
+	background-color: oklch(90% .25 calc(var(--primary) + 90));
+	border: 4px outset oklch(100% .25 calc(var(--primary) + 90));
 }
 .menu-grid button:active {
-	background-color: oklch(80% .25 var(--primary));
-	border: 4px inset oklch(90% .25 var(--primary));
+	background-color: oklch(80% .25 calc(var(--primary) + 90));
+	border: 4px inset oklch(90% .25 calc(var(--primary) + 90));
 	filter: unset;
 }
 @media screen and (max-width: 380px) {
@@ -2158,9 +2152,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 		display: none !important;
 	}
 	.desktop-letter-glyph {
-		/* text-shadow: unset; */
-		/* color: var(--black); */
-		color: hsl(var(--primary), 100%, 50%);
+		color: oklch(90% .25 var(--primary));
 	}
 	.desktop {
 		position: relative;
