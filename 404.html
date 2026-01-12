@@ -5,18 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Too Much Type</title>
 
-	<meta name="author" content="Gabriel Drozdov">
+	<meta name="author" content="Gabriel Drozdov / No Replica">
 	<meta name="keywords" content="Type Foundry, Type Design, Typography, Creative Coding, Graphic Design, Education, Variable Fonts">
-	<meta name="description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta name="description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens!">
 	<meta property="og:url" content="https://toomuchtype.com/">
 	<meta name="og:title" property="og:title" content="Too Much Type">
-	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens.">
+	<meta property="og:description" content="Too Much Type is an open-source experimental laboratory for variable fonts and digital type specimens!">
 	<meta property="og:image" content="/assets/meta/opengraph.jpg">
 	<link rel="icon" type="png" href="/assets/meta/favicon.png">
 
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="/style.css">
 </head>
-<body data-color-mode="0" data-hide-font-names="0">
+<body data-hide-font-names="0" data-windows-open="0">
 	<main class="container">
 		<div class="sizer"></div>
 
@@ -31,15 +31,15 @@
 					Hi there! I’m Typey!
 				</p>
 				<p>
-					Welcome to the Too Much Type foundry, an open-source experimental laboratory for variable fonts and digital type specimens.
+					Welcome to the Too Much Type foundry, <a href="https://noreplica.com/" target="_blank">No Replica</a>’s open-source experimental laboratory for variable fonts and digital type specimens.
 				</p>
 				<p>
-					How can I help you?
+					This site’s a little confusing (on purpose), so I can show you around. What are you here for?
 				</p>
-				<button onclick="toggleMenu(); hideTypey();">I want fonts!</button>
-				<button onclick="toggleSettings(); hideTypey();">I want to play around!</button>
-				<button onclick="toggleInfo(); hideTypey();">I want to learn more!</button>
-				<button onclick="hideTypey();">I want you to go away!</button>
+				<button onclick="toggleFonts(); hideTypey();">Lead me to the fonts!</button>
+				<button onclick="toggleControls(); hideTypey();">Let me play around!</button>
+				<button onclick="toggleInfo(); hideTypey();">Tell me who’s behind all this!</button>
+				<button onclick="hideTypey();">Get out of my face!</button>
 			</div>
 
 			<div class="typey-character" onclick="hideTypey();">
@@ -51,14 +51,30 @@
 			</div>
 		</div>
 
-		<div class="menu" data-active="0">
+		<div class="menu" id="fonts" data-active="0">
 			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><path d="M45,90h-20v-10h20v10ZM55,20h-10v60h10V20ZM45,10h-20v10h20v-10ZM75,10h-20v10h20v-10ZM75,80h-20v10h20v-10Z"/></svg>
 				<span>Fonts</span>
 			</h2>
 			<section class="menu-desc">
+				<div class="popup-typey">
+					<div class="popup-typey-character">
+						<div class="popup-typey-outline">A</div>
+						<div class="popup-typey-letter">B</div>
+						<div class="popup-typey-glasses">C</div>
+						<div class="popup-typey-nose">D</div>
+						<div class="popup-typey-mouth">E</div>
+					</div>
+					<div class="popup-typey-text">Typey<br>says</div>
+				</div>
 				<p>
-					Test and download fonts here! Click on a font’s name and start typing. Press “Generate Letters” to add the letters you typed to the desktop. From the desktop, click on a letter to play with its settings.
+					We make fonts! Here they are! They don’t bite!
+				</p>
+				<p>
+					Test and download our fonts from this menu. You can even add whatever you type to the desktop and play around with it there! Check out the <span onclick="toggleControls(); closeFonts();" class="menu-link">Controls</span> menu while you’re at it buddy.
+				</p>
+				<p>
+					Besides fonts, we also code type specimens exploring new technologies and use cases! Some of our work remixes other open-source fonts. For full credits, head over to the <span onclick="toggleInfo(); closeFonts();" class="menu-link">Info</span> menu to see who made what!
 				</p>
 			</section>
 
@@ -68,145 +84,353 @@
 			</h2>
 			<section class="menu-section">
 				<div class="menu-typeface" data-font="Bashful">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Bashful</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Bashful'); closeMenu();">
+					<h3 class="menu-typeface-name">Bashful</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Bashful</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Bashful'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/bashful/TMT-Bashful.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/bashful/TMT-Bashful.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Caffeine">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Caffeine</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Caffeine'); closeMenu();">
+					<h3 class="menu-typeface-name">Caffeine</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Caffeine</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Caffeine'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/caffeine/TMT-Caffeine.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/caffeine/TMT-Caffeine.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Dreidel">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Dreidel</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Dreidel'); closeMenu();">
+					<h3 class="menu-typeface-name">Dreidel</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Dreidel</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Dreidel'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/dreidel/TMT-Dreidel.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/dreidel/TMT-Dreidel.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Limkin">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Limkin</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Limkin'); closeMenu();">
+					<h3 class="menu-typeface-name">Limkin</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Limkin</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Limkin'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/limkin/TMT-Limkin.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/limkin/TMT-Limkin.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Limkin Pixel">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Limkin Pixel</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Limkin Pixel'); closeMenu();">
+					<h3 class="menu-typeface-name">Limkin Pixel</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Limkin Pixel</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Limkin Pixel'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/limkin-pixel/TMT-LimkinPixel.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/limkin-pixel/TMT-LimkinPixel.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
+				<div class="menu-typeface" data-font="M Krone">
+					<h3 class="menu-typeface-name">M Krone</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">M Krone</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('M Krone'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/m-krone/TMT-MKrone.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
 				<div class="menu-typeface" data-font="Mini Mochi">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Mini Mochi</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Mini Mochi'); closeMenu();">
+					<h3 class="menu-typeface-name">Mini Mochi</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Mini Mochi</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Mini Mochi'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/mini-mochi/TMT-MiniMochi.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/mini-mochi/TMT-MiniMochi.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Mini Mochi'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/mini-mochi/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/mini-mochi/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Music Box">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Music Box</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Music Box'); closeMenu();">
+					<h3 class="menu-typeface-name">Music Box</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Music Box</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Music Box'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/music-box/TMT-MusicBox.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
-						<button onclick="newWindow('Music Box'); closeMenu();">
-							<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
-							<span>Open Specimen</span>
-						</button>
-						<a href="/fonts/music-box/" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Open in New Tab</span>
-						</a>
-						<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/music-box/index.html" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Download Code</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/music-box/TMT-MusicBox.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Music Box'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/music-box/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/music-box/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="Paint">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Paint</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Paint'); closeMenu();">
+					<h3 class="menu-typeface-name">Paint</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Paint</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Paint'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/paint/TMT-Paint.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/paint/TMT-Paint.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="PowerPack">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">PowerPack</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('PowerPack'); closeMenu();">
+					<h3 class="menu-typeface-name">PowerPack</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">PowerPack</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('PowerPack'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/powerpack/TMT-PowerPack.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/powerpack/TMT-PowerPack.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
+
 				<div class="menu-typeface" data-font="That Then This">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">That Then This</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('That Then This'); closeMenu();">
+					<h3 class="menu-typeface-name">That Then This</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">That Then This</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('That Then This'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/that-then-this/TMT-ThatThenThis.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/that-then-this/TMT-ThatThenThis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis A">
+					<h3 class="menu-typeface-name">Urging Osmosis A</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis A</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis A'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis B">
+					<h3 class="menu-typeface-name">Urging Osmosis B</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis B</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis B'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis C">
+					<h3 class="menu-typeface-name">Urging Osmosis C</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis C</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis C'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis E">
+					<h3 class="menu-typeface-name">Urging Osmosis E</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis E</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis E'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis K">
+					<h3 class="menu-typeface-name">Urging Osmosis K</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis K</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis K'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Urging Osmosis L">
+					<h3 class="menu-typeface-name">Urging Osmosis L</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Urging Osmosis L</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Urging Osmosis L'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/urging-osmosis/TMT-UrgingOsmosis.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -215,57 +439,95 @@
 				<svg viewBox="0 0 100 100"><polygon points="90 10 90 90 60 90 60 60 80 60 80 20 20 20 20 60 40 60 40 90 10 90 10 10 90 10"/></svg>
 				<span>Remixed Fonts</span>
 			</h2>
+
 			<section class="menu-section">
-				<div class="menu-typeface" data-font="Authentic Remixed">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">AUTHENTIC Remixed</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Authentic Remixed'); closeMenu();">
+				<div class="menu-typeface" data-font="AUTHENTIC Remixed">
+					<h3 class="menu-typeface-name">Authentic Remixed</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">AUTHENTIC Remixed</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('AUTHENTIC Remixed'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/authentic-remixed/TMT-AUTHENTICRemixed.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
 				</div>
-				<!-- <div class="menu-typeface" data-font="Avara Burst">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Avara Burst</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Avara Burst'); closeMenu();">
+
+				<div class="menu-typeface" data-font="Avara Burst">
+					<h3 class="menu-typeface-name">Avara Burst</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Avara Burst</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Avara Burst'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/avara-burst/TMT-AvaraBurst.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
 					</div>
-				</div> -->
-				<!-- <div class="menu-typeface" data-font="FT88 RISD">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">FT88 RISD</div>
 					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('FT88 RISD'); closeMenu();">
-							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
-						</button>
-						<a href="/fonts/ft88-risd/TMT-FT88RISD.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/avara-burst/TMT-AvaraBurst.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
 					</div>
-				</div> -->
-				<div class="menu-typeface" data-font="Work Sans Galapagos">
-					<div class="menu-typeface-preview" contenteditable="plaintext-only"  spellcheck="false">Work Sans Galápagos</div>
-					<div class="menu-typeface-links">
-						<button onclick="generateLettersFromPreview('Work Sans Galapagos'); closeMenu();">
+				</div>
+
+				<div class="menu-typeface" data-font="FT88 RISD">
+					<h3 class="menu-typeface-name">FT88 RISD</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">FT88 RISD</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('FT88 RISD'); closeFonts();">
 							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
-							<span>Generate Letters</span>
+							<span>Add to Desktop</span>
 						</button>
-						<a href="/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip">
-							<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
-							<span>Download Font</span>
-						</a>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/ft88-risd/TMT-FT88RISD.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="menu-typeface" data-font="Work Sans Galápagos">
+					<h3 class="menu-typeface-name">Work Sans Gálapagos</h3>
+					<div class="menu-typeface-preview-container">
+						<div class="menu-typeface-preview" contenteditable="plaintext-only" spellcheck="false">Work Sans Galápagos</div>
+						<button class="menu-typeface-preview-add" onclick="generateLettersFromPreview('Work Sans Galápagos'); closeFonts();">
+							<svg viewBox="0 0 100 100"><path d="M90,80v10h-50v-10h50ZM30,40v-10h-10v10h-10v10h10v10h10v-10h10v-10h-10ZM70,20v20h-10v-20h-10v50h10v-20h10v20h10V20h-10ZM60,10v10h10v-10h-10Z"/></svg>
+							<span>Add to Desktop</span>
+						</button>
+					</div>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<a href="/fonts/work-sans-galapagos/TMT-WorkSansGalapagos.zip">
+								<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
+								<span>Download Font</span>
+							</a>
+						</div>
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Work Sans Galápagos'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/work-sans-galapagos/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/work-sans-galapagos/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -274,103 +536,88 @@
 				<svg viewBox="0 0 100 100"><path d="m55,40v10h10v-10h-10Zm10,10v10h10v-10h-10Zm-20-20v10h10v-10h-10Zm0,0v-10h-10v-10h-10v70h20v-10h-10V30h10Z"/><polygon points="75 70 75 90 65 90 65 80 55 80 55 70 45 70 45 60 65 60 65 70 75 70"/></svg>
 				<span>Experimental Fonts</span>
 			</h2>
-			<section class="menu-experimental">
-				<div class="menu-experimental-item">
-					<h3 class="menu-experimental-item-title">
+			<section class="menu-section">
+				<div class="menu-typeface" data-font="Fun Font">
+					<h3 class="menu-typeface-experimental">
 						<svg viewBox="0 0 100 100"><path d="M30,90H10v-20h20v20ZM50,50h-20v20h20v-20ZM70,30h-20v20h20v-20ZM90,50h-20v20h20v-20ZM30,30H10v20h20v-20ZM50,10h-20v20h20V10ZM70,70h-20v20h20v-20ZM90,10h-20v20h20V10Z"/></svg>
 						<span>Fun Font</span>
 					</h3>
-					<div class="menu-experimental-item-links">
-						<button onclick="newWindow('Fun Font'); closeMenu();" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
-							<span>Open Specimen</span>
-						</button>
-						<a href="/fonts/fun-font/" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Open in New Tab</span>
-						</a>
-						<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/fun-font/index.html" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Download Code</span>
-						</a>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Fun Font'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/fun-font/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/fun-font/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
 				
-				<div class="menu-experimental-item">
-					<h3 class="menu-experimental-item-title">
+				<div class="menu-typeface" data-font="Meal Kit">
+					<h3 class="menu-typeface-experimental">
 						<svg viewBox="0 0 100 100"><path d="m25,60h-10V10h10v50Zm40,0V10h-10v50h-10V10h-10v50h-10v10h20v20h10v-20h20v-10h-10Zm20-50h-10v50h10V10Z"/></svg>
 						<span>Meal Kit</span>
 					</h3>
-					<div class="menu-experimental-item-links">
-						<button onclick="newWindow('Meal Kit'); closeMenu();" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
-							<span>Open Specimen</span>
-						</button>
-						<a href="/fonts/meal-kit/" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Open in New Tab</span>
-						</a>
-						<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/meal-kit/index.html" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Download Code</span>
-						</a>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Meal Kit'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/meal-kit/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/meal-kit/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
 
-				<div class="menu-experimental-item">
-					<h3 class="menu-experimental-item-title">
+				<div class="menu-typeface" data-font="Sylvania">
+					<h3 class="menu-typeface-experimental">
 						<svg viewBox="0 0 100 100"><path d="m60,40v-10h-10v-10h-10v20H10v50h80v-50h-30Zm20,40H20v-30h60v30Z"/><rect x="60" y="20" width="20" height="10"/><rect x="20" y="10" width="20" height="10"/></svg>
 						<span>Sylvania</span>
 					</h3>
-					<div class="menu-experimental-item-links">
-						<button onclick="newWindow('Sylvania'); closeMenu();" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
-							<span>Open Specimen</span>
-						</button>
-						<a href="/fonts/sylvania/" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Open in New Tab</span>
-						</a>
-						<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/sylvania/index.html" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Download Code</span>
-						</a>
+					<div class="menu-typeface-links">
+						<div class="menu-typeface-links-section">
+							<button onclick="newWindow('Sylvania'); closeFonts();">
+								<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+								<span>Open Specimen</span>
+							</button>
+							<a href="/fonts/sylvania/" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Open in New Tab</span>
+							</a>
+							<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/sylvania/index.html" target="_blank">
+								<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
+								<span>Download Code</span>
+							</a>
+						</div>
 					</div>
 				</div>
-
-				<!-- <div class="menu-experimental-item">
-					<h3 class="menu-experimental-item-title">
-						<svg viewBox="0 0 100 100"><path d="m25,60h-10V10h10v50Zm40,0V10h-10v50h-10V10h-10v50h-10v10h20v20h10v-20h20v-10h-10Zm20-50h-10v50h10V10Z"/></svg>
-						<span>Urging Osmosis</span>
-					</h3>
-					<div class="menu-experimental-item-links">
-						<button onclick="newWindow('Meal Kit'); closeMenu();" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
-							<span>Open Specimen</span>
-						</button>
-						<a href="/fonts/meal-kit/" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Open in New Tab</span>
-						</a>
-						<a href="https://github.com/gabrieldrozdov/too-much-type/tree/main/fonts/meal-kit/index.html" target="_blank" class="menu-experimental-item-link">
-							<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
-							<span>Download Code</span>
-						</a>
-					</div>
-				</div> -->
 			</section>
 		</div>
 
 		<nav class="dock">
-			<button class="dock-toggle" onclick="toggleMenu()" id="toggle-menu">
+			<button class="dock-toggle" onclick="toggleFonts(); hideTypey();" id="toggle-fonts">
 				<svg viewBox="0 0 100 100"><rect x="25" y="80" width="20" height="10"/><rect x="45" y="20" width="10" height="60"/><rect x="25" y="10" width="20" height="10"/><rect x="55" y="10" width="20" height="10"/><rect x="55" y="80" width="20" height="10"/></svg>
 				<span>Fonts</span>
 			</button>
-			<button class="dock-toggle" onclick="toggleSettings();" id="toggle-settings">
+			<button class="dock-toggle" onclick="toggleControls(); hideTypey();" id="toggle-controls">
 				<svg viewBox="0 0 100 100"><rect x="65" y="65" width="10" height="10"/><rect x="25" y="65" width="10" height="10"/><rect x="15" y="75" width="10" height="10"/><rect x="15" y="15" width="10" height="10"/><rect x="75" y="75" width="10" height="10"/><rect x="65" y="25" width="10" height="10"/><path d="m55,35V10h-10v25h-10v10H10v10h25v10h10v25h10v-25h10v-10h25v-10h-25v-10h-10Zm0,20h-10v-10h10v10Z"/><rect x="25" y="25" width="10" height="10"/><rect x="75" y="15" width="10" height="10"/></svg>
 				<span>Controls</span>
 			</button>
-			<button class="dock-toggle" onclick="toggleInfo()" id="toggle-info">
+			<button class="dock-toggle" onclick="toggleInfo(); hideTypey();" id="toggle-info">
 				<svg viewBox="0 0 100 100"><path d="M45,80h10v10h-10v-10ZM45,70h10v-10h-10v10ZM55,60h10v-10h-10v10ZM65,20v30h10v-30h-10ZM35,10v10h30v-10h-30ZM25,40h10v-20h-10v20Z"/></svg>
 				<span>Info</span>
 			</button>
@@ -381,123 +628,142 @@
 			</div>
 			<button class="dock-toggle" onclick="toggleTypey();" id="toggle-typey">
 				<svg viewBox="0 0 100 100"><path d="M80,70v-20h-10v-20h-10V10h-20v20h-10v20h-10v20h-10v20h20v-20h40v20h20v-20h-10ZM60,60h-20v-20h20v20Z"/></svg>
+				<span>Typey</span>
 			</button>
 		</nav>
 
-		<div class="settings" data-active="0">
-			<h2 class="settings-title">
+		<div class="menu" id="controls" data-active="0">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><rect x="65" y="65" width="10" height="10"/><rect x="25" y="65" width="10" height="10"/><rect x="15" y="75" width="10" height="10"/><rect x="15" y="15" width="10" height="10"/><rect x="75" y="75" width="10" height="10"/><rect x="65" y="25" width="10" height="10"/><path d="m55,35V10h-10v25h-10v10H10v10h25v10h10v25h10v-25h10v-10h25v-10h-25v-10h-10Zm0,20h-10v-10h10v10Z"/><rect x="25" y="25" width="10" height="10"/><rect x="75" y="15" width="10" height="10"/></svg>
 				<span>Controls</span>
 			</h2>
-			<section class="settings-desc">
+			<section class="menu-desc">
+				<div class="popup-typey">
+					<div class="popup-typey-character">
+						<div class="popup-typey-outline">A</div>
+						<div class="popup-typey-letter">B</div>
+						<div class="popup-typey-glasses">C</div>
+						<div class="popup-typey-nose">D</div>
+						<div class="popup-typey-mouth">E</div>
+					</div>
+					<div class="popup-typey-text">Typey<br>says</div>
+				</div>
 				<p>
-					Play around using these controls! Click a letter on the desktop to change its size, color, variable axes, or glyph. Add more letters from the Fonts menu. Drag letters around and print your creation!
+					Let’s play! Use these controls to move the letters and windows on the desktop around. You can also click on the letters to change their individual settings!
+				</p>
+				<p>
+					Want to add more letters? Head over to the <span onclick="toggleFonts(); toggleControls();" class="menu-link">Fonts</span> menu and type out your desires! Once you’ve got all the letters you want, drag them around and <span onclick="printDesktop(); detectCloseControls();" class="menu-link">print your creation</span>!
 				</p>
 			</section>
 
-			<h2 class="settings-title">
-				<svg viewBox="0 0 100 100"><path d="m55,40v10h10v-10h-10Zm10,10v10h10v-10h-10Zm-20-20v10h10v-10h-10Zm0,0v-10h-10v-10h-10v70h20v-10h-10V30h10Z"/><polygon points="75 70 75 90 65 90 65 80 55 80 55 70 45 70 45 60 65 60 65 70 75 70"/></svg>
-				<span>Interface</span>
-			</h2>
-			<section class="settings-grid">
-				<button onclick="changeColorMode();">
-					<svg viewBox="0 0 100 100"><rect x="35" y="10" width="30" height="10"/><rect x="65" y="60" width="10" height="10"/><rect x="15" y="30" width="10" height="30"/><rect x="25" y="60" width="10" height="10"/><polygon points="55 50 45 50 45 70 35 70 35 90 65 90 65 70 55 70 55 50"/><rect x="55" y="40" width="10" height="10"/><rect x="35" y="40" width="10" height="10"/><rect x="25" y="20" width="10" height="10"/><rect x="65" y="20" width="10" height="10"/><rect x="75" y="30" width="10" height="30"/></svg>
-					<span>Toggle<br>Color</span>
-				</button>
-			</section>
-
-			<h2 class="settings-title">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><path d="m10,10v60h80V10H10Zm70,50H20V20h60v40Z"/><rect x="10" y="80" width="80" height="10"/></svg>
 				<span>Desktop</span>
 			</h2>
-			<section class="settings-grid">
-				<button onclick="sortDesktop();">
+			<section class="menu-grid">
+				<button data-setting="desktop" onclick="sortDesktop(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><rect x="10" y="10" width="20" height="20"/><rect x="40" y="10" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="40" width="20" height="20"/><rect x="40" y="40" width="20" height="20"/><rect x="70" y="40" width="20" height="20"/><rect x="10" y="70" width="20" height="20"/><rect x="40" y="70" width="20" height="20"/><rect x="70" y="70" width="20" height="20"/></svg>
 					<span>Arrange Desktop</span>
 				</button>
-				<button onclick="unsortDesktop();">
+				<button data-setting="desktop" onclick="unsortDesktop(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><rect x="20" y="10" width="20" height="20"/><rect x="50" y="20" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="30" width="20" height="20"/><rect x="30" y="50" width="20" height="20"/><rect x="60" y="40" width="20" height="20"/><rect x="20" y="70" width="20" height="20"/><rect x="50" y="60" width="20" height="20"/><rect x="70" y="70" width="20" height="20"/></svg>
 					<span>Clutter Desktop</span>
 				</button>
-				<button onclick="toggleFontNames();">
+				<button data-setting="desktop" onclick="toggleFontNames(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><path d="m10,10v60h80V10H10Zm70,50H20V20h60v40Z"/><rect x="10" y="80" width="80" height="10"/></svg>
-					<span>Toggle Font Names</span>
+					<span>Toggle Labels</span>
 				</button>
-				<button onclick="clearDesktop();">
-					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
-					<span>Clear<br>Desktop</span>
-				</button>
-				<button onclick="randomLetter();">
-					<svg viewBox="0 0 100 100"><rect x="20" y="20" width="10" height="10"/><rect x="10" y="30" width="10" height="10"/><polygon points="50 40 50 50 20 50 20 40 30 40 30 30 40 30 40 40 50 40"/><polygon points="70 50 70 60 80 60 80 70 60 70 60 20 70 20 70 40 80 40 80 50 70 50"/><rect x="80" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="30" y="80" width="20" height="10"/></svg>
-					<span>Random Letter</span>
-				</button>
-				<button onclick="clearDesktop(); initializeDesktop();">
-					<svg viewBox="0 0 100 100"><rect x="40" y="80" width="20" height="10"/><rect x="30" y="70" width="10" height="10"/><rect x="20" y="60" width="10" height="10"/><polygon points="20 20 10 20 10 50 40 50 40 40 30 40 30 30 20 30 20 20"/><rect x="30" y="20" width="10" height="10"/><rect x="40" y="10" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/><rect x="70" y="30" width="10" height="10"/><rect x="80" y="40" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="60" y="70" width="10" height="10"/></svg>
-					<span>Regenerate Desktop</span>
-				</button>
-				<button onclick="printDesktop();">
+				<button data-setting="desktop" onclick="printDesktop(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><polygon points="80 30 80 90 20 90 20 10 60 10 60 20 30 20 30 80 70 80 70 30 80 30"/><rect x="60" y="20" width="10" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="40" y="60" width="20" height="10"/></svg>
 					<span>Print<br>Desktop</span>
 				</button>
+				<button data-setting="desktop" onclick="clearDesktop(); detectCloseControls(); checkDesktop();">
+					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
+					<span>Clear<br>Desktop</span>
+				</button>
+				<button onclick="randomLetter(); detectCloseControls();">
+					<svg viewBox="0 0 100 100"><rect x="20" y="20" width="10" height="10"/><rect x="10" y="30" width="10" height="10"/><polygon points="50 40 50 50 20 50 20 40 30 40 30 30 40 30 40 40 50 40"/><polygon points="70 50 70 60 80 60 80 70 60 70 60 20 70 20 70 40 80 40 80 50 70 50"/><rect x="80" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="30" y="80" width="20" height="10"/></svg>
+					<span>Random Letter</span>
+				</button>
+				<button onclick="clearDesktop(); initializeDesktop(); detectCloseControls();">
+					<svg viewBox="0 0 100 100"><rect x="40" y="80" width="20" height="10"/><rect x="30" y="70" width="10" height="10"/><rect x="20" y="60" width="10" height="10"/><polygon points="20 20 10 20 10 50 40 50 40 40 30 40 30 30 20 30 20 20"/><rect x="30" y="20" width="10" height="10"/><rect x="40" y="10" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/><rect x="70" y="30" width="10" height="10"/><rect x="80" y="40" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="60" y="70" width="10" height="10"/></svg>
+					<span>Regenerate Desktop</span>
+				</button>
 			</section>
 
-			<h2 class="settings-title">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
 				<span>Windows</span>
 			</h2>
-			<section class="settings-grid">
-				<button onclick="collectWindows();">
+			<section class="menu-grid">
+				<button data-setting="window" onclick="collectWindows(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><path d="m10,10v60h60V10H10Zm10,50v-30h40v30H20Z"/><polygon points="90 20 90 90 20 90 20 80 80 80 80 20 90 20"/></svg>
-					<span>Collect Windows</span>
+					<span>Center Windows</span>
 				</button>
-				<button onclick="showWindows();">
-					<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
-					<span>Show All Windows</span>
-				</button>
-				<button onclick="hideWindows();">
-					<svg viewBox="0 0 100 100"><rect x="50" y="10" width="10" height="10"/><rect x="10" y="30" width="10" height="10"/><polygon points="90 10 90 30 80 30 80 20 70 20 70 10 90 10"/><rect x="80" y="80" width="10" height="10"/><rect x="10" y="10" width="10" height="10"/><rect x="10" y="50" width="10" height="10"/><polygon points="20 80 30 80 30 90 10 90 10 70 20 70 20 80"/><rect x="60" y="80" width="10" height="10"/><rect x="80" y="60" width="10" height="10"/><rect x="30" y="10" width="10" height="10"/><rect x="80" y="40" width="10" height="10"/><rect x="40" y="80" width="10" height="10"/></svg>
-					<span>Hide All Windows</span>
-				</button>
-				<button onclick="closeWindows();">
-					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
-					<span>Close All Windows</span>
-				</button>
-				<button onclick="tileWindows();">
+				<button data-setting="window" onclick="tileWindows(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><path d="m10,10v30h30V10H10Zm20,20h-10v-10h10v10Z"/><path d="m60,10v30h30V10h-30Zm20,20h-10v-10h10v10Z"/><path d="m10,60v30h30v-30H10Zm20,20h-10v-10h10v10Z"/><path d="m60,60v30h30v-30h-30Zm20,20h-10v-10h10v10Z"/></svg>
 					<span>Tile<br>Windows</span>
 				</button>
-				<button onclick="scatterWindows();">
+				<button data-setting="window" onclick="scatterWindows(); detectCloseControls();">
 					<svg viewBox="0 0 100 100"><path d="m10,20v30h30v-30H10Zm20,20h-10v-10h10v10Z"/><path d="m60,60v30h30v-30h-30Zm20,20h-10v-10h10v10Z"/><path d="m30,50v30h30v-30h-30Zm20,20h-10v-10h10v10Z"/><path d="m60,10v30h30V10h-30Zm20,20h-10v-10h10v10Z"/></svg>
 					<span>Scatter Windows</span>
 				</button>
-				<button onclick="randomWindow();">
+				<button data-setting="window" onclick="showWindows(); detectCloseControls();">
+					<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,70V30h60v50H20Z"/></svg>
+					<span>Show All Windows</span>
+				</button>
+				<button data-setting="window" onclick="hideWindows(); detectCloseControls();">
+					<svg viewBox="0 0 100 100"><rect x="50" y="10" width="10" height="10"/><rect x="10" y="30" width="10" height="10"/><polygon points="90 10 90 30 80 30 80 20 70 20 70 10 90 10"/><rect x="80" y="80" width="10" height="10"/><rect x="10" y="10" width="10" height="10"/><rect x="10" y="50" width="10" height="10"/><polygon points="20 80 30 80 30 90 10 90 10 70 20 70 20 80"/><rect x="60" y="80" width="10" height="10"/><rect x="80" y="60" width="10" height="10"/><rect x="30" y="10" width="10" height="10"/><rect x="80" y="40" width="10" height="10"/><rect x="40" y="80" width="10" height="10"/></svg>
+					<span>Hide All Windows</span>
+				</button>
+				<button data-setting="window" onclick="closeWindows(); detectCloseControls();">
+					<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="70" width="10" height="10"/><rect x="20" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="30" y="80" width="40" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="40" y="50" width="10" height="10"/><rect x="30" y="60" width="10" height="10"/></svg>
+					<span>Close All Windows</span>
+				</button>
+				<button onclick="randomWindow(); detectCloseControls(); closeControls();">
 					<svg viewBox="0 0 100 100"><rect x="40" y="20" width="20" height="10"/><rect x="40" y="70" width="20" height="10"/><polygon points="90 10 90 90 70 90 70 80 80 80 80 20 70 20 70 10 90 10"/><polygon points="70 50 60 50 60 60 40 60 40 50 50 50 50 40 60 40 60 30 70 30 70 50"/><polygon points="20 80 30 80 30 90 10 90 10 10 30 10 30 20 20 20 20 80"/><rect x="30" y="30" width="10" height="10"/></svg>
 					<span>Random Window</span>
 				</button>
 			</section>
 		</div>
 
-		<div class="info" data-active="0">
-			<h2 class="info-title">
+		<div class="menu" id="info" data-active="0">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><path d="M45,80h10v10h-10v-10ZM45,70h10v-10h-10v10ZM55,60h10v-10h-10v10ZM65,20v30h10v-30h-10ZM35,10v10h30v-10h-30ZM25,40h10v-20h-10v20Z"/></svg>
 				<span>Info</span>
 			</h2>
-			<section class="info-desc">
+			<section class="menu-desc">
+				<div class="popup-typey">
+					<div class="popup-typey-character">
+						<div class="popup-typey-outline">A</div>
+						<div class="popup-typey-letter">B</div>
+						<div class="popup-typey-glasses">C</div>
+						<div class="popup-typey-nose">D</div>
+						<div class="popup-typey-mouth">E</div>
+					</div>
+					<div class="popup-typey-text">Typey<br>says</div>
+				</div>
 				<p>
 					Too Much Type designs and distributes experimental typefaces and type specimens. Every project is open-source, which means that you're free to use or edit our fonts and code however you like. Enjoy!
 				</p>
 			</section>
 
-			<h2 class="info-title">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><rect x="10" y="30" width="10" height="40"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="40" height="10"/><rect x="70" y="20" width="10" height="10"/><rect x="80" y="30" width="10" height="40"/><rect x="70" y="70" width="10" height="10"/><rect x="30" y="80" width="40" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="40" y="30" width="20" height="10"/><rect x="30" y="40" width="10" height="20"/><rect x="40" y="60" width="20" height="10"/></svg>
 				<span>Credits</span>
 			</h2>
-			<section class="info-desc">
+			<section class="menu-desc">
 				<p>
-					Code and fonts by <a href='https://gabrieldrozdov.com/' target="_blank">Gabriel Drozdov</a>
+					Code and fonts by <a href='https://noreplica.com/' target="_blank">No Replica</a> / <a href='https://gabrieldrozdov.com/' target="_blank">Gabriel Drozdov</a>. Want to commission something? <a href="mailto:gabriel@noreplica.com">Reach out</a>!
 				</p>
 				<p>
-					Original designers for remixed fonts:
+					The Urging Osmosis fonts were originally designed as gifts for my RISD friends: <a href="https://alecfiguracion.com" target="_blank">Alec Figuracion</a>, <a href="http://www.berettwilber.com" target="_blank">Berett Wilber</a>, <a href="https://claudiamdesigns.com" target="_blank">Claudia Morris</a>, <a href="https://emilybluedorn.com" target="_blank">Emily Bluedorn</a>, <a href="https://kaelamkennedy.com" target="_blank">Kaela Kennedy</a>, and <a href="https://lydiachodosh.com" target="_blank">Lydia Chodosh</a>.
+				</p>
+				<p>
+					Paint is a revival of a font from <a href="https://en.wikipedia.org/wiki/Mario_Paint" target="_blank">Mario Paint</a>.
+				</p>
+				<p>
+					Some of our fonts are remixed versions of other open-source fonts! Find the original fonts here:
 				</p>
 				<ul>
 					<li>
@@ -515,20 +781,131 @@
 				</ul>
 			</section>
 
-			<h2 class="info-title">
+			<h2 class="menu-title">
 				<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
-				<span>Other Projects by Gabriel Drozdov</span>
+				<span>Other Projects</span>
 			</h2>
-			<section class="info-desc">
-				<div class="info-desc-brands">
-					<a href='https://noreplica.com/' target="_blank"><img src="/assets/ui/logo-noreplica.svg"></a>
-					<a href='https://gdwithgd.com/' target="_blank"><img src="/assets/ui/logo-gdwithgd.svg"></a>
-					<a href='https://barcoloudly.com/' target="_blank"><img src="/assets/ui/logo-barcoloudly.svg"></a>
-				</div>
+			<section class="menu-desc">
+				<p>
+					To see our studio work, check out <a href='https://noreplica.com/' target="_blank">No Replica</a>!
+				</p>
+				<p>
+					To learn how to make projects like this, check out <a href='https://gdwithgd.com/' target="_blank">GD with GD</a>!
+				</p>
+				<p>
+					To kick back, relax, and listen to some music, check out <a href='https://barcoloudly.com/' target="_blank">Barco Loudly</a>!
+				</p>
 			</section>
 		</div>
 
 		<div class="desktop">
+			<div class="desktop-logo" onclick="toggleMenubar();">
+				<div class="desktop-logo-group">
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+				</div>
+				<div class="desktop-logo-group">
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+					<span>Too&nbsp;Much&nbsp;Type&nbsp;</span>
+				</div>
+			</div>
+
+			<div class="menubar" data-active="0">
+				<div class="menubar-buttons"></div>
+			</div>
+
 			<div class="desktop-settings" data-active="0">
 				<div class="desktop-settings-titlebar">
 					<h3 class="desktop-settings-font">
@@ -540,22 +917,18 @@
 					</button>
 				</div>
 				<div class="desktop-settings-content">
-					<button class="desktop-settings-specimen">
-						<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
-						<span>Open Specimen</span>
-					</button>
 					<a class="desktop-settings-download" href="">
 						<svg viewBox="0 0 100 100"><polygon points="35 60 35 50 45 50 45 10 55 10 55 50 65 50 65 60 55 60 55 70 45 70 45 60 35 60"/><rect x="25" y="40" width="10" height="10"/><rect x="65" y="40" width="10" height="10"/><polygon points="90 60 90 90 10 90 10 60 20 60 20 80 80 80 80 60 90 60"/></svg>
 						<span>Download Font</span>
 					</a>
+					<button class="desktop-settings-specimen">
+						<svg viewBox="0 0 100 100"><path d="M10,10v80h80V10H10z M20,20h60v10H20V20z M20,80V40h60v40H20z"></path></svg>
+						<span>Open Specimen</span>
+					</button>
 					<div class="desktop-settings-variable"></div>
 					<div class="desktop-settings-variation">
 						<label>Size</label>
 						<input type="range" name="size" min="8" max="256" value="48" class="desktop-settings-size">
-					</div>
-					<div class="desktop-settings-variation">
-						<label>Color</label>
-						<input type="range" name="color" min="0" max="360" value="60" class="desktop-settings-color">
 					</div>
 					<button class="desktop-settings-change">
 						<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"></polygon><rect x="20" y="50" width="10" height="10"></rect><rect x="30" y="40" width="10" height="10"></rect><rect x="40" y="30" width="10" height="10"></rect><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"></polygon><rect x="60" y="50" width="10" height="10"></rect><rect x="50" y="40" width="10" height="10"></rect><rect x="50" y="60" width="10" height="10"></rect><rect x="40" y="70" width="10" height="10"></rect></svg>
@@ -586,6 +959,6 @@
 			</div>
 		</div>
 	</main>
-	<script src="script.js"></script>
+	<script src="/script.js"></script>
 </body>
 </html>

@@ -1255,7 +1255,7 @@ body[data-windows-open="0"] .dock-windows {
 /* Desktop logo */
 .desktop-logo {
 	position: absolute;
-	color: var(--black);
+	color: oklch(25% .5 calc(var(--primary) + 180));
 	height: 24px;
 	top: 0;
 	left: 0;
@@ -1290,14 +1290,19 @@ body[data-windows-open="0"] .dock-windows {
 .desktop-logo span {
 	position: relative;
 	display: flex;
+	text-shadow: 1px 1px oklch(100% .25 calc(var(--primary) + 180));
 }
 .desktop-logo span::after {
 	content: "";
 	width: 8px;
 	height: 8px;
-	background-color: var(--black);
+	box-sizing: border-box;
+	display: inline-block;
+	background-color: oklch(50% .5 calc(var(--primary) + 180));
+	border: 2px outset oklch(50% .5 calc(var(--primary) + 180));
 	margin-right: 18px;
 	margin-left: 12px;
+	box-shadow: 1px 1px oklch(100% .25 calc(var(--primary) + 180));
 }
 .desktop-logo:hover {
 	background-color: oklch(90% .25 calc(var(--primary) + 180));
@@ -2220,7 +2225,9 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	box-shadow: 8px 8px 0 var(--black);
 	border: 1px solid var(--black);
 	transition: font-variation-settings .2s, transform .25s, background-color .5s;
-	background: oklch(70% .25 calc(var(--primary) + 90));
+	background: linear-gradient(to bottom,
+		oklch(60% .15 calc(var(--primary) + 90)),
+		oklch(90% .5 var(--primary)));
 	z-index: 1;
 	cursor: pointer;
 }
@@ -2254,7 +2261,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 2;
 }
 .typey-letter {
-	color: oklch(80% .25 calc(var(--primary) + 90));
+	color: oklch(90% .5 var(--primary));
 	z-index: 1;
 	animation: typey-speak .2s infinite alternate;
 }
@@ -2263,7 +2270,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 1;
 }
 .typey-nose {
-	color: oklch(85% .25 calc(var(--primary) + 90));
+	color: oklch(100% .5 var(--primary));
 	z-index: 1;
 	animation: typey-speak .2s infinite alternate;
 }
@@ -2408,7 +2415,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 2;
 }
 .popup-typey-letter {
-	color: oklch(80% .25 calc(var(--primary) + 90));
+	color: oklch(90% .5 var(--primary));
 	z-index: 1;
 }
 .popup-typey-glasses {
@@ -2416,7 +2423,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	z-index: 1;
 }
 .popup-typey-nose {
-	color: oklch(85% .25 calc(var(--primary) + 90));
+	color: oklch(100% .5 var(--primary));
 	z-index: 1;
 }
 .popup-typey-mouth {
