@@ -146,7 +146,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	overscroll-behavior: none;
 	touch-action: manipulation;
 	--white: oklch(100% .1 var(--primary));
 	--black: oklch(25% .1 var(--primary));
@@ -172,6 +171,7 @@ body {
 	font-synthesis: none;
 	overscroll-behavior: none;
 	overflow: hidden;
+	overscroll-behavior: none;
 }
 *:focus {
 	scroll-margin: 0;
@@ -387,17 +387,18 @@ body {
 	display: flex;
 	color: oklch(20% .7 var(--primary));
 	align-items: center;
-	justify-content: center;
-	text-shadow: 0px 1px oklch(100% .2 var(--primary));
+	justify-content: space-between;
+	text-shadow: 0px -1px oklch(100% .2 var(--primary));
+	gap: 4px;
+	flex-wrap: wrap;
 }
-.menu-typeface-name::after {
-	content: "";
+.menu-typeface-name-spacer {
 	flex-grow: 1;
 	padding-top: 1px;
+	min-width: 40px;
 	border-top: 3px double oklch(100% .2 var(--primary));
 	border-bottom: 3px double oklch(100% .2 var(--primary));
 	display: inline-block;
-	margin-left: 4px;
 	filter: drop-shadow(0px -1px oklch(20% .7 var(--primary)));
 }
 .menu-typeface-links {
@@ -433,6 +434,7 @@ body {
 	border-radius: 4px;
 	text-decoration: none;
 	text-align: center;
+	text-wrap: balance;
 }
 .menu-typeface-links button svg, .menu-typeface-links a svg {
 	flex-shrink: 0;
@@ -533,7 +535,7 @@ body {
 .menu-typeface-preview {
 	outline: 1px solid var(--black);
 	border-radius: 4px;
-	overflow: scroll;
+	overflow: auto;
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -1066,7 +1068,7 @@ body {
 	align-self: stretch;
 	justify-content: stretch;
 	flex-grow: 1;
-	overflow-x: scroll;
+	overflow-x: auto;
 	border-radius: 4px;
 	-ms-overflow-style: none;  /* IE and Edge */
 	scrollbar-width: none;  /* Firefox */
@@ -1703,7 +1705,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 .desktop-letterset-content {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
-	overflow-y: scroll;
+	overflow-y: auto;
 	align-content: start;
 	gap: 1px;
 	background-color: oklch(70% .25 var(--primary));
@@ -1846,7 +1848,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 .window-controls {
 	height: 100%;
 	display: flex;
-	overflow-x: scroll;
+	overflow-x: auto;
 	-ms-overflow-style: none;  /* IE and Edge */
 	scrollbar-width: none;  /* Firefox */
 	gap: 1px;
@@ -2291,7 +2293,7 @@ body[data-hide-font-names="1"] .desktop-letter span {
 	color: var(--black);
 	outline: 1px solid var(--black);
 	padding: 24px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	border-radius: 4px;
 	font-size: 16px;
 	line-height: 1.3em;
