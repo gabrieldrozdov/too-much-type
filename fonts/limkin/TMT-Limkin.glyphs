@@ -1,5 +1,5 @@
 {
-.appVersion = "3343";
+.appVersion = "3436";
 .formatVersion = 3;
 DisplayStrings = (
 "AaBbCcDdEeFf
@@ -190,7 +190,7 @@ zźžżẓ
 "WHAT!",
 "Hi!!!",
 Tears,
-"oYeoYeoToeTeuTeToel This is critical: back up your work! Make it automatic or a regular part of your working schedule, to be done every day. You will not be excused for preventable loss of data. Here are some recommendations:"
+"oYeoYeoToeTeuTeToel This is critical: back up your work! Make it automatic or a regular part of your working schedule, to be done every day. You will not be excused for preventable loss of data. Here are some recommendations: Work Walk Work"
 );
 axes = (
 {
@@ -40424,7 +40424,7 @@ unicode = 331;
 glyphname = o;
 kernLeft = o;
 kernRight = o;
-lastChange = "2025-08-20 15:04:46 +0000";
+lastChange = "2026-04-26 14:07:32 +0000";
 layers = (
 {
 anchors = (
@@ -82272,6 +82272,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -60;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
@@ -89222,6 +89223,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -120;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
@@ -96172,6 +96174,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -60;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
@@ -103122,6 +103125,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -120;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
@@ -110072,6 +110076,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -80;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
@@ -117022,6 +117027,7 @@ e = -100;
 "@MMK_R_guillemotright" = -10;
 "@MMK_R_hyphen" = -34;
 "@MMK_R_j.sc" = -80;
+"@MMK_R_o" = -120;
 "@MMK_R_period" = -75;
 "@MMK_R_quotedblleft" = 20;
 "@MMK_R_s" = -29;
